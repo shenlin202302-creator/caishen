@@ -1,0 +1,264 @@
+// Statistics
+let stats = {
+    visitors: parseInt(localStorage.getItem('lucky_god_visitors') || '0'),
+    fortunes: parseInt(localStorage.getItem('lucky_god_fortunes') || '0'),
+    shares: parseInt(localStorage.getItem('lucky_god_shares') || '0'),
+    donations: parseInt(localStorage.getItem('lucky_god_donations') || '0')
+};
+
+// Increment visitor count
+stats.visitors++;
+localStorage.setItem('lucky_god_visitors', stats.visitors.toString());
+
+// Splash screen timer
+document.addEventListener('DOMContentLoaded', function() {
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // 3-second splash screen
+    setTimeout(() => {
+        const splash = document.getElementById('splash-screen');
+        splash.classList.add('fade-out');
+        setTimeout(() => {
+            splash.classList.add('hidden');
+            document.getElementById('welcome-screen').classList.remove('hidden');
+        }, 500);
+    }, 3000);
+    
+    // Initialize language
+    // Detect browser language
+    const browserLang = navigator.language || navigator.userLanguage;
+    if (browserLang.includes('zh')) {
+        currentLang = 'zh';
+        changeLanguage('zh');
+        document.querySelector('.lang-btn[data-lang="zh"]').classList.add('active');
+        document.querySelector('.lang-btn[data-lang="en"]').classList.remove('active');
+    }
+    
+    // Event listeners
+    setupEventListeners();
+    
+    // Initialize PayPal
+    initPayPal();
+});
+
+function setupEventListeners() {
+    // Enter button
+    document.getElementById('enter-btn').addEventListener('click', function() {
+        document.getElementById('welcome-screen').classList.add('hidden');
+        document.getElementById('main-content').classList.remove('hidden');
+        window.scrollTo(0, 0);
+    });
+    
+    // Language switch
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const lang = this.dataset.lang;
+            changeLanguage(lang);
+        });
+    });
+    
+    // Draw fortune
+    document.getElementById('draw-fortune-btn').addEventListener('click', openFortuneModal);
+    
+    // Start test
+    document.getElementById('start-test-btn').addEventListener('click', openTestModal);
+    
+    // Browse wallpapers
+    document.getElementById('browse-wallpapers-btn').addEventListener('click', openWallpaperModal);
+    
+    // Share button
+    document.getElementById('share-btn').addEventListener('click', openShare);
+    
+    // Modal close buttons
+    document.querySelectorAll('.close-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            closeModal(this.closest('.modal'));
+        });
+    });
+    
+    // Click outside modal to close
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal(this);
+            }
+        });
+    });
+    
+    // Donation selection
+    document.querySelectorAll('.donation-option').forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelectorAll('.donation-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            this.classList.add('selected');
+            selectedAmount = parseFloat(this.dataset.amount);
+        });
+    });
+    
+    // Select 6.66 by default
+    document.querySelector('.donation-option[data-amount="6.66"]').classList.add('selected');
+    selectedAmount = 6.66;
+    
+    // Share buttons
+    document.getElementById('share-tiktok').addEventListener('click', shareToTikTok);
+    document.getElementById('share-facebook').addEventListener('click', shareToFacebook);
+    
+    // Exclusive content downloads
+    if (document.getElementById('download-exclusive')) {
+        document.getElementById('download-exclusive').addEventListener('click', () => {
+            downloadWallpaper(5);
+        });
+        document.getElementById('download-talisman').addEventListener('click', () => {
+            downloadWallpaper(6);
+        });
+        document.getElementById('view-report').addEventListener('click', () => {
+            showToast('Annual report generated based on today\'s energy! Your fortune: ' + getRandomFortune());
+        });
+    }
+    
+    // Stripe button
+    if (document.getElementById('stripe-button')) {
+        document.getElementById('stripe-button').addEventListener('click', handleStripePayment);
+    }
+}
+
+function openFortuneModal() {
+    stats.fortunes++;
+    localStorage.setItem('lucky_god_fortunes', stats.fortunes.toString());
+    
+    const modal = document.getElementById('fortune-modal');
+    const fortuneText = document.getElementById('fortune-text');
+    fortuneText.textContent = getDailyFortune();
+    modal.classList.remove('hidden');
+}
+
+function openTestModal() {
+    const modal = document.getElementById('test-modal');
+    modal.classList.remove('hidden');
+    startTest();
+}
+
+function openWallpaperModal() {
+    const modal = document.getElementById('wallpaper-modal');
+    modal.classList.remove('hidden');
+    loadWallpapers();
+}
+
+function closeModal(modal) {
+    modal.classList.add('hidden');
+}
+
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.remove('hidden');
+    
+    setTimeout(() => {
+        toast.classList.add('hidden');
+    }, 3000);
+}
+
+function openShare() {
+    // Scroll to share section
+    document.querySelector('.share-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+function getCurrentShareUrl() {
+    return window.location.href.split('?')[0];
+}
+
+function shareToTikTok() {
+    const shareUrl = getCurrentShareUrl();
+    const text = getText('share.title') + ' - ' + getDailyFortune();
+    
+    // TikTok doesn't have a direct web share, but we can copy the link
+    navigator.clipboard.writeText(shareUrl).then(() => {
+        showToast('Link copied! Open TikTok and paste it in your bio. You got an extra fortune draw!');
+        stats.shares++;
+        localStorage.setItem('lucky_god_shares', stats.shares.toString());
+        // Extra fortune
+        setTimeout(() => {
+            openFortuneModal();
+        }, 1000);
+    });
+}
+
+function shareToFacebook() {
+    const shareUrl = getCurrentShareUrl();
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+    window.open(facebookUrl, '_blank', 'width=600,height=400');
+    
+    stats.shares++;
+    localStorage.setItem('lucky_god_shares', stats.shares.toString());
+    
+    // Extra fortune
+    setTimeout(() => {
+        openFortuneModal();
+    }, 1000);
+}
+
+// PayPal Integration
+let selectedAmount = 6.66;
+
+function initPayPal() {
+    if (typeof paypal !== 'undefined') {
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: selectedAmount.toFixed(2)
+                        },
+                        description: 'Donation - Buy Lucky God a cup of tea'
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Payment successful
+                    handleSuccessfulDonation();
+                    showToast('Thank you for your donation, ' + details.payer.name.given_name + '! 🙏');
+                });
+            },
+            onError: function(err) {
+                console.error(err);
+                showToast('Something went wrong with the payment. Please try again.');
+            }
+        }).render('#paypal-button-container');
+    } else {
+        console.log('PayPal SDK not loaded - check your client ID');
+    }
+}
+
+function handleStripePayment() {
+    // Stripe integration placeholder
+    // In production, you need a backend to create payment intent
+    showToast('Stripe integration: Please configure your Stripe keys in the code. Redirecting to checkout...');
+    console.log('Stripe payment for amount: $' + selectedAmount);
+    
+    // After successful payment:
+    // handleSuccessfulDonation();
+}
+
+function handleSuccessfulDonation() {
+    stats.donations++;
+    localStorage.setItem('lucky_god_donations', stats.donations.toString());
+    setUnlockedContent();
+    // Scroll to unlocked section
+    setTimeout(() => {
+        document.getElementById('unlocked-section').scrollIntoView({ behavior: 'smooth' });
+    }, 500);
+}
+
+// ============================================
+// Simple statistics (you can expand this)
+// ============================================
+function getStats() {
+    return stats;
+}
+
+// Log stats to console for site owner
+console.log('Lucky God Stats:', stats);
+console.log('Thanks for using Lucky God! 🎋');
