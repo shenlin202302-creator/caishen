@@ -110,6 +110,12 @@ body {
     background: 
         radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+    animation: mistFloat 10s ease-in-out infinite alternate;
+}
+
+@keyframes mistFloat {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
 }
 
 .gold-ingots {
@@ -168,7 +174,7 @@ body {
     width: 120px;
     height: 120px;
     margin: 0 auto var(--spacing-md);
-    animation: godBounce 2s infinite ease-in-out alternate;
+    animation: godAppear 1.5s ease-out forwards, godBounce 2s 1.5s infinite ease-in-out alternate;
 }
 
 .god-main-emoji {
@@ -195,6 +201,11 @@ body {
 @keyframes auraPulse {
     from { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
     to { transform: translate(-50%, -50%) scale(1.2); opacity: 0.9; }
+}
+
+@keyframes godAppear {
+    0% { opacity: 0; transform: translateY(30px) scale(0.8); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @keyframes godBounce {
