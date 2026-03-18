@@ -33,15 +33,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 800);
     }, 3000);
     
-    // Initialize language
-    // Detect browser language
-    const browserLang = navigator.language || navigator.userLanguage;
-    if (browserLang.includes('zh')) {
-        currentLang = 'zh';
-        changeLanguage('zh');
-        document.querySelector('.lang-btn[data-lang="zh"]').classList.add('active');
-        document.querySelector('.lang-btn[data-lang="en"]').classList.remove('active');
-    }
+    // Full English site - default to en
+    currentLang = 'en';
     
     // Event listeners
     setupEventListeners();
@@ -51,14 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function setupEventListeners() {
-    // Language switch
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const lang = this.dataset.lang;
-            changeLanguage(lang);
-        });
-    });
-    
     // Daily fortune draw - front page direct draw
     // Different fortune every day - same date = same fortune for user, new day new luck
     document.getElementById('draw-daily-fortune').addEventListener('click', function() {
@@ -78,7 +63,7 @@ function setupEventListeners() {
             const btn = document.createElement('button');
             btn.id = 'draw-again-btn';
             btn.className = 'btn btn-secondary btn-fortune';
-            btn.innerHTML = '<span>🔁 再来一签 </span>';
+            btn.innerHTML = '<span>🔁 Draw Again </span>';
             btn.addEventListener('click', () => {
                 // Scroll to top and trigger click again
                 document.getElementById('draw-daily-fortune').click();
@@ -94,13 +79,9 @@ function setupEventListeners() {
             document.getElementById('float-donate-btn').addEventListener('click', () => {
                 document.querySelector('.donation-section').scrollIntoView({ behavior: 'smooth' });
             });
-            // Show toast reminder - 财运已签收，发财记得请喝茶
+            // Show toast reminder - Fortune received
             setTimeout(() => {
-                if (currentLang === 'zh') {
-                    showToast('财运已签收 ✅ 发财了记得回来请财神喝杯茶 🧧');
-                } else {
-                    showToast('Fortune received ✅ Remember to buy Lucky God a tea if you get rich 🧧');
-                }
+                showToast('Fortune received ✅ Remember to buy Lucky God a tea if you get rich 🧧');
             }, 1500);
         }, 1000);
         

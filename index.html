@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucky God - 财神到，好运到！Get Your Daily Chinese Fortune</title>
-    <meta name="description" content="Open the door, receive the God of Wealth! Daily fortune, money attraction, prosperity. Free for everyone.">
+    <title>Lucky God - Get Your Daily Fortune Attract Wealth & Prosperity</title>
+    <meta name="description" content="Open the door, receive the God of Wealth! Daily fortune, money attraction, prosperity. 100% free for everyone.">
     <meta name="keywords" content="Lucky God, God of Wealth, Chinese Fortune, Daily Luck, Money Attraction, Prosperity, Get Rich">
-    <meta property="og:title" content="Lucky God - 财神到！Good Fortune Coming Your Way">
+    <meta property="og:title" content="Lucky God - Good Fortune is Coming Your Way!">
     <meta property="og:description" content="Open for your daily fortune! Attract money and prosperity. Free to receive.">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <!-- 添加喜庆背景音效 -->
+    <!-- Add festive opening sound -->
     <audio id="firecrackerAudio" preload="auto">
         <source src="https://assets.mixkit.co/sfx/preview/mixkit-festival-fireworks-explosion-2762.mp3" type="audio/mpeg">
     </audio>
 </head>
 <body>
-    <!-- Splash Screen - 财神暴击开场 -->
+    <!-- Splash Screen - Epic God of Wealth Entry -->
     <div id="splash-screen" class="splash-screen">
         <div class="splash-bg"></div>
         <div class="gold-ingots">
@@ -38,36 +38,33 @@
                 <span class="god-main-emoji">💰</span>
                 <div class="god-aura"></div>
             </div>
-            <h1 class="splash-title-main">财神到</h1>
+            <h1 class="splash-title-main">Lucky God</h1>
             <h2 class="splash-title-sub">Good Fortune is Coming!</h2>
-            <p class="splash-text">接今日财运，开门见喜</p>
+            <p class="splash-text">Open the door, receive your daily luck</p>
             <div class="loading-bar">
                 <div class="loading-progress"></div>
             </div>
         </div>
     </div>
 
-    <!-- 直接显示今日财运 - 极致简洁，一件事到底 -->
+    <!-- Main Content - One Click Fortune -->
     <div id="main-content" class="main-content hidden">
-        <!-- 只留语言切换，去掉logo，更简洁 -->
+        <!-- Language switch removed - full English site -->
         <header class="header">
             <div class="container">
                 <div class="header-content">
-                    <div class="language-switch">
-                        <button class="lang-btn active" data-lang="en">EN</button>
-                        <button class="lang-btn" data-lang="zh">中文</button>
-                    </div>
+                    <!-- No language switch needed - full English -->
                 </div>
             </div>
         </header>
 
-        <!-- 整个首屏就是今日财运 - 第一眼就看到，直接点 -->
+        <!-- Full first view for fortune drawing -->
         <section class="daily-fortune-section fullscreen">
             <div class="container">
                 <div class="daily-fortune-card big">
                     <div class="fortune-main-title">
-                        <h1><span class="red-text">🧧 今日财运签 🧧</span></h1>
-                        <p>点击开签，接住今天的暴富好运</p>
+                        <h1><span class="red-text">Today's Fortune</span></h1>
+                        <p>Click to draw your fortune and receive today's good luck</p>
                     </div>
                     <div id="daily-fortune-result" class="daily-fortune-result hidden">
                         <div class="fortune-scroll">
@@ -77,30 +74,64 @@
                             </div>
                         </div>
                     </div>
-                    <button id="draw-daily-fortune" class="btn btn-primary btn-large btn-fortune btn-big">
-                        <span class="btn-text">点开今日财运签 💰</span>
+                    <button id="draw-daily-fortune" class="btn btn-primary btn-large btn-fortune">
+                        <span class="btn-text">Draw Your Fortune 💰</span>
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- 悬浮打赏按钮 - 用户开心的时候随时能打赏 -->
+        <!-- Floating donate button - appear after fortune drawn -->
         <div id="float-donate-btn" class="float-donate-btn hidden">
             <div class="float-donate-icon">🧧</div>
             <div class="float-donate-text" data-lang-key="donate.floatTitle">Buy God a Tea</div>
         </div>
 
-        <!-- 打赏区直接跟上，在签文下面，不用翻太远 -->
-        <!-- 其他功能移到更下面 -->
+        <!-- More features section -->
+        <section class="more-features-section">
+            <div class="container">
+                <h3 class="features-title">More Fortune Fun</h3>
+                <div class="features-grid">
+                    <!-- Luck Test -->
+                    <div class="feature-card" id="test-card">
+                        <div class="card-icon">🎯</div>
+                        <h3 data-lang-key="test.title">Prosperity Test</h3>
+                        <p data-lang-key="test.desc">3 quick questions to test your luck today</p>
+                        <button class="btn btn-secondary" id="start-test-btn">
+                            <span data-lang-key="test.start">Start Test</span>
+                        </button>
+                    </div>
 
+                    <!-- Wallpapers -->
+                    <div class="feature-card" id="wallpaper-card">
+                        <div class="card-icon">🖼️</div>
+                        <h3 data-lang-key="wallpaper.title">Fortune Wallpapers</h3>
+                        <p data-lang-key="wallpaper.desc">Download HD Lucky God wallpapers</p>
+                        <button class="btn btn-secondary" id="browse-wallpapers-btn">
+                            <span data-lang-key="wallpaper.browse">Browse Wallpapers</span>
+                        </button>
+                    </div>
 
-        <!-- 正式打赏区 -->
+                    <!-- Share -->
+                    <div class="feature-card" id="share-card">
+                        <div class="card-icon">📤</div>
+                        <h3 data-lang-key="share.title">Share Luck</h3>
+                        <p data-lang-key="share.desc">Share to friends and get extra luck</p>
+                        <button class="btn btn-secondary" id="share-btn">
+                            <span data-lang-key="share.share">Share Luck</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
         <section class="donation-section">
             <div class="container">
                 <div class="donation-content">
                     <div class="donation-god">🧧</div>
                     <h3 data-lang-key="donate.title">If you received good luck today...</h3>
-                    <p data-lang-key="donate.desc">Would you like to buy the Lucky God a cup of tea? Every support keeps this free for everyone.</p>
+                    <p data-lang-key="donate.desc">Would you like to buy the Lucky God a cup of tea? Every support keeps this service free for everyone.</p>
                     <div class="donation-options">
                         <div class="donation-option" data-amount="1.99">
                             <div class="amount">$1.99</div>
@@ -137,10 +168,10 @@
         <section id="unlocked-section" class="unlocked-section hidden">
             <div class="container">
                 <div class="unlocked-content">
-                    <h3 data-lang-key="unlocked.title">🎉 Thank You! Exclusive Content Unlocked</h3>
+                    <h3 data-lang-key="unlocked.title">🎉 Thank You! Your Exclusive Content Unlocked</h3>
                     <div class="unlocked-grid">
                         <div class="unlocked-item">
-                            <h4 data-lang-key="unlocked.exclusive">Exclusive Wallpaper</h4>
+                            <h4 data-lang-key="unlocked.exclusive"> Exclusive Wallpaper</h4>
                             <button class="btn btn-secondary" id="download-exclusive">Download</button>
                         </div>
                         <div class="unlocked-item">
@@ -241,11 +272,11 @@
     <script src="js/wallpapers.js"></script>
     <script src="js/app.js"></script>
 
-    <!-- PayPal SDK - 支持 Venmo 扫码支付 -->
+    <!-- PayPal SDK - Supports Venmo QR pay -->
     <script src="https://www.paypal.com/sdk/js?client-id=ARuZPjuEDH5kjOYF_IPpK2MadyD_baQPfzmRpT9J_5jhz6i2Lyir2bn66I3uBsxZ0AjpkQJ31HQ2LxX0&currency=USD&enable-funding=venmo"></script>
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
-    <!-- Google Analytics - Replace with your GA4 measurement ID -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
