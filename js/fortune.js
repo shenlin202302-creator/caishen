@@ -19,7 +19,12 @@ const fortuneMessages = {
         "Your creativity will lead you to unexpected income.",
         "Good fortune comes in many forms. Keep your eyes open.",
         "Prosperity is a habit. You're building it correctly.",
-        "Today is the day your luck begins to change for the better."
+        "Today is the day your luck begins to change for the better.",
+        "YOU WILL GET RICH this year. The universe has approved it.",
+        "A huge jackpot is waiting for you around the next corner.",
+        "Money is rushing towards you from multiple directions.",
+        "Your bank account is about to get a massive surprise.",
+        "Seven figures are coming your way. Start preparing."
     ],
     zh: [
         "大吉大利，好運即將到來，請做好準備。",
@@ -41,7 +46,12 @@ const fortuneMessages = {
         "你的創意會為你帶來額外收入。",
         "好運有很多樣子，擦亮眼睛仔細看。",
         "繁榮富足是一種習慣，你走在正確的路上。",
-        "今天就是你好運轉旺的開始。"
+        "今天就是你好運轉旺的開始。",
+        "今年必定發大財，老天已經同意了。",
+        "大財運就在下一個轉角等你，快接好。",
+        "金錢從四面八方湧進你的口袋。",
+        "你的銀行帳戶即將迎來驚喜大爆發。",
+        "百萬大關就在今年，準備接財神。"
     ]
 };
 
