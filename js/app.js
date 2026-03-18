@@ -10,19 +10,27 @@ let stats = {
 stats.visitors++;
 localStorage.setItem('lucky_god_visitors', stats.visitors.toString());
 
-// Splash screen timer
+// Splash screen timer - with firecracker sound
 document.addEventListener('DOMContentLoaded', function() {
     // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
     
-    // 3-second splash screen
+    // Play firecracker sound when splash starts
+    try {
+        const audio = document.getElementById('firecrackerAudio');
+        audio.volume = 0.3;
+        audio.play().catch(e => console.log('Autoplay blocked:', e));
+    } catch(e) {}
+    
+    // 3-second splash screen with gold falling animation
     setTimeout(() => {
         const splash = document.getElementById('splash-screen');
         splash.classList.add('fade-out');
         setTimeout(() => {
             splash.classList.add('hidden');
-            document.getElementById('welcome-screen').classList.remove('hidden');
-        }, 500);
+            document.getElementById('main-content').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }, 800);
     }, 3000);
     
     // Initialize language
@@ -43,13 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function setupEventListeners() {
-    // Enter button
-    document.getElementById('enter-btn').addEventListener('click', function() {
-        document.getElementById('welcome-screen').classList.add('hidden');
-        document.getElementById('main-content').classList.remove('hidden');
-        window.scrollTo(0, 0);
-    });
-    
     // Language switch
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -58,8 +59,28 @@ function setupEventListeners() {
         });
     });
     
-    // Draw fortune
-    document.getElementById('draw-fortune-btn').addEventListener('click', openFortuneModal);
+    // Daily fortune draw - front page direct draw
+    document.getElementById('draw-daily-fortune').addEventListener('click', function() {
+        stats.fortunes++;
+        localStorage.setItem('lucky_god_fortunes', stats.fortunes.toString());
+        
+        const fortuneText = getDailyFortune();
+        document.getElementById('daily-fortune-text').textContent = fortuneText;
+        document.getElementById('daily-fortune-result').classList.remove('hidden');
+        
+        // Show floating donate button after user gets fortune
+        setTimeout(() => {
+            document.getElementById('float-donate-btn').classList.remove('hidden');
+            document.getElementById('float-donate-btn').addEventListener('click', () => {
+                document.querySelector('.donation-section').scrollIntoView({ behavior: 'smooth' });
+            });
+        }, 1000);
+        
+        // Scroll to result
+        setTimeout(() => {
+            document.getElementById('daily-fortune-result').scrollIntoView({ behavior: 'smooth' });
+        }, 200);
+    });
     
     // Start test
     document.getElementById('start-test-btn').addEventListener('click', openTestModal);
@@ -124,16 +145,6 @@ function setupEventListeners() {
     }
 }
 
-function openFortuneModal() {
-    stats.fortunes++;
-    localStorage.setItem('lucky_god_fortunes', stats.fortunes.toString());
-    
-    const modal = document.getElementById('fortune-modal');
-    const fortuneText = document.getElementById('fortune-text');
-    fortuneText.textContent = getDailyFortune();
-    modal.classList.remove('hidden');
-}
-
 function openTestModal() {
     const modal = document.getElementById('test-modal');
     modal.classList.remove('hidden');
@@ -180,7 +191,33 @@ function shareToTikTok() {
         localStorage.setItem('lucky_god_shares', stats.shares.toString());
         // Extra fortune
         setTimeout(() => {
-            openFortuneModal();
+            // Open modal for extra draw
+            const modal = document.createElement('div');
+            modal.id = 'extra-fortune-modal';
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <h2>Your Extra Fortune</h2>
+                    <div class="fortune-result">
+                        <div class="fortune-text" id="extra-fortune-text"></div>
+                        <div class="fortune-author">— Lucky God</div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            modal.classList.remove('hidden');
+            document.getElementById('extra-fortune-text').textContent = getRandomFortune();
+            modal.querySelector('.close-btn').addEventListener('click', () => {
+                modal.classList.add('hidden');
+                setTimeout(() => modal.remove(), 300);
+            });
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                    setTimeout(() => modal.remove(), 300);
+                }
+            });
         }, 1000);
     });
 }
@@ -195,7 +232,32 @@ function shareToFacebook() {
     
     // Extra fortune
     setTimeout(() => {
-        openFortuneModal();
+        const modal = document.createElement('div');
+        modal.id = 'extra-fortune-modal';
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Your Extra Fortune</h2>
+                <div class="fortune-result">
+                    <div class="fortune-text" id="extra-fortune-text"></div>
+                    <div class="fortune-author">— Lucky God</div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        modal.classList.remove('hidden');
+        document.getElementById('extra-fortune-text').textContent = getRandomFortune();
+        modal.querySelector('.close-btn').addEventListener('click', () => {
+            modal.classList.add('hidden');
+            setTimeout(() => modal.remove(), 300);
+        });
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+                setTimeout(() => modal.remove(), 300);
+            }
+        });
     }, 1000);
 }
 
