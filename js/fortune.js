@@ -24,7 +24,12 @@ const fortuneMessages = {
         "A huge jackpot is waiting for you around the next corner.",
         "Money is rushing towards you from multiple directions.",
         "Your bank account is about to get a massive surprise.",
-        "Seven figures are coming your way. Start preparing."
+        "Seven figures are coming your way. Start preparing.",
+        "Your stock picks will green all year. Big profits coming.",
+        "Luck is with you at the poker table. Tonight is your night.",
+        "Your side hustle will blow up this month. Get ready.",
+        "Salary raise coming next week. You deserve it.",
+        "The big client you've been waiting for will say yes tomorrow."
     ],
     zh: [
         "大吉大利，好運即將到來，請做好準備。",
@@ -51,7 +56,12 @@ const fortuneMessages = {
         "大財運就在下一個轉角等你，快接好。",
         "金錢從四面八方湧進你的口袋。",
         "你的銀行帳戶即將迎來驚喜大爆發。",
-        "百萬大關就在今年，準備接財神。"
+        "百萬大關就在今年，準備接財神。",
+        "買的股票天天漲，年底收成裝滿箱。",
+        "今晚打牌手氣旺，莊家通殺贏滿袋。",
+        "你的副業這個月就要爆單，準備數錢。",
+        "下週就要漲薪水，你的努力老闆看見了。",
+        "你等很久那個大客戶，明天就會簽約點頭。"
     ]
 };
 

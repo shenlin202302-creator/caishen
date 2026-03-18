@@ -74,6 +74,14 @@ function setupEventListeners() {
             document.getElementById('float-donate-btn').addEventListener('click', () => {
                 document.querySelector('.donation-section').scrollIntoView({ behavior: 'smooth' });
             });
+            // Show toast reminder - 财运已签收，发财记得请喝茶
+            setTimeout(() => {
+                if (currentLang === 'zh') {
+                    showToast('财运已签收 ✅ 发财了记得回来请财神喝杯茶 🧧');
+                } else {
+                    showToast('Fortune received ✅ Remember to buy Lucky God a tea if you get rich 🧧');
+                }
+            }, 1500);
         }, 1000);
         
         // Scroll to result
