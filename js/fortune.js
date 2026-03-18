@@ -65,6 +65,22 @@ const fortuneMessages = {
     ]
 };
 
+// Simple deterministic random from seed
+function simpleHash(seed) {
+    let hash = seed;
+    hash = ((hash >> 16) ^ hash) * 0x45d9f3b;
+    hash = ((hash >> 16) ^ hash);
+    return hash;
+}
+
+function getDeterministicFortune(seed) {
+    // Different fortune every draw - based on seed which includes date + draw count
+    const messages = fortuneMessages[currentLang];
+    const hash = simpleHash(seed);
+    const randomIndex = Math.abs(hash) % messages.length;
+    return messages[randomIndex];
+}
+
 function getDailyFortune() {
     // Use date for consistent daily fortune per user
     const today = new Date();

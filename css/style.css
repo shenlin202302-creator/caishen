@@ -393,6 +393,13 @@ body {
     animation: pulse 2s infinite;
 }
 
+#draw-again-btn {
+    margin-top: var(--spacing-md);
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
 @keyframes pulse {
     0%, 100% { box-shadow: 0 4px 12px rgba(201, 31, 55, 0.3); }
     50% { box-shadow: 0 6px 20px rgba(201, 31, 55, 0.5); }

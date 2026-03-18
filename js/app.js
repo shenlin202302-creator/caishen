@@ -60,13 +60,33 @@ function setupEventListeners() {
     });
     
     // Daily fortune draw - front page direct draw
+    // Different fortune every day - same date = same fortune for user, new day new luck
     document.getElementById('draw-daily-fortune').addEventListener('click', function() {
         stats.fortunes++;
         localStorage.setItem('lucky_god_fortunes', stats.fortunes.toString());
         
-        const fortuneText = getDailyFortune();
+        // Seed with date + draw count = unique fortune everyday
+        const today = new Date();
+        const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate() + stats.fortunes;
+        const fortuneText = getDeterministicFortune(seed);
         document.getElementById('daily-fortune-text').textContent = fortuneText;
         document.getElementById('daily-fortune-result').classList.remove('hidden');
+        
+        // Show "Draw Again button
+        if (!document.getElementById('draw-again-btn')) {
+            // Add draw again button after first draw
+            const btn = document.createElement('button');
+            btn.id = 'draw-again-btn';
+            btn.className = 'btn btn-secondary btn-fortune';
+            btn.innerHTML = '<span>🔁 再来一签 </span>';
+            btn.addEventListener('click', () => {
+                // Scroll to top and trigger click again
+                document.getElementById('draw-daily-fortune').click();
+            });
+            document.querySelector('.daily-fortune-card').appendChild(btn);
+        } else {
+            document.getElementById('draw-again-btn').classList.remove('hidden');
+        }
         
         // Show floating donate button after user gets fortune
         setTimeout(() => {
