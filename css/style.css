@@ -343,14 +343,15 @@ body {
 .fortune-main-title {
     margin-bottom: var(--spacing-lg);
     position: relative;
+    padding: var(--spacing-sm) 0;
 }
 
 .fortune-main-title::before,
 .fortune-main-title::after {
     content: '';
     position: absolute;
-    top: 10%;
-    bottom: 10%;
+    top: 15%;
+    bottom: 15%;
     width: 4px;
     background: linear-gradient(to bottom, transparent, var(--color-gold), transparent);
     border-radius: 2px;
@@ -365,9 +366,10 @@ body {
 }
 
 .fortune-main-title h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin-bottom: var(--spacing-sm);
-    padding: 0 var(--spacing-lg);
+    padding: 0 var(--spacing-md);
+    line-height: 1.8;
 }
 
 .fortune-main-title p {
