@@ -29,6 +29,7 @@ const translations = {
         'share.shareDesc': 'Share to TikTok or Facebook and get an <strong>extra free fortune draw</strong>!',
         
         // Donation
+        'donate.floatTitle': 'Buy God a Tea',
         'donate.title': 'Buy Lucky God a Cup of Tea',
         'donate.desc': 'If you received good luck today, you can voluntarily support this website. Every cup of tea helps keep this service free for everyone.',
         'donate.cup': 'One Cup',
@@ -37,7 +38,7 @@ const translations = {
         'donate.teapot': 'Full Teapot',
         'donate.bigTea': 'Big Feast',
         'donate.payWithCard': 'Pay with Card (Stripe)',
-        'donate.note': 'No pressure at all. All main features are completely free.',
+        'donate.note': 'No pressure at all. All main features are completely free.'
         
         // Unlocked
         'unlocked.title': '🎉 Thank You! Your Exclusive Content Unlocked',
@@ -91,6 +92,7 @@ const translations = {
         'share.shareDesc': '分享到 TikTok 或 Facebook，<strong>免費額外抽一次籤</strong>！',
         
         // Donation
+        'donate.floatTitle': '請財神喝茶',
         'donate.title': '請財神喝杯茶',
         'donate.desc': '如果你今天得到了好運，可以自願贊助支持本站，讓這項服務能繼續免費提供給更多人。',
         'donate.cup': '一杯茶',

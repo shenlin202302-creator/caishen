@@ -126,7 +126,7 @@ function setupEventListeners() {
         });
     });
     
-    // Select 6.66 by default
+    // Select 6.66 by default - lucky number
     document.querySelector('.donation-option[data-amount="6.66"]').classList.add('selected');
     selectedAmount = 6.66;
     
