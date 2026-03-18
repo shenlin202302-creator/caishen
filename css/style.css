@@ -232,6 +232,12 @@ body {
     padding: var(--spacing-xl) 0 var(--spacing-md);
 }
 
+.daily-fortune-section.fullscreen {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
 .daily-fortune-card {
     background: linear-gradient(135deg, var(--color-white) 0%, #FFF8E8 100%);
     border: 3px solid var(--color-gold);
@@ -243,6 +249,10 @@ body {
     margin: 0 auto;
     position: relative;
     overflow: hidden;
+}
+
+.daily-fortune-card.big {
+    padding: var(--spacing-xl) var(--spacing-lg);
 }
 
 .daily-fortune-card::before {
@@ -268,6 +278,20 @@ body {
 .fortune-title {
     font-size: 2.2rem;
     margin-bottom: var(--spacing-xs);
+}
+
+.fortune-main-title {
+    margin-bottom: var(--spacing-lg);
+}
+
+.fortune-main-title h1 {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.fortune-main-title p {
+    color: var(--color-text-light);
+    font-size: 1.2rem;
 }
 
 .red-text {
@@ -327,6 +351,11 @@ body {
     text-align: center;
     margin-bottom: var(--spacing-md);
     animation: rollDown 1s ease-out;
+}
+
+.fortune-scroll-text.big {
+    font-size: 2.2rem;
+    line-height: 3;
 }
 
 @keyframes rollDown {
@@ -423,6 +452,11 @@ body {
     font-size: 1.2rem;
 }
 
+.btn-big {
+    padding: 1.2rem 3rem;
+    font-size: 1.4rem;
+}
+
 .btn-primary {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: var(--color-gold);
@@ -505,7 +539,7 @@ body {
 
 .header-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 

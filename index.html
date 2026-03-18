@@ -19,20 +19,6 @@
     </audio>
 </head>
 <body>
-    <!-- Google AdSense Top -->
-    <div id="google-ad-top" class="google-ad">
-        <!-- AdSense code will be inserted here -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-             data-ad-slot="XXXXXXXXXX"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
-
     <!-- Splash Screen - 财神暴击开场 -->
     <div id="splash-screen" class="splash-screen">
         <div class="splash-bg"></div>
@@ -54,15 +40,12 @@
         </div>
     </div>
 
-    <!-- 直接显示今日财运 - 省去欢迎页点击 -->
+    <!-- 直接显示今日财运 - 极致简洁，一件事到底 -->
     <div id="main-content" class="main-content hidden">
+        <!-- 只留语言切换，去掉logo，更简洁 -->
         <header class="header">
             <div class="container">
                 <div class="header-content">
-                    <div class="logo">
-                        <span class="logo-icon">🧧</span>
-                        <span class="logo-text">Lucky God · 财神</span>
-                    </div>
                     <div class="language-switch">
                         <button class="lang-btn active" data-lang="en">EN</button>
                         <button class="lang-btn" data-lang="zh">中文</button>
@@ -71,24 +54,24 @@
             </div>
         </header>
 
-        <!-- 今日财运直接抽 - 放在最前面，第一眼就看到 -->
-        <section class="daily-fortune-section">
+        <!-- 整个首屏就是今日财运 - 第一眼就看到，直接点 -->
+        <section class="daily-fortune-section fullscreen">
             <div class="container">
-                <div class="daily-fortune-card">
-                    <div class="fortune-header">
-                        <h2 class="fortune-title"><span class="red-text">今日财运</span>已备好</h2>
-                        <p class="fortune-subtitle">点击开签，接住今天的好运气</p>
+                <div class="daily-fortune-card big">
+                    <div class="fortune-main-title">
+                        <h1><span class="red-text">🧧 今日财运签 🧧</span></h1>
+                        <p>点击开签，接住今天的暴富好运</p>
                     </div>
                     <div id="daily-fortune-result" class="daily-fortune-result hidden">
                         <div class="fortune-scroll">
                             <div class="fortune-scroll-paper">
-                                <div id="daily-fortune-text" class="fortune-scroll-text"></div>
+                                <div id="daily-fortune-text" class="fortune-scroll-text big"></div>
                                 <div class="fortune-scroll-seal">财神</div>
                             </div>
                         </div>
                     </div>
-                    <button id="draw-daily-fortune" class="btn btn-primary btn-large btn-fortune">
-                        <span class="btn-text">点开财运签 💰</span>
+                    <button id="draw-daily-fortune" class="btn btn-primary btn-large btn-fortune btn-big">
+                        <span class="btn-text">点开今日财运签 💰</span>
                     </button>
                 </div>
             </div>
@@ -100,43 +83,9 @@
             <div class="float-donate-text" data-lang-key="donate.floatTitle">Buy God a Tea</div>
         </div>
 
-        <!-- 更多功能区 -->
-        <section class="more-features-section">
-            <div class="container">
-                <h3 class="features-title">更多财运测试</h3>
-                <div class="features-grid">
-                    <!-- Luck Test -->
-                    <div class="feature-card" id="test-card">
-                        <div class="card-icon">🎯</div>
-                        <h3 data-lang-key="test.title">Prosperity Test</h3>
-                        <p data-lang-key="test.desc">3 quick questions to test your luck today</p>
-                        <button class="btn btn-secondary" id="start-test-btn">
-                            <span data-lang-key="test.start">Start Test</span>
-                        </button>
-                    </div>
+        <!-- 打赏区直接跟上，在签文下面，不用翻太远 -->
+        <!-- 其他功能移到更下面 -->
 
-                    <!-- Wallpapers -->
-                    <div class="feature-card" id="wallpaper-card">
-                        <div class="card-icon">🖼️</div>
-                        <h3 data-lang-key="wallpaper.title">Fortune Wallpapers</h3>
-                        <p data-lang-key="wallpaper.desc">Download HD Lucky God wallpapers</p>
-                        <button class="btn btn-secondary" id="browse-wallpapers-btn">
-                            <span data-lang-key="wallpaper.browse">Browse Wallpapers</span>
-                        </button>
-                    </div>
-
-                    <!-- Share -->
-                    <div class="feature-card" id="share-card">
-                        <div class="card-icon">📤</div>
-                        <h3 data-lang-key="share.title">Share Luck</h3>
-                        <p data-lang-key="share.desc">Share to friends and get extra luck</p>
-                        <button class="btn btn-secondary" id="share-btn">
-                            <span data-lang-key="share.share">Share Luck</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- 正式打赏区 -->
         <section class="donation-section">
@@ -286,7 +235,7 @@
     <script src="js/app.js"></script>
 
     <!-- PayPal SDK - 支持 Venmo 扫码支付 -->
-    <script src="https://www.paypal.com/sdk/js?client-id=ARuZPjuEDH5kjOYF_IPpK2MadyD_baQPfzmRpT9J_5jhz6i2Lyir2bn66I3uBsxZ0AjpkQJ31HQ2LxX0&currency=USD&enable-funding=venmo&data-client-token"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=ARuZPjuEDH5kjOYF_IPpK2MadyD_baQPfzmRpT9J_5jhz6i2Lyir2bn66I3uBsxZ0AjpkQJ31HQ2LxX0&currency=USD&enable-funding=venmo"></script>
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
     <!-- Google Analytics - Replace with your GA4 measurement ID -->
