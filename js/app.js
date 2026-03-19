@@ -223,21 +223,32 @@ function shareTalisman() {
 // ============================================
 
 function openShareModal() {
-    const shareText = `🧧 My Fu Talisman from The Digital Temple of Cai Shen 🧧\n\nFU #${currentTalisman.number} — "${currentTalisman.name}"\n\n${currentTalisman.meaning}\n\nDraw your own talisman at:`;
+    const shareText = `🧧 I just drew a Fu Talisman from the Digital Temple of Cai Shen, the God of Wealth.  
+
+FU #${currentTalisman.number} — "${currentTalisman.name}"
+
+${currentTalisman.meaning}
+
+${window.location.href}
+
+Digital Temple of Cai Shen, the God of Wealth
+Your fortune is waiting.
+Would you like to receive a blessing?
+Each talisman is drawn just for you.`;
     const shareUrl = window.location.href;
-    const fullShareText = shareText + '\n' + shareUrl;
+    const fullShareText = shareText;
     
     // Set URL in input
     document.getElementById('share-url-input').value = shareUrl;
     
-    // Build social share links
+    // Build social share links - share the full text with call to action
     const encodedText = encodeURIComponent(fullShareText);
     const encodedUrl = encodeURIComponent(shareUrl);
     
     document.getElementById('share-twitter').href = 
         `https://twitter.com/intent/tweet?text=${encodedText}`;
     document.getElementById('share-facebook').href = 
-        `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+        `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedText}`;
     document.getElementById('share-whatsapp').href = 
         `https://wa.me/?text=${encodedText}`;
     
