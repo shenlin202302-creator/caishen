@@ -39,6 +39,10 @@ body {
     display: none !important;
 }
 
+section.hidden {
+    display: none !important;
+}
+
 /* ============================================
    Preloader - Eight Talismans Awakening
    ============================================ */
