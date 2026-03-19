@@ -195,11 +195,13 @@ function shareTalisman() {
             url: shareUrl
         }).then(() => {
             showToast('✨ Shared! Blessings multiplied! ✨');
-        }).catch(() => {
-            copyToClipboard(shareText + ' ' + shareUrl);
+        }).catch((err) => {
+            // User canceled share, fallback to copy
+            copyToClipboard(shareText + '\n' + shareUrl);
         });
     } else {
-        copyToClipboard(shareText + ' ' + shareUrl);
+        // WebShare API not available, copy to clipboard
+        copyToClipboard(shareText + '\n' + shareUrl);
     }
 }
 
