@@ -3,52 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucky God - Divine Fortune Blessings</title>
-    <meta name="description" content="Receive divine blessings from the God of Wealth. Draw your fortune and attract prosperity.">
+    <title>The Digital Temple of Cai Shen - Taoist Talismans for Wealth</title>
+    <meta name="description" content="Receive your personal Fu talisman from the God of Wealth. Eight directions, eight talismans, infinite prosperity.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Mystical Background Elements -->
-    <div class="mystical-bg">
-        <div class="floating-runes">
-            <span class="rune">☰</span>
-            <span class="rune">☱</span>
-            <span class="rune">☲</span>
-            <span class="rune">☳</span>
-            <span class="rune">☴</span>
-            <span class="rune">☵</span>
-            <span class="rune">☶</span>
-            <span class="rune">☷</span>
+    <!-- Preloader: Eight Talismans Awakening -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-bg"></div>
+        <div class="floating-talismans">
+            <span class="talisman" data-direction="east">東</span>
+            <span class="talisman" data-direction="southeast">東南</span>
+            <span class="talisman" data-direction="south">南</span>
+            <span class="talisman" data-direction="southwest">西南</span>
+            <span class="talisman" data-direction="west">西</span>
+            <span class="talisman" data-direction="northwest">西北</span>
+            <span class="talisman" data-direction="north">北</span>
+            <span class="talisman" data-direction="northeast">東北</span>
         </div>
-        <div class="gold-particles">
-            <span class="particle">✦</span>
-            <span class="particle">✧</span>
-            <span class="particle">✦</span>
-            <span class="particle">✧</span>
-            <span class="particle">✦</span>
+        <div class="preloader-text">
+            <p class="awakening-text">Ancient symbols are waking up...</p>
+            <p class="direction-text">from all directions.</p>
         </div>
-    </div>
-
-    <!-- Splash Screen -->
-    <div id="splash-screen" class="splash-screen">
-        <div class="splash-god">
-            <div class="god-aura"></div>
-            <span class="god-icon">🧧</span>
-            <div class="seal-ring">
-                <span class="seal-char">財</span>
-                <span class="seal-char">神</span>
-                <span class="seal-char">到</span>
-            </div>
-        </div>
-        <h1 class="splash-title">Lucky God</h1>
-        <p class="splash-subtitle">Divine Blessings Await</p>
-        <div class="mystical-loader">
-            <div class="loader-ring"></div>
-            <div class="loader-ring"></div>
-            <div class="loader-ring"></div>
+        <div class="bagua-container hidden">
+            <svg class="bagua-svg" viewBox="0 0 400 400">
+                <!-- Bagua Circle -->
+                <circle cx="200" cy="200" r="180" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                <circle cx="200" cy="200" r="160" fill="none" stroke="#D4AF37" stroke-width="1" opacity="0.5"/>
+                <!-- Trigrams will be added by JS -->
+            </svg>
         </div>
     </div>
 
@@ -57,89 +43,264 @@
         <!-- Header -->
         <header class="header">
             <div class="header-logo">
-                <span class="logo-icon">🧧</span>
-                <span class="logo-text">Lucky God</span>
+                <span class="logo-icon">☰</span>
+                <span class="logo-text">The Digital Temple</span>
             </div>
         </header>
 
-        <!-- Fortune Drawing Section -->
-        <section class="fortune-section">
-            <div class="fortune-container">
-                <div class="temple-gate">
-                    <div class="gate-pillar left">
-                        <span class="pillar-text">招</span>
-                        <span class="pillar-text">財</span>
-                        <span class="pillar-text">進</span>
-                        <span class="pillar-text">寶</span>
-                    </div>
-                    <div class="gate-center">
-                        <div class="god-statue">
-                            <span class="statue-icon">🧧</span>
-                            <div class="divine-glow"></div>
-                        </div>
-                    </div>
-                    <div class="gate-pillar right">
-                        <span class="pillar-text">財</span>
-                        <span class="pillar-text">源</span>
-                        <span class="pillar-text">廣</span>
-                        <span class="pillar-text">進</span>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="energy-flows">
+                <div class="flow" data-direction="east">
+                    <span class="flow-label">East — Career</span>
+                </div>
+                <div class="flow" data-direction="southeast">
+                    <span class="flow-label">Southeast — Relationships</span>
+                </div>
+                <div class="flow" data-direction="south">
+                    <span class="flow-label">South — Fame</span>
+                </div>
+                <div class="flow" data-direction="southwest">
+                    <span class="flow-label">Southwest — Health</span>
+                </div>
+                <div class="flow" data-direction="west">
+                    <span class="flow-label">West — Wealth</span>
+                </div>
+                <div class="flow" data-direction="northwest">
+                    <span class="flow-label">Northwest — Travel</span>
+                </div>
+                <div class="flow" data-direction="north">
+                    <span class="flow-label">North — Protection</span>
+                </div>
+                <div class="flow" data-direction="northeast">
+                    <span class="flow-label">Northeast — Knowledge</span>
+                </div>
+            </div>
+
+            <div class="hero-center">
+                <div class="god-figure">
+                    <div class="god-aura"></div>
+                    <span class="god-icon">🧧</span>
+                    <div class="floating-fu">
+                        <span class="fu-character">財</span>
                     </div>
                 </div>
+                <h1 class="hero-title">THE SYMBOLS ARE CALLING.</h1>
+                <p class="hero-subtitle">Wealth doesn't arrive from one door. It flows from eight directions, carried by ancient energies.</p>
+                <p class="hero-description">For thousands of years, Taoist masters have drawn Fu talismans to channel the energy of the universe. Now, Cai Shen—the God of Wealth—has activated eight sacred symbols just for you. Choose a direction. Receive its blessing.</p>
+                <button id="start-btn" class="start-btn">
+                    <span class="btn-fu">財</span>
+                    <span class="btn-text">RECEIVE YOUR TALISMAN</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+            </div>
+        </section>
 
-                <div class="fortune-area">
-                    <h2 class="section-title">
-                        <span class="title-icon">✦</span>
-                        Receive Your Divine Blessing
-                        <span class="title-icon">✦</span>
-                    </h2>
-                    <p class="section-subtitle">The God of Wealth awaits. Draw your fortune and unlock prosperity.</p>
-                    
-                    <button id="draw-fortune-btn" class="draw-btn">
-                        <span class="btn-glow"></span>
-                        <span class="btn-text">🧧 Draw Your Fortune 🧧</span>
-                        <span class="btn-runes">☰ ☱ ☲ ☳</span>
-                    </button>
+        <!-- Ritual Section -->
+        <section id="ritual-section" class="ritual-section hidden">
+            <div class="bagua-compass">
+                <div class="trigram" data-trigram="qian" data-direction="northwest">
+                    <span class="trigram-symbol">☰</span>
+                    <span class="trigram-name">Qian</span>
+                    <span class="trigram-meaning">Heaven / Creativity</span>
+                </div>
+                <div class="trigram" data-trigram="kun" data-direction="southwest">
+                    <span class="trigram-symbol">☷</span>
+                    <span class="trigram-name">Kun</span>
+                    <span class="trigram-meaning">Earth / Receptivity</span>
+                </div>
+                <div class="trigram" data-trigram="zhen" data-direction="east">
+                    <span class="trigram-symbol">☳</span>
+                    <span class="trigram-name">Zhen</span>
+                    <span class="trigram-meaning">Thunder / Action</span>
+                </div>
+                <div class="trigram" data-trigram="xun" data-direction="southeast">
+                    <span class="trigram-symbol">☴</span>
+                    <span class="trigram-name">Xun</span>
+                    <span class="trigram-meaning">Wind / Penetration</span>
+                </div>
+                <div class="trigram" data-trigram="kan" data-direction="north">
+                    <span class="trigram-symbol">☵</span>
+                    <span class="trigram-name">Kan</span>
+                    <span class="trigram-meaning">Water / Danger & Flow</span>
+                </div>
+                <div class="trigram" data-trigram="li" data-direction="south">
+                    <span class="trigram-symbol">☲</span>
+                    <span class="trigram-name">Li</span>
+                    <span class="trigram-meaning">Fire / Clarity</span>
+                </div>
+                <div class="trigram" data-trigram="gen" data-direction="northeast">
+                    <span class="trigram-symbol">☶</span>
+                    <span class="trigram-name">Gen</span>
+                    <span class="trigram-meaning">Mountain / Stillness</span>
+                </div>
+                <div class="trigram" data-trigram="dui" data-direction="west">
+                    <span class="trigram-symbol">☱</span>
+                    <span class="trigram-name">Dui</span>
+                    <span class="trigram-meaning">Lake / Joy</span>
+                </div>
+                <div class="compass-center">
+                    <div class="name-input-container">
+                        <p class="input-label">The talismans need a name to lock onto your energy.</p>
+                        <input type="text" id="user-name" class="name-input" placeholder="Speak yours..." maxlength="20">
+                        <button id="activate-btn" class="activate-btn">
+                            <span class="btn-icon">☰</span>
+                            <span class="btn-text">ACTIVATE THE EIGHT TALISMANS</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <div id="fortune-result" class="fortune-result hidden">
-                        <div class="result-scroll">
-                            <div class="scroll-decorations">
-                                <span class="deco">☰</span>
-                                <span class="deco">☱</span>
-                                <span class="deco">☲</span>
-                                <span class="deco">☳</span>
-                            </div>
-                            <div class="scroll-content">
-                                <div class="fortune-header">
-                                    <span class="header-icon">🧧</span>
-                                    <span class="header-text">Divine Blessing</span>
-                                    <span class="header-icon">🧧</span>
-                                </div>
-                                <div class="fortune-level" id="fortune-level"></div>
-                                <div class="fortune-text" id="fortune-text"></div>
-                                <div class="fortune-seal">
-                                    <span class="seal-mark">財神印</span>
-                                </div>
-                            </div>
-                            <div class="scroll-decorations bottom">
-                                <span class="deco">☴</span>
-                                <span class="deco">☵</span>
-                                <span class="deco">☶</span>
-                                <span class="deco">☷</span>
-                            </div>
-                        </div>
-                        
-                        <div class="result-actions">
-                            <button id="draw-again-btn" class="action-btn secondary">
-                                <span>🔄 Draw Again</span>
-                            </button>
-                            <button id="share-fortune-btn" class="action-btn">
-                                <span>📤 Share Blessing</span>
-                            </button>
-                            <button id="donate-btn" class="action-btn primary">
-                                <span>🧧 Thank the God</span>
-                            </button>
+        <!-- Blessings Section -->
+        <section id="blessings-section" class="blessings-section hidden">
+            <div class="blessings-container">
+                <div class="blessing" data-blessing="east">
+                    <div class="blessing-icon">☳</div>
+                    <h3 class="blessing-title">From the East — Thunder Awakens</h3>
+                    <p class="blessing-text">A Fu talisman for career rises from the earth. It carries the energy of Zhao Bao Tian Zun—the Master Who Attracts Treasure. New paths will open before you.</p>
+                </div>
+                <div class="blessing" data-blessing="south">
+                    <div class="blessing-icon">☲</div>
+                    <h3 class="blessing-title">From the South — Fire Illuminates</h3>
+                    <p class="blessing-text">A Fu talisman for fame and recognition ignites. Chen Jiu Gong—the Messenger of Wealth—blesses your name. Your efforts will be seen.</p>
+                </div>
+                <div class="blessing" data-blessing="west">
+                    <div class="blessing-icon">☱</div>
+                    <h3 class="blessing-title">From the West — Lake Reflects</h3>
+                    <p class="blessing-text">A Fu talisman for wealth flows like water. Cao Bao—the Master Who Receives Treasures—opens the gates of prosperity. Wealth finds its way to you.</p>
+                </div>
+                <div class="blessing" data-blessing="north">
+                    <div class="blessing-icon">☵</div>
+                    <h3 class="blessing-title">From the North — Water Protects</h3>
+                    <p class="blessing-text">A Fu talisman for protection takes form. Yao Shao Si—the Official of Prosperous Markets—guards your path. You are safe to grow.</p>
+                </div>
+                <div class="blessing" data-blessing="southeast">
+                    <div class="blessing-icon">☴</div>
+                    <h3 class="blessing-title">From the Southeast — Wind Carries</h3>
+                    <p class="blessing-text">A Fu talisman for love and connection drifts in. Relationships planted now will bloom.</p>
+                </div>
+                <div class="blessing" data-blessing="northeast">
+                    <div class="blessing-icon">☶</div>
+                    <h3 class="blessing-title">From the Northeast — Mountain Holds</h3>
+                    <p class="blessing-text">A Fu talisman for knowledge settles. What you seek to understand will reveal itself.</p>
+                </div>
+                <div class="blessing" data-blessing="southwest">
+                    <div class="blessing-icon">☷</div>
+                    <h3 class="blessing-title">From the Southwest — Earth Nurtures</h3>
+                    <p class="blessing-text">A Fu talisman for health and longevity grounds you. Your body is a temple; it will be honored.</p>
+                </div>
+                <div class="blessing" data-blessing="northwest">
+                    <div class="blessing-icon">☰</div>
+                    <h3 class="blessing-title">From the Northwest — Heaven Descends</h3>
+                    <p class="blessing-text">A Fu talisman for travel and helpers descends. The right people will appear at the right time.</p>
+                </div>
+            </div>
+            <div class="blessings-complete">
+                <p class="complete-text">Eight doors. Eight talismans. All have heard your name.</p>
+                <button id="draw-talisman-btn" class="draw-talisman-btn">
+                    <span class="btn-icon">🎋</span>
+                    <span class="btn-text">DRAW YOUR TALISMAN</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Talisman Draw Section -->
+        <section id="talisman-draw-section" class="talisman-draw-section hidden">
+            <div class="draw-container">
+                <div class="bamboo-cylinder">
+                    <div class="cylinder-body">
+                        <div class="cylinder-pattern">☰ ☷ ☳ ☴ ☵ ☲ ☶ ☱</div>
+                    </div>
+                    <div class="cylinder-opening"></div>
+                </div>
+                <div class="draw-sticks">
+                    <div class="stick stick-1"></div>
+                    <div class="stick stick-2"></div>
+                    <div class="stick stick-3"></div>
+                    <div class="stick stick-4"></div>
+                    <div class="stick stick-5"></div>
+                </div>
+                <button id="shake-btn" class="shake-btn">
+                    <span class="btn-text">SHAKE THE CYLINDER</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Talisman Result Section -->
+        <section id="talisman-result-section" class="talisman-result-section hidden">
+            <div class="result-container">
+                <div class="talisman-card">
+                    <div class="talisman-border">
+                        <div class="talisman-inner">
+                            <div class="fu-symbol" id="fu-symbol">財</div>
+                            <div class="talisman-number" id="talisman-number">FU #24</div>
+                            <div class="talisman-name" id="talisman-name">"THE BAMBOO GROWS"</div>
                         </div>
                     </div>
+                </div>
+                <div class="talisman-meaning">
+                    <p class="meaning-text" id="meaning-text">This Fu carries the energy of patience and steady rise. The first year, the bamboo sleeps. The second year, it creeps. The third year, it leaps—growing 90 feet in 6 weeks. Your roots are deepening. Do not mistake silence for stillness.</p>
+                    <p class="carry-text">Carry this blessing with you. (Or just remember it. The energy follows intention, not paper.)</p>
+                </div>
+                <div class="result-actions">
+                    <button id="share-btn" class="action-btn">
+                        <span class="btn-icon">📤</span>
+                        <span class="btn-text">SHARE YOUR TALISMAN</span>
+                    </button>
+                    <button id="offer-btn" class="action-btn primary">
+                        <span class="btn-icon">🙏</span>
+                        <span class="btn-text">LEAVE AN OFFERING</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section id="donation-section" class="donation-section hidden">
+            <div class="donation-container">
+                <div class="incense-burner">
+                    <div class="burner-body">
+                        <div class="incense-stick stick-1"></div>
+                        <div class="incense-stick stick-2"></div>
+                        <div class="incense-stick stick-3"></div>
+                    </div>
+                    <div class="smoke">
+                        <span class="smoke-particle"></span>
+                        <span class="smoke-particle"></span>
+                        <span class="smoke-particle"></span>
+                    </div>
+                </div>
+                <div class="offering-text">
+                    <p class="offering-title">In a physical temple, you'd leave a small offering in the incense burner.</p>
+                    <p class="offering-subtitle">Not to buy the blessing—but to say thank you for the luck that found you.</p>
+                    <p class="offering-description">This digital temple runs on the same principle. If today's visit brought you a moment of peace, hope, or joy, consider lighting a stick of incense.</p>
+                </div>
+                <div class="offering-box">
+                    <div class="box-decoration">☰ ☷ ☳ ☴ ☵ ☲ ☶ ☱</div>
+                    <div id="paypal-button-container"></div>
+                </div>
+                <div class="offering-options">
+                    <button class="offering-option" data-amount="3">
+                        <span class="option-amount">$3</span>
+                        <span class="option-label">One Stick</span>
+                    </button>
+                    <button class="offering-option" data-amount="7">
+                        <span class="option-amount">$7</span>
+                        <span class="option-label">Three Sticks</span>
+                    </button>
+                    <button class="offering-option popular" data-amount="11">
+                        <span class="popular-tag">Most Popular</span>
+                        <span class="option-amount">$11</span>
+                        <span class="option-label">Full Offering</span>
+                    </button>
+                    <button class="offering-option custom" data-amount="custom">
+                        <span class="option-amount">Custom</span>
+                        <span class="option-label">Your Choice</span>
+                    </button>
+                </div>
+                <div class="friend-offering">
+                    <p class="friend-text">🎋 <strong>Burn Incense for a Friend</strong> — For $1, we'll send their fortune to them with your name attached.</p>
                 </div>
             </div>
         </section>
@@ -147,13 +308,20 @@
         <!-- Footer -->
         <footer class="footer">
             <div class="footer-content">
+                <div class="fu-explanation">
+                    <h3 class="explanation-title">What Makes a Fu Talisman "Real"?</h3>
+                    <p class="explanation-text">In Taoist tradition, a Fu (符) is not just a drawing. It's a <em>vessel for energy</em>.</p>
+                    <p class="explanation-text">When a Taoist master creates a Fu, they: <strong>purify themselves</strong> through fasting and meditation, <strong>summon the deities</strong>—in our case, Cai Shen and the Five Road Gods of Wealth, <strong>channel their own Qi</strong> into the brush as they write, and <strong>seal the energy</strong> with a sacred stamp.</p>
+                    <p class="explanation-text">The result is a "concentrated knot of Qi"—a portable energy field calibrated to attract specific outcomes. A Fu for wealth doesn't magically create money. It adjusts the energy around you, making your environment more receptive to opportunities.</p>
+                    <p class="explanation-text"><em>Our digital talismans work the same way—because intention, not paper, is the true vessel.</em></p>
+                </div>
                 <div class="footer-links">
                     <a href="pages/privacy.html">Privacy Policy</a>
                     <a href="pages/terms.html">Terms of Service</a>
                     <a href="pages/disclaimer.html">Disclaimer</a>
                 </div>
-                <p class="copyright">© 2025 Lucky God. All rights reserved.</p>
-                <p class="disclaimer-text">This website is for cultural entertainment purposes only. All donations are voluntary.</p>
+                <p class="copyright">© 2025 The Digital Temple of Cai Shen. All rights reserved.</p>
+                <p class="disclaimer-text">This website is for cultural and entertainment purposes only. No guarantees of wealth or fortune are made. All offerings are voluntary.</p>
             </div>
         </footer>
     </div>

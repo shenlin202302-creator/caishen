@@ -1,6 +1,6 @@
 /* ============================================
-   Lucky God - Simplified Styles
-   Focus: Fortune Drawing + Mystical Design
+   The Digital Temple of Cai Shen
+   Taoist Talisman Theme Styles
    ============================================ */
 
 * {
@@ -10,20 +10,27 @@
 }
 
 :root {
-    --color-primary: #C91F37;
-    --color-primary-dark: #8B0000;
+    --color-bg: #0a0a0f;
+    --color-bg-light: #12121a;
+    --color-primary: #1a1a2e;
     --color-gold: #D4AF37;
     --color-gold-light: #F9E076;
-    --color-bg: #1a0f0f;
-    --color-bg-light: #2a1f1f;
-    --color-text: #F8F0E3;
-    --color-text-dim: #B8A090;
+    --color-gold-dark: #B8941F;
+    --color-text: #E8E8E8;
+    --color-text-dim: #A0A0A0;
+    --color-red: #C41E3A;
+    --color-red-dark: #8B0000;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Cinzel', 'Noto Serif SC', serif;
+    font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
     background: var(--color-bg);
     color: var(--color-text);
+    line-height: 1.6;
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -33,97 +40,226 @@ body {
 }
 
 /* ============================================
-   Mystical Background
+   Preloader - Eight Talismans Awakening
    ============================================ */
 
-.mystical-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-}
-
-.floating-runes {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.rune {
-    position: absolute;
-    font-size: 2rem;
-    color: rgba(212, 175, 55, 0.15);
-    animation: float-rune 15s infinite ease-in-out;
-}
-
-.rune:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-.rune:nth-child(2) { top: 20%; right: 15%; animation-delay: 2s; }
-.rune:nth-child(3) { top: 50%; left: 5%; animation-delay: 4s; }
-.rune:nth-child(4) { top: 60%; right: 10%; animation-delay: 6s; }
-.rune:nth-child(5) { top: 80%; left: 20%; animation-delay: 8s; }
-.rune:nth-child(6) { top: 30%; right: 25%; animation-delay: 10s; }
-.rune:nth-child(7) { top: 70%; right: 5%; animation-delay: 12s; }
-.rune:nth-child(8) { top: 40%; left: 15%; animation-delay: 14s; }
-
-@keyframes float-rune {
-    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.1; }
-    50% { transform: translateY(-30px) rotate(10deg); opacity: 0.3; }
-}
-
-.gold-particles {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.particle {
-    position: absolute;
-    font-size: 1.5rem;
-    color: rgba(212, 175, 55, 0.3);
-    animation: sparkle 3s infinite ease-in-out;
-}
-
-.particle:nth-child(1) { top: 15%; left: 80%; animation-delay: 0s; }
-.particle:nth-child(2) { top: 45%; left: 90%; animation-delay: 0.5s; }
-.particle:nth-child(3) { top: 75%; left: 85%; animation-delay: 1s; }
-.particle:nth-child(4) { top: 25%; left: 88%; animation-delay: 1.5s; }
-.particle:nth-child(5) { top: 60%; left: 92%; animation-delay: 2s; }
-
-@keyframes sparkle {
-    0%, 100% { opacity: 0.1; transform: scale(0.8); }
-    50% { opacity: 0.6; transform: scale(1.2); }
-}
-
-/* ============================================
-   Splash Screen
-   ============================================ */
-
-.splash-screen {
+.preloader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(180deg, #1a0f0f 0%, #2d1810 50%, #1a0f0f 100%);
+    background: var(--color-bg);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
+    overflow: hidden;
 }
 
-.splash-screen.fade-out {
-    opacity: 0;
-    visibility: hidden;
+.preloader-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
 }
 
-.splash-god {
+.floating-talismans {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.talisman {
+    position: absolute;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2rem;
+    color: rgba(212, 175, 55, 0.3);
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    animation: talisman-pulse 3s infinite ease-in-out;
+}
+
+.talisman[data-direction="east"] { top: 50%; left: 10%; transform: translate(-50%, -50%); animation-delay: 0s; }
+.talisman[data-direction="southeast"] { top: 20%; left: 20%; animation-delay: 0.3s; }
+.talisman[data-direction="south"] { top: 10%; left: 50%; transform: translateX(-50%); animation-delay: 0.6s; }
+.talisman[data-direction="southwest"] { top: 20%; right: 20%; animation-delay: 0.9s; }
+.talisman[data-direction="west"] { top: 50%; right: 10%; transform: translate(50%, -50%); animation-delay: 1.2s; }
+.talisman[data-direction="northwest"] { bottom: 20%; right: 20%; animation-delay: 1.5s; }
+.talisman[data-direction="north"] { bottom: 10%; left: 50%; transform: translateX(-50%); animation-delay: 1.8s; }
+.talisman[data-direction="northeast"] { bottom: 20%; left: 20%; animation-delay: 2.1s; }
+
+@keyframes talisman-pulse {
+    0%, 100% { opacity: 0.2; transform: scale(0.95); }
+    50% { opacity: 0.5; transform: scale(1.05); }
+}
+
+.preloader-text {
+    text-align: center;
+    z-index: 10;
+}
+
+.awakening-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    animation: text-fade 2s ease-in-out;
+}
+
+.direction-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--color-text-dim);
+    font-style: italic;
+    animation: text-fade 2s ease-in-out 0.5s both;
+}
+
+@keyframes text-fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.bagua-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    z-index: 5;
+}
+
+.bagua-svg {
+    width: 100%;
+    height: 100%;
+    animation: bagua-rotate 3s linear;
+}
+
+@keyframes bagua-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(1080deg); }
+}
+
+/* ============================================
+   Main Content & Header
+   ============================================ */
+
+.main-content {
+    min-height: 100vh;
     position: relative;
+}
+
+.header {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-icon {
+    font-size: 1.5rem;
+    color: var(--color-gold);
+}
+
+.logo-text {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-gold);
+    letter-spacing: 0.2em;
+}
+
+/* ============================================
+   Hero Section
+   ============================================ */
+
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 2rem;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(ellipse at 20% 80%, rgba(88, 28, 135, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(139, 69, 19, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.energy-flows {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.flow {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.flow:hover {
+    opacity: 0.8;
+}
+
+.flow-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    color: var(--color-gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.flow[data-direction="east"] { top: 50%; left: 0; transform: translateY(-50%); }
+.flow[data-direction="southeast"] { top: 70%; left: 10%; }
+.flow[data-direction="south"] { top: auto; bottom: 0; left: 50%; transform: translateX(-50%); }
+.flow[data-direction="southwest"] { top: 70%; right: 10%; }
+.flow[data-direction="west"] { top: 50%; right: 0; transform: translateY(-50%); }
+.flow[data-direction="northwest"] { top: 20%; right: 10%; }
+.flow[data-direction="north"] { top: 0; left: 50%; transform: translateX(-50%); }
+.flow[data-direction="northeast"] { top: 20%; left: 10%; }
+
+.hero-center {
+    text-align: center;
+    z-index: 10;
+    max-width: 800px;
+}
+
+.god-figure {
+    position: relative;
+    display: inline-block;
     margin-bottom: 2rem;
 }
 
@@ -134,9 +270,9 @@ body {
     transform: translate(-50%, -50%);
     width: 150px;
     height: 150px;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
     border-radius: 50%;
-    animation: aura-pulse 2s infinite ease-in-out;
+    animation: aura-pulse 3s ease-in-out infinite;
 }
 
 @keyframes aura-pulse {
@@ -145,750 +281,118 @@ body {
 }
 
 .god-icon {
-    font-size: 6rem;
+    font-size: 5rem;
     display: block;
     position: relative;
     z-index: 1;
-    animation: god-float 3s infinite ease-in-out;
+    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5));
 }
 
-@keyframes god-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-.seal-ring {
+.floating-fu {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 200px;
-    height: 200px;
-    border: 2px solid rgba(212, 175, 55, 0.3);
-    border-radius: 50%;
-    animation: seal-rotate 20s linear infinite;
+    z-index: 2;
 }
 
-.seal-char {
-    position: absolute;
-    font-size: 1.2rem;
-    color: rgba(212, 175, 55, 0.6);
+.fu-character {
     font-family: 'Noto Serif SC', serif;
+    font-size: 3rem;
+    color: var(--color-gold);
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+    animation: fu-burn 2s ease-in-out infinite;
 }
 
-.seal-char:nth-child(1) { top: 10px; left: 50%; transform: translateX(-50%); }
-.seal-char:nth-child(2) { bottom: 10px; left: 50%; transform: translateX(-50%); }
-.seal-char:nth-child(3) { left: 10px; top: 50%; transform: translateY(-50%); }
-
-@keyframes seal-rotate {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
+@keyframes fu-burn {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
 }
 
-.splash-title {
+.hero-title {
     font-family: 'Cinzel', serif;
     font-size: 3rem;
     font-weight: 700;
     color: var(--color-gold);
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    margin-bottom: 0.5rem;
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-}
-
-.splash-subtitle {
-    font-family: 'Cinzel', serif;
-    font-size: 1.2rem;
-    color: var(--color-text-dim);
     letter-spacing: 0.2em;
-    margin-bottom: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
 }
 
-.mystical-loader {
-    position: relative;
-    width: 60px;
-    height: 60px;
-}
-
-.loader-ring {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 2px solid transparent;
-    border-top-color: var(--color-gold);
-    border-radius: 50%;
-    animation: loader-spin 1s linear infinite;
-}
-
-.loader-ring:nth-child(2) {
-    width: 80%;
-    height: 80%;
-    top: 10%;
-    left: 10%;
-    border-top-color: rgba(212, 175, 55, 0.6);
-    animation-duration: 1.5s;
-    animation-direction: reverse;
-}
-
-.loader-ring:nth-child(3) {
-    width: 60%;
-    height: 60%;
-    top: 20%;
-    left: 20%;
-    border-top-color: rgba(212, 175, 55, 0.3);
-    animation-duration: 2s;
-}
-
-@keyframes loader-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-/* ============================================
-   Main Content
-   ============================================ */
-
-.main-content {
-    min-height: 100vh;
-    position: relative;
-    z-index: 1;
-}
-
-/* ============================================
-   Header
-   ============================================ */
-
-.header {
-    padding: 1.5rem 2rem;
-    display: flex;
-    justify-content: center;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-}
-
-.header-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.logo-icon {
-    font-size: 2rem;
-}
-
-.logo-text {
-    font-family: 'Cinzel', serif;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-gold);
-    letter-spacing: 0.1em;
-}
-
-/* ============================================
-   Fortune Section
-   ============================================ */
-
-.fortune-section {
-    padding: 3rem 1rem;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.fortune-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-/* Temple Gate */
-
-.temple-gate {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 1rem;
-    padding: 1rem;
-}
-
-.gate-pillar {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 1.5rem 0.5rem;
-    background: linear-gradient(180deg, rgba(139, 0, 0, 0.8) 0%, rgba(100, 0, 0, 0.9) 100%);
-    border: 2px solid var(--color-gold);
-    border-radius: 4px;
-    min-height: 200px;
-}
-
-.pillar-text {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 1.5rem;
-    color: var(--color-gold);
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    letter-spacing: 0.5rem;
-}
-
-.gate-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-}
-
-.god-statue {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.statue-icon {
-    font-size: 5rem;
-    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.8));
-    animation: god-float 3s ease-in-out infinite;
-}
-
-.divine-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120px;
-    height: 120px;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: aura-pulse 2s ease-in-out infinite;
-}
-
-/* Fortune Area */
-
-.fortune-area {
-    text-align: center;
-    padding: 2rem;
-    background: linear-gradient(180deg, rgba(42, 31, 31, 0.8) 0%, rgba(26, 15, 15, 0.9) 100%);
-    border: 2px solid var(--color-gold);
-    border-radius: 16px;
-    position: relative;
-}
-
-.section-title {
-    font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--color-gold);
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-}
-
-.title-icon {
-    font-size: 1.2rem;
-    animation: sparkle 2s infinite;
-}
-
-.section-subtitle {
-    font-size: 1rem;
+.hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
     color: var(--color-text-dim);
-    margin-bottom: 2rem;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
 }
 
-/* Draw Button */
+.hero-description {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--color-text-dim);
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+}
 
-.draw-btn {
+.start-btn {
     position: relative;
     display: inline-flex;
-    flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    padding: 1.5rem 3rem;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    border: 3px solid var(--color-gold);
+    gap: 0.75rem;
+    padding: 1.25rem 2.5rem;
+    background: linear-gradient(135deg, var(--color-red) 0%, var(--color-red-dark) 100%);
+    border: 2px solid var(--color-gold);
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
     overflow: hidden;
 }
 
-.draw-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-}
-
-.draw-btn:active {
-    transform: translateY(-1px);
-}
-
-.btn-glow {
+.start-btn::before {
+    content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
 }
 
-.draw-btn:hover .btn-glow {
-    opacity: 1;
+.start-btn:hover::before {
+    left: 100%;
+}
+
+.start-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+.btn-fu {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5rem;
+    color: var(--color-gold);
 }
 
 .btn-text {
     font-family: 'Cinzel', serif;
-    font-size: 1.3rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--color-gold-light);
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
 }
 
-.btn-runes {
-    font-size: 0.9rem;
-    color: var(--color-gold);
-    opacity: 0.8;
-    letter-spacing: 0.3em;
-}
-
-/* Fortune Result */
-
-.fortune-result {
-    margin-top: 2rem;
-    animation: fadeInUp 0.6s ease;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.result-scroll {
-    background: linear-gradient(180deg, rgba(139, 0, 0, 0.9) 0%, rgba(100, 0, 0, 0.95) 100%);
-    border: 3px solid var(--color-gold);
-    border-radius: 12px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.scroll-decorations {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-}
-
-.scroll-decorations.bottom {
-    border-bottom: none;
-    border-top: 1px solid rgba(212, 175, 55, 0.3);
-}
-
-.deco {
-    font-size: 1.5rem;
-    color: var(--color-gold);
-    opacity: 0.6;
-}
-
-.scroll-content {
-    padding: 2rem 1rem;
-}
-
-.fortune-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.header-icon {
-    font-size: 1.5rem;
-}
-
-.header-text {
-    font-family: 'Cinzel', serif;
-    font-size: 1.1rem;
-    color: var(--color-gold);
-    letter-spacing: 0.2em;
-}
-
-.fortune-level {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-    padding: 0.5rem 1.5rem;
-    background: rgba(212, 175, 55, 0.1);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    border-radius: 50px;
-    display: inline-flex;
-}
-
-.level-icon {
-    font-size: 1.5rem;
-}
-
-.level-name {
-    font-family: 'Cinzel', serif;
+.btn-arrow {
     font-size: 1.2rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-}
-
-.fortune-text {
-    font-size: 1.3rem;
-    line-height: 1.8;
-    color: var(--color-text);
-    margin-bottom: 1.5rem;
-    padding: 0 1rem;
-}
-
-.fortune-runes {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.fortune-runes .rune {
-    font-size: 2rem;
     color: var(--color-gold);
-    opacity: 0.8;
+    transition: transform 0.3s ease;
 }
 
-.blessing-text {
-    font-style: italic;
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: var(--color-gold-light);
-}
-
-.fortune-seal {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(212, 175, 55, 0.3);
-}
-
-.seal-mark {
-    display: inline-block;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 1.5rem;
-    color: var(--color-gold);
-    padding: 0.5rem 1.5rem;
-    border: 2px solid var(--color-gold);
-    border-radius: 4px;
-    background: rgba(212, 175, 55, 0.1);
-}
-
-/* Result Actions */
-
-.result-actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.action-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1.5rem;
-    font-family: 'Cinzel', serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    border: 2px solid var(--color-gold);
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background: transparent;
-    color: var(--color-gold);
-}
-
-.action-btn:hover {
-    background: var(--color-gold);
-    color: var(--color-bg);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
-}
-
-.action-btn.primary {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    border-color: var(--color-gold);
-    color: var(--color-gold-light);
-}
-
-.action-btn.primary:hover {
-    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
-    box-shadow: 0 5px 25px rgba(201, 31, 55, 0.5);
-}
-
-/* ============================================
-   Donation Section
-   ============================================ */
-
-.donation-section {
-    padding: 4rem 1rem;
-    background: linear-gradient(180deg, transparent 0%, rgba(139, 0, 0, 0.2) 50%, transparent 100%);
-}
-
-.donation-content {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.donation-god {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    animation: god-float 3s ease-in-out infinite;
-}
-
-.donation-content h3 {
-    font-family: 'Cinzel', serif;
-    font-size: 1.5rem;
-    color: var(--color-gold);
-    margin-bottom: 1rem;
-}
-
-.donation-content p {
-    font-size: 1rem;
-    color: var(--color-text-dim);
-    margin-bottom: 2rem;
-    line-height: 1.6;
-}
-
-.donation-options {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.donation-option {
-    padding: 1.5rem 1rem;
-    background: rgba(212, 175, 55, 0.05);
-    border: 2px solid rgba(212, 175, 55, 0.3);
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.donation-option:hover,
-.donation-option.selected {
-    background: rgba(212, 175, 55, 0.15);
-    border-color: var(--color-gold);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
-}
-
-.donation-option.popular {
-    border-color: var(--color-primary);
-}
-
-.popular-badge {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--color-primary);
-    color: var(--color-gold-light);
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 0.25rem 0.75rem;
-    border-radius: 50px;
-}
-
-.donation-option .amount {
-    font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--color-gold);
-    margin-bottom: 0.25rem;
-}
-
-.donation-option .label {
-    font-size: 0.9rem;
-    color: var(--color-text-dim);
-}
-
-.payment-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-#paypal-button-container {
-    min-height: 45px;
-}
-
-.donation-note {
-    font-size: 0.85rem;
-    color: var(--color-text-dim);
-    margin-top: 1.5rem;
-    font-style: italic;
-}
-
-/* ============================================
-   Footer
-   ============================================ */
-
-.footer {
-    padding: 2rem 1rem;
-    border-top: 1px solid rgba(212, 175, 55, 0.2);
-    text-align: center;
-}
-
-.footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-}
-
-.footer-links a {
-    font-size: 0.9rem;
-    color: var(--color-text-dim);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: var(--color-gold);
-}
-
-.copyright {
-    font-size: 0.85rem;
-    color: var(--color-text-dim);
-    margin-bottom: 0.5rem;
-}
-
-.disclaimer-text {
-    font-size: 0.8rem;
-    color: rgba(184, 160, 144, 0.6);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* ============================================
-   Toast Notification
-   ============================================ */
-
-.toast {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%) translateY(0);
-    background: rgba(42, 31, 31, 0.95);
-    border: 2px solid var(--color-gold);
-    border-radius: 50px;
-    padding: 1rem 2rem;
-    font-size: 0.95rem;
-    color: var(--color-gold-light);
-    text-align: center;
-    z-index: 10000;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
-}
-
-.toast.hidden {
-    transform: translateX(-50%) translateY(100px);
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* ============================================
-   Responsive Design
-   ============================================ */
-
-@media (max-width: 768px) {
-    .splash-title {
-        font-size: 2rem;
-        letter-spacing: 0.2em;
-    }
-    
-    .splash-subtitle {
-        font-size: 1rem;
-    }
-    
-    .temple-gate {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .gate-pillar {
-        flex-direction: row;
-        min-height: auto;
-        padding: 0.5rem 1.5rem;
-        gap: 1rem;
-    }
-    
-    .pillar-text {
-        writing-mode: horizontal-tb;
-        font-size: 1.2rem;
-    }
-    
-    .section-title {
-        font-size: 1.4rem;
-    }
-    
-    .fortune-text {
-        font-size: 1.1rem;
-    }
-    
-    .donation-options {
-        grid-template-columns: 1fr;
-    }
-    
-    .result-actions {
-        flex-direction: column;
-    }
-    
-    .action-btn {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .splash-title {
-        font-size: 1.6rem;
-    }
-    
-    .draw-btn {
-        padding: 1.2rem 2rem;
-    }
-    
-    .btn-text {
-        font-size: 1.1rem;
-    }
-    
-    .fortune-area {
-        padding: 1.5rem 1rem;
-    }
-    
-    .result-scroll {
-        padding: 1.5rem 1rem;
-    }
+.start-btn:hover .btn-arrow {
+    transform: translateX(5px);
 }
