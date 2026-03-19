@@ -1,277 +1,167 @@
-// Statistics
-let stats = {
-    visitors: parseInt(localStorage.getItem('lucky_god_visitors') || '0'),
-    fortunes: parseInt(localStorage.getItem('lucky_god_fortunes') || '0'),
-    shares: parseInt(localStorage.getItem('lucky_god_shares') || '0'),
-    donations: parseInt(localStorage.getItem('lucky_god_donations') || '0')
-};
+// ============================================
+// Lucky God - Simplified App
+// Only fortune drawing, sharing, and donations
+// ============================================
 
-// Increment visitor count
-stats.visitors++;
-localStorage.setItem('lucky_god_visitors', stats.visitors.toString());
+// ============================================
+// State
+// ============================================
 
-// Splash screen timer - with firecracker sound
+let currentFortune = null;
+let selectedAmount = 6.66;
+
+// ============================================
+// Initialization
+// ============================================
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Set current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-    
-    // Play firecracker sound when splash starts
-    try {
-        const audio = document.getElementById('firecrackerAudio');
-        audio.volume = 0.3;
-        audio.play().catch(e => console.log('Autoplay blocked:', e));
-    } catch(e) {}
-    
-    // 3-second splash screen with gold falling animation
+    initSplashScreen();
+    setupEventListeners();
+    initPayPal();
+});
+
+function initSplashScreen() {
+    // 3 second splash screen
     setTimeout(() => {
         const splash = document.getElementById('splash-screen');
         splash.classList.add('fade-out');
         setTimeout(() => {
             splash.classList.add('hidden');
             document.getElementById('main-content').classList.remove('hidden');
-            window.scrollTo(0, 0);
         }, 800);
     }, 3000);
-    
-    // Full English site - default to en
-    currentLang = 'en';
-    
-    // Event listeners
-    setupEventListeners();
-    
-    // Initialize PayPal
-    initPayPal();
-});
+}
+
+// ============================================
+// Event Listeners
+// ============================================
 
 function setupEventListeners() {
-    // Daily fortune draw - front page direct draw
-    // Different fortune every day - same date = same fortune for user, new day new luck
-    document.getElementById('draw-daily-fortune').addEventListener('click', function() {
-        stats.fortunes++;
-        localStorage.setItem('lucky_god_fortunes', stats.fortunes.toString());
-        
-        // Seed with date + draw count = unique fortune everyday
-        const today = new Date();
-        const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate() + stats.fortunes;
-        const fortuneText = getDeterministicFortune(seed);
-        document.getElementById('daily-fortune-text').textContent = fortuneText;
-        document.getElementById('daily-fortune-result').classList.remove('hidden');
-        
-        // Show "Draw Again button
-        if (!document.getElementById('draw-again-btn')) {
-            // Add draw again button after first draw
-            const btn = document.createElement('button');
-            btn.id = 'draw-again-btn';
-            btn.className = 'btn btn-secondary btn-fortune';
-            btn.innerHTML = '<span>🔁 Draw Again </span>';
-            btn.addEventListener('click', () => {
-                // Scroll to top and trigger click again
-                document.getElementById('draw-daily-fortune').click();
-            });
-            document.querySelector('.daily-fortune-card').appendChild(btn);
-        } else {
-            document.getElementById('draw-again-btn').classList.remove('hidden');
-        }
-        
-        // Show floating donate button after user gets fortune
-        setTimeout(() => {
-            document.getElementById('float-donate-btn').classList.remove('hidden');
-            document.getElementById('float-donate-btn').addEventListener('click', () => {
-                document.querySelector('.donation-section').scrollIntoView({ behavior: 'smooth' });
-            });
-            // Show toast reminder - Fortune received
-            setTimeout(() => {
-                showToast('Fortune received ✅ Remember to buy Lucky God a tea if you get rich 🧧');
-            }, 1500);
-        }, 1000);
-        
-        // Scroll to result
-        setTimeout(() => {
-            document.getElementById('daily-fortune-result').scrollIntoView({ behavior: 'smooth' });
-        }, 200);
-    });
+    // Main fortune draw button
+    document.getElementById('draw-fortune-btn').addEventListener('click', drawFortune);
     
-    // Start test
-    document.getElementById('start-test-btn').addEventListener('click', openTestModal);
-    
-    // Browse wallpapers
-    document.getElementById('browse-wallpapers-btn').addEventListener('click', openWallpaperModal);
+    // Draw again button
+    document.getElementById('draw-again-btn').addEventListener('click', drawFortune);
     
     // Share button
-    document.getElementById('share-btn').addEventListener('click', openShare);
+    document.getElementById('share-fortune-btn').addEventListener('click', shareFortune);
     
-    // Modal close buttons
-    document.querySelectorAll('.close-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            closeModal(this.closest('.modal'));
-        });
+    // Donate button
+    document.getElementById('donate-btn').addEventListener('click', () => {
+        document.querySelector('.donation-section').scrollIntoView({ behavior: 'smooth' });
     });
     
-    // Click outside modal to close
-    document.querySelectorAll('.modal').forEach(modal => {
-        modal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal(this);
-            }
-        });
-    });
-    
-    // Donation selection
+    // Donation options
     document.querySelectorAll('.donation-option').forEach(option => {
         option.addEventListener('click', function() {
-            document.querySelectorAll('.donation-option').forEach(opt => {
-                opt.classList.remove('selected');
-            });
+            document.querySelectorAll('.donation-option').forEach(opt => opt.classList.remove('selected'));
             this.classList.add('selected');
             selectedAmount = parseFloat(this.dataset.amount);
         });
     });
     
-    // Select 6.66 by default - lucky number
+    // Select default amount
     document.querySelector('.donation-option[data-amount="6.66"]').classList.add('selected');
-    selectedAmount = 6.66;
-    
-    // Share buttons
-    document.getElementById('share-tiktok').addEventListener('click', shareToTikTok);
-    document.getElementById('share-facebook').addEventListener('click', shareToFacebook);
-    
-    // Exclusive content downloads
-    if (document.getElementById('download-exclusive')) {
-        document.getElementById('download-exclusive').addEventListener('click', () => {
-            downloadWallpaper(5);
-        });
-        document.getElementById('download-talisman').addEventListener('click', () => {
-            downloadWallpaper(6);
-        });
-        document.getElementById('view-report').addEventListener('click', () => {
-            showToast('Annual report generated based on today\'s energy! Your fortune: ' + getRandomFortune());
-        });
-    }
-    
-    // Stripe button
-    if (document.getElementById('stripe-button')) {
-        document.getElementById('stripe-button').addEventListener('click', handleStripePayment);
-    }
 }
 
-function openTestModal() {
-    const modal = document.getElementById('test-modal');
-    modal.classList.remove('hidden');
-    startTest();
-}
+// ============================================
+// Fortune Drawing
+// ============================================
 
-function openWallpaperModal() {
-    const modal = document.getElementById('wallpaper-modal');
-    modal.classList.remove('hidden');
-    loadWallpapers();
-}
-
-function closeModal(modal) {
-    modal.classList.add('hidden');
-}
-
-function showToast(message) {
-    const toast = document.getElementById('toast');
-    toast.textContent = message;
-    toast.classList.remove('hidden');
+function drawFortune() {
+    // Generate new fortune
+    currentFortune = generateFortune();
     
+    // Hide result if showing
+    const resultDiv = document.getElementById('fortune-result');
+    resultDiv.classList.add('hidden');
+    
+    // Show loading animation on button
+    const btn = document.getElementById('draw-fortune-btn');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span class="btn-text">✨ Consulting the Divine ✨</span>';
+    btn.disabled = true;
+    
+    // Simulate divine consultation
     setTimeout(() => {
-        toast.classList.add('hidden');
-    }, 3000);
+        // Restore button
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        
+        // Display fortune
+        displayFortune(currentFortune);
+        
+        // Show result area
+        resultDiv.classList.remove('hidden');
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Show toast
+        showToast('✨ Divine blessing received! Share for extra luck! ✨');
+        
+    }, 2000);
 }
 
-function openShare() {
-    // Scroll to share section
-    document.querySelector('.share-section').scrollIntoView({ behavior: 'smooth' });
-}
-
-function getCurrentShareUrl() {
-    return window.location.href.split('?')[0];
-}
-
-function shareToTikTok() {
-    const shareUrl = getCurrentShareUrl();
-    const text = getText('share.title') + ' - ' + getDailyFortune();
+function displayFortune(fortune) {
+    // Set level
+    document.getElementById('fortune-level').innerHTML = `
+        <span class="level-icon">${fortune.level.icon}</span>
+        <span class="level-name" style="color: ${fortune.level.color}">${fortune.level.name}</span>
+    `;
     
-    // TikTok doesn't have a direct web share, but we can copy the link
-    navigator.clipboard.writeText(shareUrl).then(() => {
-        showToast('Link copied! Open TikTok and paste it in your bio. You got an extra fortune draw!');
-        stats.shares++;
-        localStorage.setItem('lucky_god_shares', stats.shares.toString());
-        // Extra fortune
-        setTimeout(() => {
-            // Open modal for extra draw
-            const modal = document.createElement('div');
-            modal.id = 'extra-fortune-modal';
-            modal.className = 'modal';
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <span class="close-btn">&times;</span>
-                    <h2>Your Extra Fortune</h2>
-                    <div class="fortune-result">
-                        <div class="fortune-text" id="extra-fortune-text"></div>
-                        <div class="fortune-author">— Lucky God</div>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-            modal.classList.remove('hidden');
-            document.getElementById('extra-fortune-text').textContent = getRandomFortune();
-            modal.querySelector('.close-btn').addEventListener('click', () => {
-                modal.classList.add('hidden');
-                setTimeout(() => modal.remove(), 300);
-            });
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.add('hidden');
-                    setTimeout(() => modal.remove(), 300);
-                }
-            });
-        }, 1000);
+    // Set blessing text with runes decoration
+    document.getElementById('fortune-text').innerHTML = `
+        <div class="fortune-runes">
+            <span class="rune">${fortune.runes[0]}</span>
+            <span class="rune">${fortune.char}</span>
+            <span class="rune">${fortune.runes[1]}</span>
+        </div>
+        <p class="blessing-text">${fortune.blessing}</p>
+        <div class="fortune-seal">
+            <span class="seal-char">財神印</span>
+        </div>
+    `;
+}
+
+// ============================================
+// Sharing
+// ============================================
+
+function shareFortune() {
+    if (!currentFortune) {
+        showToast('Draw a fortune first!');
+        return;
+    }
+    
+    const shareText = `🧧 Lucky God Fortune 🧧\n\n${currentFortune.level.icon} ${currentFortune.level.name}\n\n"${currentFortune.blessing}"\n\nDraw your own fortune at:`;
+    const shareUrl = window.location.href;
+    
+    // Try native share
+    if (navigator.share) {
+        navigator.share({
+            title: 'My Lucky God Fortune',
+            text: shareText,
+            url: shareUrl
+        }).then(() => {
+            showToast('✨ Shared! The God of Wealth smiles upon you! ✨');
+        }).catch(() => {
+            copyToClipboard(shareText + ' ' + shareUrl);
+        });
+    } else {
+        copyToClipboard(shareText + ' ' + shareUrl);
+    }
+}
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        showToast('✨ Fortune copied! Share for extra blessings! ✨');
+    }).catch(() => {
+        showToast('Unable to copy. Please share manually!');
     });
 }
 
-function shareToFacebook() {
-    const shareUrl = getCurrentShareUrl();
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
-    window.open(facebookUrl, '_blank', 'width=600,height=400');
-    
-    stats.shares++;
-    localStorage.setItem('lucky_god_shares', stats.shares.toString());
-    
-    // Extra fortune
-    setTimeout(() => {
-        const modal = document.createElement('div');
-        modal.id = 'extra-fortune-modal';
-        modal.className = 'modal';
-        modal.innerHTML = `
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-                <h2>Your Extra Fortune</h2>
-                <div class="fortune-result">
-                    <div class="fortune-text" id="extra-fortune-text"></div>
-                    <div class="fortune-author">— Lucky God</div>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(modal);
-        modal.classList.remove('hidden');
-        document.getElementById('extra-fortune-text').textContent = getRandomFortune();
-        modal.querySelector('.close-btn').addEventListener('click', () => {
-            modal.classList.add('hidden');
-            setTimeout(() => modal.remove(), 300);
-        });
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.add('hidden');
-                setTimeout(() => modal.remove(), 300);
-            }
-        });
-    }, 1000);
-}
-
+// ============================================
 // PayPal Integration
-let selectedAmount = 6.66;
+// ============================================
 
 function initPayPal() {
     if (typeof paypal !== 'undefined') {
@@ -282,54 +172,33 @@ function initPayPal() {
                         amount: {
                             value: selectedAmount.toFixed(2)
                         },
-                        description: 'Donation - Buy Lucky God a cup of tea'
+                        description: 'Lucky God Divine Offering'
                     }]
                 });
             },
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
-                    // Payment successful
-                    handleSuccessfulDonation();
-                    showToast('Thank you for your donation, ' + details.payer.name.given_name + '! 🙏');
+                    showToast('🧧 Thank you for your offering! Great fortune is coming! 🧧');
                 });
             },
             onError: function(err) {
                 console.error(err);
-                showToast('Something went wrong with the payment. Please try again.');
+                showToast('Payment failed. Please try again.');
             }
         }).render('#paypal-button-container');
-    } else {
-        console.log('PayPal SDK not loaded - check your client ID');
     }
 }
 
-function handleStripePayment() {
-    // Stripe integration placeholder
-    // In production, you need a backend to create payment intent
-    showToast('Stripe integration: Please configure your Stripe keys in the code. Redirecting to checkout...');
-    console.log('Stripe payment for amount: $' + selectedAmount);
+// ============================================
+// Toast Notification
+// ============================================
+
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.remove('hidden');
     
-    // After successful payment:
-    // handleSuccessfulDonation();
-}
-
-function handleSuccessfulDonation() {
-    stats.donations++;
-    localStorage.setItem('lucky_god_donations', stats.donations.toString());
-    setUnlockedContent();
-    // Scroll to unlocked section
     setTimeout(() => {
-        document.getElementById('unlocked-section').scrollIntoView({ behavior: 'smooth' });
-    }, 500);
+        toast.classList.add('hidden');
+    }, 3000);
 }
-
-// ============================================
-// Simple statistics (you can expand this)
-// ============================================
-function getStats() {
-    return stats;
-}
-
-// Log stats to console for site owner
-console.log('Lucky God Stats:', stats);
-console.log('Thanks for using Lucky God! 🎋');

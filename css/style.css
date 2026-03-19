@@ -1,6 +1,8 @@
 /* ============================================
-   CSS Reset & Base Styles
+   Lucky God - Simplified Styles
+   Focus: Fortune Drawing + Mystical Design
    ============================================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -8,59 +10,22 @@
 }
 
 :root {
-    /* Color Palette - Lucky God Red & Gold - Temple Dark Mysterious Vibe */
     --color-primary: #C91F37;
     --color-primary-dark: #8B0000;
     --color-gold: #D4AF37;
     --color-gold-light: #F9E076;
-    --color-bg: #F8F0E3;
-    --color-text: #2C2C2C;
-    --color-text-light: #666666;
-    --color-white: #FFFFFF;
-    --color-border: rgba(201, 31, 55, 0.2);
-    --color-shadow: rgba(0, 0, 0, 0.1);
-    
-    /* Spacing */
-    --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 1.5rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 3rem;
-    
-    /* Border Radius */
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-full: 999px;
-    
-    /* Shadows */
-    --shadow-sm: 0 2px 8px var(--color-shadow);
-    --shadow-md: 0 4px 16px var(--color-shadow);
-    --shadow-lg: 0 8px 32px var(--color-shadow);
-    --shadow-gold: 0 4px 20px rgba(212, 175, 55, 0.4);
-    
-    /* Transitions */
-    --transition-fast: 0.2s ease;
-    --transition-normal: 0.3s ease;
-    --transition-slow: 0.8s ease;
-}
-
-html {
-    scroll-behavior: smooth;
+    --color-bg: #1a0f0f;
+    --color-bg-light: #2a1f1f;
+    --color-text: #F8F0E3;
+    --color-text-dim: #B8A090;
 }
 
 body {
-    font-family: 'Inter', 'Noto Serif SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: var(--color-bg);
+    font-family: 'Cinzel', 'Noto Serif SC', serif;
+    background: var(--color-bg);
     color: var(--color-text);
-    line-height: 1.6;
     min-height: 100vh;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-md);
+    overflow-x: hidden;
 }
 
 .hidden {
@@ -68,124 +33,98 @@ body {
 }
 
 /* ============================================
-   Google Ads
+   Mystical Background
    ============================================ */
-.google-ad {
+
+.mystical-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    min-height: 90px;
-    background-color: var(--color-white);
-    border-bottom: 1px solid var(--color-border);
-    text-align: center;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
 }
 
-#google-ad-bottom {
-    border-bottom: none;
-    border-top: 1px solid var(--color-border);
+.floating-runes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.rune {
+    position: absolute;
+    font-size: 2rem;
+    color: rgba(212, 175, 55, 0.15);
+    animation: float-rune 15s infinite ease-in-out;
+}
+
+.rune:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.rune:nth-child(2) { top: 20%; right: 15%; animation-delay: 2s; }
+.rune:nth-child(3) { top: 50%; left: 5%; animation-delay: 4s; }
+.rune:nth-child(4) { top: 60%; right: 10%; animation-delay: 6s; }
+.rune:nth-child(5) { top: 80%; left: 20%; animation-delay: 8s; }
+.rune:nth-child(6) { top: 30%; right: 25%; animation-delay: 10s; }
+.rune:nth-child(7) { top: 70%; right: 5%; animation-delay: 12s; }
+.rune:nth-child(8) { top: 40%; left: 15%; animation-delay: 14s; }
+
+@keyframes float-rune {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.1; }
+    50% { transform: translateY(-30px) rotate(10deg); opacity: 0.3; }
+}
+
+.gold-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.particle {
+    position: absolute;
+    font-size: 1.5rem;
+    color: rgba(212, 175, 55, 0.3);
+    animation: sparkle 3s infinite ease-in-out;
+}
+
+.particle:nth-child(1) { top: 15%; left: 80%; animation-delay: 0s; }
+.particle:nth-child(2) { top: 45%; left: 90%; animation-delay: 0.5s; }
+.particle:nth-child(3) { top: 75%; left: 85%; animation-delay: 1s; }
+.particle:nth-child(4) { top: 25%; left: 88%; animation-delay: 1.5s; }
+.particle:nth-child(5) { top: 60%; left: 92%; animation-delay: 2s; }
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.1; transform: scale(0.8); }
+    50% { opacity: 0.6; transform: scale(1.2); }
 }
 
 /* ============================================
-   Splash Screen - Epic Fortune Entry
+   Splash Screen
    ============================================ */
+
 .splash-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background: linear-gradient(180deg, #1a0f0f 0%, #2d1810 50%, #1a0f0f 100%);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    animation: fadeIn 0.5s ease;
-    overflow: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
-.splash-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
-    animation: mistFloat 10s ease-in-out infinite alternate;
-}
-
-@keyframes mistFloat {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 100%; }
-}
-
-.gold-ingots {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.gold-ingot {
-    position: absolute;
-    font-size: 4rem;
-    animation: fallBomb 3.5s ease-in forwards;
+.splash-screen.fade-out {
     opacity: 0;
-    filter: drop-shadow(0 4px 8px rgba(212, 175, 55, 0.6));
+    visibility: hidden;
 }
 
-.gold-ingot:nth-child(1) { left: 10%; animation-delay: 0.1s; font-size: 3rem; }
-.gold-ingot:nth-child(2) { left: 28%; animation-delay: 0.3s; font-size: 5rem; }
-.gold-ingot:nth-child(3) { left: 46%; animation-delay: 0.5s; font-size: 4.5rem; }
-.gold-ingot:nth-child(4) { left: 64%; animation-delay: 0.7s; font-size: 3.5rem; }
-.gold-ingot:nth-child(5) { left: 82%; animation-delay: 0.9s; font-size: 5rem; }
-.gold-ingot:nth-child(6) { left: 18%; animation-delay: 1.2s; font-size: 4rem; }
-.gold-ingot:nth-child(7) { left: 38%; animation-delay: 1.4s; font-size: 4.8rem; }
-.gold-ingot:nth-child(8) { left: 58%; animation-delay: 1.6s; font-size: 3.2rem; }
-.gold-ingot:nth-child(9) { left: 76%; animation-delay: 1.8s; font-size: 5.2rem; }
-
-/* 更炸裂的掉落带反弹 */
-@keyframes fallBomb {
-    0% { 
-        opacity: 0; 
-        transform: translateY(-150px) rotate(0deg) scale(0.5); 
-    }
-    30% { 
-        opacity: 1; 
-        transform: translateY(30vh) rotate(80deg) scale(1.1); 
-    }
-    60% { 
-        opacity: 1; 
-        transform: translateY(60vh) rotate(180deg) scale(1); 
-    }
-    100% { 
-        opacity: 0.9; 
-        transform: translateY(calc(100vh - 120px)) rotate(360deg) scale(1.05); 
-    }
-}
-
-.splash-content {
+.splash-god {
     position: relative;
-    text-align: center;
-    color: var(--color-white);
-    z-index: 10;
-}
-
-.god-main-image {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    margin: 0 auto var(--spacing-md);
-    animation: 
-        godAppear 1.5s ease-out forwards, 
-        godBounce 2s 3s infinite ease-in-out alternate,
-        godShake 0.1s 1.5s 8 linear;
-}
-
-.god-main-emoji {
-    font-size: 6rem;
-    line-height: 120px;
-    position: relative;
-    z-index: 2;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+    margin-bottom: 2rem;
 }
 
 .god-aura {
@@ -193,970 +132,646 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.6) 0%, rgba(212, 175, 55, 0.2) 50%, transparent 70%);
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
     border-radius: 50%;
-    animation: auraPulse 2s infinite alternate;
-    z-index: 1;
+    animation: aura-pulse 2s infinite ease-in-out;
 }
 
-@keyframes auraPulse {
-    from { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-    to { transform: translate(-50%, -50%) scale(1.2); opacity: 0.9; }
+@keyframes aura-pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
 }
 
-@keyframes godAppear {
-    0% { opacity: 0; transform: translateY(30px) scale(0.8); }
-    50% { opacity: 1; transform: translateY(0) scale(1.02); }
-    100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes godShake {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(-2px, 2px) rotate(-1deg); }
-    50% { transform: translate(2px, -1px) rotate(1deg); }
-    75% { transform: translate(1px, -2px) rotate(0deg); }
-}
-
-@keyframes godBounce {
-    from { transform: translateY(0) scale(1); }
-    to { transform: translateY(-10px) scale(1.05); }
-}
-
-.splash-title-main {
-    font-size: 5rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: var(--spacing-xs);
-    text-shadow: none;
-    letter-spacing: 0.2em;
-}
-
-.splash-title-sub {
-    font-size: 1.8rem;
-    font-weight: 300;
-    opacity: 0.95;
-    margin-bottom: var(--spacing-sm);
-    font-family: 'Inter', sans-serif;
-}
-
-.splash-text {
-    font-size: 1.1rem;
-    opacity: 0.8;
-    margin-bottom: var(--spacing-lg);
-}
-
-.loading-bar {
-    width: 250px;
-    height: 6px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: var(--radius-full);
-    margin: 0 auto;
-    overflow: hidden;
-}
-
-.loading-progress {
-    width: 0%;
-    height: 100%;
-    background: linear-gradient(90deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
-    border-radius: var(--radius-full);
-    animation: load 3s linear forwards;
-}
-
-@keyframes load {
-    to { width: 100%; }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-
-.splash-screen.fade-out {
-    animation: fadeOut 0.8s ease forwards;
-}
-
-/* ============================================
-   Daily Fortune Section - Front & Center
-   ============================================ */
-.daily-fortune-section {
-    padding: var(--spacing-xl) 0 var(--spacing-md);
-}
-
-.daily-fortune-section.fullscreen {
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-}
-
-.daily-fortune-card {
-    background: linear-gradient(135deg, var(--color-white) 0%, #FFF8E8 100%);
-    border: 3px solid var(--color-gold);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-gold);
-    padding: var(--spacing-xl) var(--spacing-lg);
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-}
-
-.daily-fortune-card.big {
-    padding: var(--spacing-xl) var(--spacing-lg);
-}
-
-.daily-fortune-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.1) 50%, transparent 70%);
-    animation: shine 3s infinite;
-}
-
-@keyframes shine {
-    0% { transform: translateX(-100%) translateY(-100%); }
-    100% { transform: translateX(100%) translateY(100%); }
-}
-
-.fortune-header {
-    margin-bottom: var(--spacing-lg);
-}
-
-.fortune-title {
-    font-size: 2.2rem;
-    margin-bottom: var(--spacing-xs);
-}
-
-.fortune-main-title {
-    margin-bottom: var(--spacing-lg);
-    position: relative;
-    padding: var(--spacing-sm) 0;
-}
-
-.fortune-main-title::before,
-.fortune-main-title::after {
-    content: '';
-    position: absolute;
-    top: 15%;
-    bottom: 15%;
-    width: 4px;
-    background: linear-gradient(to bottom, transparent, var(--color-gold), transparent);
-    border-radius: 2px;
-}
-
-.fortune-main-title::before {
-    left: 0;
-}
-
-.fortune-main-title::after {
-    right: 0;
-}
-
-.fortune-main-title h1 {
-    font-size: 1.6rem;
-    margin-bottom: var(--spacing-sm);
-    padding: 0 var(--spacing-md);
-    line-height: 1.8;
-}
-
-.fortune-main-title p {
-    color: var(--color-text-light);
-    font-size: 1.1rem;
-}
-
-.red-text {
-    color: var(--color-primary);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.fortune-subtitle {
-    color: var(--color-text-light);
-    font-size: 1.1rem;
-}
-
-.btn-fortune {
-    margin-top: var(--spacing-md);
-    animation: pulse 2s infinite;
-}
-
-#draw-again-btn {
-    margin-top: var(--spacing-md);
-    margin-left: auto;
-    margin-right: auto;
+.god-icon {
+    font-size: 6rem;
     display: block;
-}
-
-@keyframes pulse {
-    0%, 100% { box-shadow: 0 4px 12px rgba(201, 31, 55, 0.3); }
-    50% { box-shadow: 0 6px 20px rgba(201, 31, 55, 0.5); }
-}
-
-/* Fortune Scroll Paper Effect - Traditional Chinese Talisman Style */
-.daily-fortune-result {
-    margin: var(--spacing-lg) 0;
-}
-
-/* 正宗道家符咒风格：红底金字，八卦底纹 */
-.fortune-scroll {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    border: 3px solid var(--color-gold);
-    border-radius: var(--radius-md);
-    padding: var(--spacing-lg);
-    box-shadow: var(--shadow-gold), inset 0 0 100px rgba(212, 175, 55, 0.2);
     position: relative;
-    /* 道教八卦符文底纹 */
-    background-image: 
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-width='1' stroke-opacity='0.15'%3E%3Crect x='5' y='5' width='50' height='50' rx='5'/%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3Ccircle cx='30' cy='30' r='10'/%3E%3Cline x1='30' y1='10' x2='30' y2='20'/%3E%3Cline x1='30' y1='40' x2='30' y2='50'/%3E%3Cline x1='10' y1='30' x2='20' y2='30'/%3E%3Cline x1='40' y1='30' x2='50' y2='30'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    z-index: 1;
+    animation: god-float 3s infinite ease-in-out;
 }
 
-/* 传统符咒内外双层边框 */
-.fortune-scroll::before {
-    content: '';
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    right: 8px;
-    bottom: 8px;
-    border: 2px solid var(--color-gold);
-    border-radius: 8px;
-    pointer-events: none;
-}
-
-.fortune-scroll-paper {
-    position: relative;
-    padding: calc(var(--spacing-xl) - 10px) var(--spacing-lg);
-}
-
-/* 金字！招财符必须是金字 */
-.fortune-scroll-text {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 1.8rem;
-    line-height: 2.5;
-    background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: none;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: var(--spacing-md);
-    animation: rollDown 1s ease-out;
-}
-
-.fortune-scroll-text.big {
-    font-size: 2.2rem;
-    line-height: 3;
-}
-
-@keyframes rollDown {
-    from { 
-        opacity: 0; 
-        transform: translateY(-20px); 
-    }
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
-    }
-}
-
-/* 财神大印章，更有那味儿 */
-.fortune-scroll-seal {
-    position: absolute;
-    bottom: 15px;
-    right: 30px;
-    background: var(--color-gold);
-    color: var(--color-primary);
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: 1.3rem;
-    transform: rotate(15deg);
-    box-shadow: var(--shadow-md);
-    border: 2px solid var(--color-gold-light);
-}
-
-/* ============================================
-   Floating Donate Button - Always There When Happy
-   ============================================ */
-.float-donate-btn {
-    position: fixed;
-    right: 20px;
-    bottom: 100px;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    color: var(--color-gold);
-    border-radius: 50px;
-    padding: 0.8rem 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    box-shadow: var(--shadow-lg);
-    animation: float 3s ease-in-out infinite;
-    z-index: 100;
-    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.float-donate-btn:hover {
-    transform: scale(1.05) translateY(-5px);
-    box-shadow: 0 10px 40px rgba(201, 31, 55, 0.4);
-}
-
-@keyframes float {
+@keyframes god-float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
 }
 
-.float-donate-icon {
-    font-size: 1.8rem;
+.seal-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50%;
+    animation: seal-rotate 20s linear infinite;
 }
 
-.float-donate-text {
-    font-weight: 600;
-    font-size: 0.9rem;
-    white-space: nowrap;
+.seal-char {
+    position: absolute;
+    font-size: 1.2rem;
+    color: rgba(212, 175, 55, 0.6);
+    font-family: 'Noto Serif SC', serif;
+}
+
+.seal-char:nth-child(1) { top: 10px; left: 50%; transform: translateX(-50%); }
+.seal-char:nth-child(2) { bottom: 10px; left: 50%; transform: translateX(-50%); }
+.seal-char:nth-child(3) { left: 10px; top: 50%; transform: translateY(-50%); }
+
+@keyframes seal-rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.splash-title {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.splash-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    color: var(--color-text-dim);
+    letter-spacing: 0.2em;
+    margin-bottom: 2rem;
+}
+
+.mystical-loader {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+.loader-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-top-color: var(--color-gold);
+    border-radius: 50%;
+    animation: loader-spin 1s linear infinite;
+}
+
+.loader-ring:nth-child(2) {
+    width: 80%;
+    height: 80%;
+    top: 10%;
+    left: 10%;
+    border-top-color: rgba(212, 175, 55, 0.6);
+    animation-duration: 1.5s;
+    animation-direction: reverse;
+}
+
+.loader-ring:nth-child(3) {
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 20%;
+    border-top-color: rgba(212, 175, 55, 0.3);
+    animation-duration: 2s;
+}
+
+@keyframes loader-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 /* ============================================
-   Buttons
+   Main Content
    ============================================ */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--spacing-xs);
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: var(--radius-md);
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    text-decoration: none;
-}
 
-.btn-large {
-    padding: 1rem 2.5rem;
-    font-size: 1.2rem;
-}
-
-.btn-big {
-    padding: 1.2rem 3rem;
-    font-size: 1.4rem;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    color: var(--color-gold);
-    box-shadow: 0 4px 12px rgba(201, 31, 55, 0.3);
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(201, 31, 55, 0.4);
-}
-
-.btn-secondary {
-    background: var(--color-white);
-    color: var(--color-primary);
-    border: 2px solid var(--color-primary);
-}
-
-.btn-secondary:hover {
-    background: var(--color-primary);
-    color: var(--color-gold);
-    transform: translateY(-2px);
-}
-
-.btn-donate {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-gold) 100%);
-    color: var(--color-white);
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(201, 31, 55, 0.3);
-}
-
-.btn-donate:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(201, 31, 55, 0.4);
-}
-
-.btn-share {
-    background: var(--color-white);
-    color: var(--color-primary);
-    border: 2px solid var(--color-primary);
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-}
-
-.btn-share:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--color-shadow);
-}
-
-.tiktok-btn {
-    background: #000000;
-    color: var(--color-white);
-    border-color: #000000;
-}
-
-.tiktok-btn:hover {
-    background: #333333;
-}
-
-.facebook-btn {
-    background: #1877F2;
-    color: var(--color-white);
-    border-color: #1877F2;
-}
-
-.facebook-btn:hover {
-    background: #166fe5;
+.main-content {
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
 }
 
 /* ============================================
    Header
    ============================================ */
+
 .header {
-    background: var(--color-white);
-    box-shadow: var(--shadow-sm);
-    padding: var(--spacing-md) 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
 }
 
-.header-content {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.logo {
+.header-logo {
     display: flex;
     align-items: center;
-    gap: var(--spacing-xs);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-primary);
+    gap: 0.75rem;
 }
 
 .logo-icon {
-    font-size: 1.8rem;
-}
-
-.language-switch {
-    display: flex;
-    gap: var(--spacing-xs);
-}
-
-.lang-btn {
-    padding: 0.4rem 0.8rem;
-    border: 1px solid var(--color-border);
-    background: var(--color-white);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    font-weight: 500;
-}
-
-.lang-btn:hover {
-    border-color: var(--color-primary);
-}
-
-.lang-btn.active {
-    background: var(--color-primary);
-    color: var(--color-gold);
-    border-color: var(--color-primary);
-}
-
-/* ============================================
-   More Features Section
-   ============================================ */
-.more-features-section {
-    padding: var(--spacing-lg) 0 var(--spacing-md);
-}
-
-.features-title {
-    text-align: center;
-    font-size: 1.8rem;
-    color: var(--color-text);
-    margin-bottom: var(--spacing-lg);
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-lg);
-}
-
-.feature-card {
-    background: var(--color-white);
-    padding: var(--spacing-lg);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    text-align: center;
-    transition: all var(--transition-normal);
-    border: 2px solid transparent;
-}
-
-.feature-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--color-gold);
-}
-
-.card-icon {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-sm);
-}
-
-.feature-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: var(--spacing-xs);
-    color: var(--color-text);
-}
-
-.feature-card p {
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-md);
-    font-size: 0.95rem;
-}
-
-/* ============================================
-   Modal
-   ============================================ */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-    padding: var(--spacing-md);
-    animation: fadeIn 0.2s ease;
-}
-
-.modal-content {
-    background: var(--color-white);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
-    max-width: 600px;
-    width: 100%;
-    position: relative;
-    animation: slideUp 0.3s ease;
-    max-height: 90vh;
-    overflow-y: auto;
-}
-
-.modal-content.modal-large {
-    max-width: 800px;
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.close-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
     font-size: 2rem;
-    cursor: pointer;
-    width: 32px;
-    height: 32px;
+}
+
+.logo-text {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-gold);
+    letter-spacing: 0.1em;
+}
+
+/* ============================================
+   Fortune Section
+   ============================================ */
+
+.fortune-section {
+    padding: 3rem 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.fortune-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Temple Gate */
+
+.temple-gate {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.gate-pillar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1.5rem 0.5rem;
+    background: linear-gradient(180deg, rgba(139, 0, 0, 0.8) 0%, rgba(100, 0, 0, 0.9) 100%);
+    border: 2px solid var(--color-gold);
+    border-radius: 4px;
+    min-height: 200px;
+}
+
+.pillar-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    letter-spacing: 0.5rem;
+}
+
+.gate-center {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-text-light);
-    transition: color var(--transition-fast);
-    line-height: 1;
+    padding: 1rem;
 }
 
-.close-btn:hover {
-    color: var(--color-primary);
-}
-
-.modal h2 {
-    margin-bottom: var(--spacing-md);
-    color: var(--color-primary);
-    padding-right: var(--spacing-lg);
-}
-
-/* ============================================
-   Fortune Result (Modal)
-   ============================================ */
-.fortune-result {
-    text-align: center;
-    padding: var(--spacing-lg);
-    background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-white) 100%);
-    border-radius: var(--radius-md);
-    border: 2px solid var(--color-gold);
-}
-
-.fortune-text {
-    font-size: 1.4rem;
-    line-height: 1.8;
-    color: var(--color-text);
-    margin-bottom: var(--spacing-md);
-    font-style: italic;
-}
-
-.fortune-author {
-    color: var(--color-gold);
-    font-weight: 600;
-    text-align: right;
-}
-
-/* ============================================
-   Luck Test
-   ============================================ */
-.test-question {
-    margin-bottom: var(--spacing-lg);
-    padding: var(--spacing-md);
-    background: var(--color-bg);
-    border-radius: var(--radius-md);
-}
-
-.test-question h4 {
-    margin-bottom: var(--spacing-md);
-    color: var(--color-text);
-    font-size: 1.1rem;
-}
-
-.test-options {
-    display: grid;
-    gap: var(--spacing-sm);
-}
-
-.test-option {
-    display: block;
-    padding: var(--spacing-sm);
-    background: var(--color-white);
-    border: 2px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-}
-
-.test-option:hover {
-    border-color: var(--color-primary);
-}
-
-.test-option input {
-    margin-right: var(--spacing-sm);
-}
-
-.test-option.selected {
-    background: var(--color-primary);
-    color: var(--color-white);
-    border-color: var(--color-primary);
-}
-
-.test-result {
-    text-align: center;
-    padding: var(--spacing-lg);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-gold) 100%);
-    color: var(--color-white);
-    border-radius: var(--radius-md);
-}
-
-.test-result h3 {
-    margin-bottom: var(--spacing-md);
-    font-size: 1.5rem;
-}
-
-#next-question-btn {
-    margin-top: var(--spacing-md);
-}
-
-/* ============================================
-   Wallpapers
-   ============================================ */
-.wallpaper-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: var(--spacing-md);
-}
-
-.wallpaper-item {
+.god-statue {
     position: relative;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    cursor: pointer;
-    aspect-ratio: 9/16;
-    background: var(--color-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.wallpaper-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--transition-normal);
+.statue-icon {
+    font-size: 5rem;
+    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.8));
+    animation: god-float 3s ease-in-out infinite;
 }
 
-.wallpaper-item:hover img {
-    transform: scale(1.05);
-}
-
-.wallpaper-overlay {
+.divine-glow {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: var(--spacing-sm);
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    opacity: 0;
-    transition: opacity var(--transition-fast);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: aura-pulse 2s ease-in-out infinite;
 }
 
-.wallpaper-item:hover .wallpaper-overlay {
+/* Fortune Area */
+
+.fortune-area {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(180deg, rgba(42, 31, 31, 0.8) 0%, rgba(26, 15, 15, 0.9) 100%);
+    border: 2px solid var(--color-gold);
+    border-radius: 16px;
+    position: relative;
+}
+
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--color-gold);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.title-icon {
+    font-size: 1.2rem;
+    animation: sparkle 2s infinite;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: var(--color-text-dim);
+    margin-bottom: 2rem;
+}
+
+/* Draw Button */
+
+.draw-btn {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem 3rem;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border: 3px solid var(--color-gold);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.draw-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+}
+
+.draw-btn:active {
+    transform: translateY(-1px);
+}
+
+.btn-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.draw-btn:hover .btn-glow {
     opacity: 1;
 }
 
-.wallpaper-download {
-    width: 100%;
-    background: var(--color-primary);
+.btn-text {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-gold-light);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.btn-runes {
+    font-size: 0.9rem;
     color: var(--color-gold);
-    border: none;
-    padding: 0.5rem;
-    border-radius: var(--radius-sm);
+    opacity: 0.8;
+    letter-spacing: 0.3em;
+}
+
+/* Fortune Result */
+
+.fortune-result {
+    margin-top: 2rem;
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-scroll {
+    background: linear-gradient(180deg, rgba(139, 0, 0, 0.9) 0%, rgba(100, 0, 0, 0.95) 100%);
+    border: 3px solid var(--color-gold);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-decorations {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.scroll-decorations.bottom {
+    border-bottom: none;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.deco {
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    opacity: 0.6;
+}
+
+.scroll-content {
+    padding: 2rem 1rem;
+}
+
+.fortune-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.header-icon {
+    font-size: 1.5rem;
+}
+
+.header-text {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--color-gold);
+    letter-spacing: 0.2em;
+}
+
+.fortune-level {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1.5rem;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50px;
+    display: inline-flex;
+}
+
+.level-icon {
+    font-size: 1.5rem;
+}
+
+.level-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.fortune-text {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+}
+
+.fortune-runes {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.fortune-runes .rune {
+    font-size: 2rem;
+    color: var(--color-gold);
+    opacity: 0.8;
+}
+
+.blessing-text {
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--color-gold-light);
+}
+
+.fortune-seal {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.seal-mark {
+    display: inline-block;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    padding: 0.5rem 1.5rem;
+    border: 2px solid var(--color-gold);
+    border-radius: 4px;
+    background: rgba(212, 175, 55, 0.1);
+}
+
+/* Result Actions */
+
+.result-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: 2px solid var(--color-gold);
+    border-radius: 50px;
     cursor: pointer;
-    font-weight: 500;
+    transition: all 0.3s ease;
+    background: transparent;
+    color: var(--color-gold);
+}
+
+.action-btn:hover {
+    background: var(--color-gold);
+    color: var(--color-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+}
+
+.action-btn.primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-color: var(--color-gold);
+    color: var(--color-gold-light);
+}
+
+.action-btn.primary:hover {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    box-shadow: 0 5px 25px rgba(201, 31, 55, 0.5);
 }
 
 /* ============================================
    Donation Section
    ============================================ */
+
 .donation-section {
-    padding: var(--spacing-xl) 0;
-    background: var(--color-white);
-    margin: var(--spacing-xl) var(--spacing-md) var(--spacing-xl);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    border: 2px solid var(--color-gold);
+    padding: 4rem 1rem;
+    background: linear-gradient(180deg, transparent 0%, rgba(139, 0, 0, 0.2) 50%, transparent 100%);
+}
+
+.donation-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .donation-god {
     font-size: 4rem;
-    text-align: center;
-    margin-bottom: var(--spacing-sm);
-}
-
-.donation-content {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
+    margin-bottom: 1rem;
+    animation: god-float 3s ease-in-out infinite;
 }
 
 .donation-content h3 {
-    font-size: 2rem;
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-sm);
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
 }
 
 .donation-content p {
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-lg);
-    font-size: 1.1rem;
+    font-size: 1rem;
+    color: var(--color-text-dim);
+    margin-bottom: 2rem;
+    line-height: 1.6;
 }
 
 .donation-options {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 .donation-option {
-    border: 2px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: var(--spacing-md);
+    padding: 1.5rem 1rem;
+    background: rgba(212, 175, 55, 0.05);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all 0.3s ease;
     position: relative;
-    background: var(--color-white);
 }
 
-.donation-option:hover {
-    border-color: var(--color-primary);
-    transform: translateY(-2px);
-}
-
+.donation-option:hover,
 .donation-option.selected {
+    background: rgba(212, 175, 55, 0.15);
     border-color: var(--color-gold);
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(201, 31, 55, 0.05) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
 }
 
 .donation-option.popular {
-    border-color: var(--color-gold);
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, transparent 100%);
+    border-color: var(--color-primary);
 }
 
 .popular-badge {
     position: absolute;
-    top: -8px;
+    top: -10px;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--color-gold);
-    color: var(--color-white);
-    padding: 0.2rem 0.6rem;
-    border-radius: var(--radius-full);
+    background: var(--color-primary);
+    color: var(--color-gold-light);
     font-size: 0.7rem;
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
 }
 
 .donation-option .amount {
+    font-family: 'Cinzel', serif;
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--color-gold);
+    margin-bottom: 0.25rem;
 }
 
 .donation-option .label {
-    color: var(--color-text-light);
     font-size: 0.9rem;
+    color: var(--color-text-dim);
 }
 
 .payment-buttons {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
-    max-width: 400px;
-    margin: 0 auto var(--spacing-md);
+    gap: 1rem;
 }
 
-.stripe-btn {
-    width: 100%;
+#paypal-button-container {
+    min-height: 45px;
 }
 
 .donation-note {
-    font-size: 0.9rem;
-    color: var(--color-text-light);
+    font-size: 0.85rem;
+    color: var(--color-text-dim);
+    margin-top: 1.5rem;
     font-style: italic;
-}
-
-/* ============================================
-   Unlocked Section
-   ============================================ */
-.unlocked-section {
-    padding: var(--spacing-xl) 0;
-    background: linear-gradient(135deg, rgba(201, 31, 55, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%);
-    margin: 0 var(--spacing-md) var(--spacing-xl);
-    border-radius: var(--radius-lg);
-    border: 2px dashed var(--color-gold);
-}
-
-.unlocked-content h3 {
-    text-align: center;
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-lg);
-    font-size: 1.5rem;
-}
-
-.unlocked-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--spacing-md);
-}
-
-.unlocked-item {
-    background: var(--color-white);
-    padding: var(--spacing-md);
-    border-radius: var(--radius-md);
-    text-align: center;
-}
-
-.unlocked-item h4 {
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-text);
-}
-
-/* ============================================
-   Share Section
-   ============================================ */
-.share-section {
-    padding: var(--spacing-xl) 0;
-    text-align: center;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, transparent 100%);
-    margin: 0 var(--spacing-md);
-    border-radius: var(--radius-lg);
-}
-
-.share-content h3 {
-    font-size: 1.8rem;
-    color: var(--color-text);
-    margin-bottom: var(--spacing-sm);
-}
-
-.share-content p {
-    color: var(--color-text-light);
-    margin-bottom: var(--spacing-lg);
-    font-size: 1.1rem;
-}
-
-.share-buttons {
-    display: flex;
-    justify-content: center;
-    gap: var(--spacing-md);
-    flex-wrap: wrap;
 }
 
 /* ============================================
    Footer
    ============================================ */
-.footer {
-    background: var(--color-text);
-    color: var(--color-white);
-    padding: var(--spacing-xl) 0;
-    margin-top: var(--spacing-xl);
-}
 
-.footer-content {
+.footer {
+    padding: 2rem 1rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
     text-align: center;
 }
 
 .footer-links {
     display: flex;
     justify-content: center;
-    gap: var(--spacing-lg);
+    gap: 2rem;
+    margin-bottom: 1rem;
     flex-wrap: wrap;
-    margin-bottom: var(--spacing-md);
 }
 
 .footer-links a {
-    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    color: var(--color-text-dim);
     text-decoration: none;
-    transition: color var(--transition-fast);
+    transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
@@ -1164,175 +779,116 @@ body {
 }
 
 .copyright {
-    margin-bottom: var(--spacing-sm);
-    opacity: 0.7;
+    font-size: 0.85rem;
+    color: var(--color-text-dim);
+    margin-bottom: 0.5rem;
 }
 
 .disclaimer-text {
-    font-size: 0.85rem;
-    opacity: 0.6;
-    max-width: 800px;
+    font-size: 0.8rem;
+    color: rgba(184, 160, 144, 0.6);
+    max-width: 600px;
     margin: 0 auto;
 }
 
 /* ============================================
    Toast Notification
    ============================================ */
+
 .toast {
     position: fixed;
-    bottom: 20px;
+    bottom: 2rem;
     left: 50%;
-    transform: translateX(-50%);
-    background: var(--color-text);
-    color: var(--color-white);
+    transform: translateX(-50%) translateY(0);
+    background: rgba(42, 31, 31, 0.95);
+    border: 2px solid var(--color-gold);
+    border-radius: 50px;
     padding: 1rem 2rem;
-    border-radius: var(--radius-full);
-    z-index: 3000;
-    animation: slideUp 0.3s ease;
-    box-shadow: var(--shadow-lg);
+    font-size: 0.95rem;
+    color: var(--color-gold-light);
+    text-align: center;
+    z-index: 10000;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
 }
 
 .toast.hidden {
-    display: none;
-}
-
-/* ============================================
-   Static Pages (Privacy, Terms, Disclaimer)
-   ============================================ */
-.page-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: var(--spacing-xl) var(--spacing-md);
-    background: var(--color-white);
-    min-height: calc(100vh - 180px);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    margin: var(--spacing-xl) auto;
-}
-
-.page-container h1 {
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-lg);
-    font-size: 2rem;
-}
-
-.page-container h2 {
-    color: var(--color-text);
-    margin: var(--spacing-lg) 0 var(--spacing-sm);
-    font-size: 1.4rem;
-}
-
-.page-container p {
-    margin-bottom: var(--spacing-md);
-    color: var(--color-text-light);
-    line-height: 1.8;
-}
-
-.page-container ul {
-    margin-left: var(--spacing-lg);
-    margin-bottom: var(--spacing-md);
-}
-
-.page-container li {
-    margin-bottom: var(--spacing-xs);
-    color: var(--color-text-light);
-    line-height: 1.6;
-}
-
-.back-link {
-    display: inline-block;
-    margin-bottom: var(--spacing-lg);
-    color: var(--color-primary);
-    text-decoration: none;
-}
-
-.back-link:hover {
-    text-decoration: underline;
+    transform: translateX(-50%) translateY(100px);
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* ============================================
    Responsive Design
    ============================================ */
+
 @media (max-width: 768px) {
-    .splash-title-main {
-        font-size: 3rem;
-        letter-spacing: 0.1em;
+    .splash-title {
+        font-size: 2rem;
+        letter-spacing: 0.2em;
     }
     
-    .splash-title-sub {
-        font-size: 1.3rem;
+    .splash-subtitle {
+        font-size: 1rem;
     }
     
-    .daily-fortune-card {
-        padding: var(--spacing-md);
+    .temple-gate {
+        flex-direction: column;
+        align-items: center;
     }
     
-    .fortune-title {
-        font-size: 1.8rem;
+    .gate-pillar {
+        flex-direction: row;
+        min-height: auto;
+        padding: 0.5rem 1.5rem;
+        gap: 1rem;
     }
     
-    .fortune-scroll-text {
+    .pillar-text {
+        writing-mode: horizontal-tb;
+        font-size: 1.2rem;
+    }
+    
+    .section-title {
         font-size: 1.4rem;
-        line-height: 2;
     }
     
-    .features-grid {
+    .fortune-text {
+        font-size: 1.1rem;
+    }
+    
+    .donation-options {
         grid-template-columns: 1fr;
     }
     
-    .more-features-section {
-        padding: var(--spacing-md) 0;
-    }
-    
-    .donation-section,
-    .unlocked-section {
-        margin-left: var(--spacing-sm);
-        margin-right: var(--spacing-sm);
-        padding: var(--spacing-md) 0;
-    }
-    
-    .header-content {
+    .result-actions {
         flex-direction: column;
-        gap: var(--spacing-sm);
     }
     
-    .modal-content {
-        padding: var(--spacing-md);
-    }
-    
-    .wallpaper-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-    
-    .float-donate-btn {
-        right: 10px;
-        bottom: 80px;
-        padding: 0.6rem 0.9rem;
-    }
-    
-    .float-donate-text {
-        display: none;
+    .action-btn {
+        width: 100%;
+        justify-content: center;
     }
 }
 
 @media (max-width: 480px) {
-    .container {
-        padding: 0 var(--spacing-sm);
+    .splash-title {
+        font-size: 1.6rem;
     }
     
-    .donation-options {
-        grid-template-columns: repeat(2, 1fr);
+    .draw-btn {
+        padding: 1.2rem 2rem;
     }
     
-    .share-buttons {
-        flex-direction: column;
+    .btn-text {
+        font-size: 1.1rem;
     }
     
-    .btn-share {
-        width: 100%;
+    .fortune-area {
+        padding: 1.5rem 1rem;
     }
     
-    .gold-ingot {
-        font-size: 2rem;
+    .result-scroll {
+        padding: 1.5rem 1rem;
     }
 }

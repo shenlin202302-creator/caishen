@@ -3,203 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucky God - Get Your Daily Fortune Attract Wealth & Prosperity</title>
-    <meta name="description" content="Open the door, receive the God of Wealth! Daily fortune, money attraction, prosperity. 100% free for everyone.">
-    <meta name="keywords" content="Lucky God, God of Wealth, Chinese Fortune, Daily Luck, Money Attraction, Prosperity, Get Rich">
-    <meta property="og:title" content="Lucky God - Good Fortune is Coming Your Way!">
-    <meta property="og:description" content="Open for your daily fortune! Attract money and prosperity. Free to receive.">
-    <meta property="og:type" content="website">
+    <title>Lucky God - Divine Fortune Blessings</title>
+    <meta name="description" content="Receive divine blessings from the God of Wealth. Draw your fortune and attract prosperity.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <!-- Add festive opening sound -->
-    <audio id="firecrackerAudio" preload="auto">
-        <source src="https://assets.mixkit.co/sfx/preview/mixkit-festival-fireworks-explosion-2762.mp3" type="audio/mpeg">
-    </audio>
 </head>
 <body>
-    <!-- Splash Screen - Epic God of Wealth Entry -->
-    <div id="splash-screen" class="splash-screen">
-        <div class="splash-bg"></div>
-        <div class="gold-ingots">
-            <span class="gold-ingot">🥡</span>
-            <span class="gold-ingot">💰</span>
-            <span class="gold-ingot">💎</span>
-            <span class="gold-ingot">🍀</span>
-            <span class="gold-ingot">🧧</span>
-            <span class="gold-ingot">🟡</span>
-            <span class="gold-ingot">🏆</span>
-            <span class="gold-ingot">💵</span>
-            <span class="gold-ingot">🧧</span>
+    <!-- Mystical Background Elements -->
+    <div class="mystical-bg">
+        <div class="floating-runes">
+            <span class="rune">☰</span>
+            <span class="rune">☱</span>
+            <span class="rune">☲</span>
+            <span class="rune">☳</span>
+            <span class="rune">☴</span>
+            <span class="rune">☵</span>
+            <span class="rune">☶</span>
+            <span class="rune">☷</span>
         </div>
-        <div class="splash-content">
-            <div class="god-main-image">
-                <span class="god-main-emoji">💰</span>
-                <div class="god-aura"></div>
-            </div>
-            <h1 class="splash-title-main">Lucky God</h1>
-            <h2 class="splash-title-sub">Good Fortune is Coming!</h2>
-            <p class="splash-text">Open the door, receive your daily luck</p>
-            <div class="loading-bar">
-                <div class="loading-progress"></div>
-            </div>
+        <div class="gold-particles">
+            <span class="particle">✦</span>
+            <span class="particle">✧</span>
+            <span class="particle">✦</span>
+            <span class="particle">✧</span>
+            <span class="particle">✦</span>
         </div>
     </div>
 
-    <!-- Main Content - One Click Fortune -->
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-god">
+            <div class="god-aura"></div>
+            <span class="god-icon">🧧</span>
+            <div class="seal-ring">
+                <span class="seal-char">財</span>
+                <span class="seal-char">神</span>
+                <span class="seal-char">到</span>
+            </div>
+        </div>
+        <h1 class="splash-title">Lucky God</h1>
+        <p class="splash-subtitle">Divine Blessings Await</p>
+        <div class="mystical-loader">
+            <div class="loader-ring"></div>
+            <div class="loader-ring"></div>
+            <div class="loader-ring"></div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
     <div id="main-content" class="main-content hidden">
-        <!-- Language switch removed - full English site -->
+        <!-- Header -->
         <header class="header">
-            <div class="container">
-                <div class="header-content">
-                    <!-- No language switch needed - full English -->
-                </div>
+            <div class="header-logo">
+                <span class="logo-icon">🧧</span>
+                <span class="logo-text">Lucky God</span>
             </div>
         </header>
 
-        <!-- Full first view for fortune drawing -->
-        <section class="daily-fortune-section fullscreen">
-            <div class="container">
-                <div class="daily-fortune-card big">
-                    <div class="fortune-main-title">
-                        <h1><span class="red-text">Today's Fortune</span></h1>
-                        <p>Click to draw your fortune and receive today's good luck</p>
+        <!-- Fortune Drawing Section -->
+        <section class="fortune-section">
+            <div class="fortune-container">
+                <div class="temple-gate">
+                    <div class="gate-pillar left">
+                        <span class="pillar-text">招</span>
+                        <span class="pillar-text">財</span>
+                        <span class="pillar-text">進</span>
+                        <span class="pillar-text">寶</span>
                     </div>
-                    <div id="daily-fortune-result" class="daily-fortune-result hidden">
-                        <div class="fortune-scroll">
-                            <div class="fortune-scroll-paper">
-                                <div id="daily-fortune-text" class="fortune-scroll-text big"></div>
-                                <div class="fortune-scroll-seal">财神</div>
+                    <div class="gate-center">
+                        <div class="god-statue">
+                            <span class="statue-icon">🧧</span>
+                            <div class="divine-glow"></div>
+                        </div>
+                    </div>
+                    <div class="gate-pillar right">
+                        <span class="pillar-text">財</span>
+                        <span class="pillar-text">源</span>
+                        <span class="pillar-text">廣</span>
+                        <span class="pillar-text">進</span>
+                    </div>
+                </div>
+
+                <div class="fortune-area">
+                    <h2 class="section-title">
+                        <span class="title-icon">✦</span>
+                        Receive Your Divine Blessing
+                        <span class="title-icon">✦</span>
+                    </h2>
+                    <p class="section-subtitle">The God of Wealth awaits. Draw your fortune and unlock prosperity.</p>
+                    
+                    <button id="draw-fortune-btn" class="draw-btn">
+                        <span class="btn-glow"></span>
+                        <span class="btn-text">🧧 Draw Your Fortune 🧧</span>
+                        <span class="btn-runes">☰ ☱ ☲ ☳</span>
+                    </button>
+
+                    <div id="fortune-result" class="fortune-result hidden">
+                        <div class="result-scroll">
+                            <div class="scroll-decorations">
+                                <span class="deco">☰</span>
+                                <span class="deco">☱</span>
+                                <span class="deco">☲</span>
+                                <span class="deco">☳</span>
+                            </div>
+                            <div class="scroll-content">
+                                <div class="fortune-header">
+                                    <span class="header-icon">🧧</span>
+                                    <span class="header-text">Divine Blessing</span>
+                                    <span class="header-icon">🧧</span>
+                                </div>
+                                <div class="fortune-level" id="fortune-level"></div>
+                                <div class="fortune-text" id="fortune-text"></div>
+                                <div class="fortune-seal">
+                                    <span class="seal-mark">財神印</span>
+                                </div>
+                            </div>
+                            <div class="scroll-decorations bottom">
+                                <span class="deco">☴</span>
+                                <span class="deco">☵</span>
+                                <span class="deco">☶</span>
+                                <span class="deco">☷</span>
                             </div>
                         </div>
-                    </div>
-                    <button id="draw-daily-fortune" class="btn btn-primary btn-large btn-fortune">
-                        <span class="btn-text">Draw Your Fortune 💰</span>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Floating donate button - appear after fortune drawn -->
-        <div id="float-donate-btn" class="float-donate-btn hidden">
-            <div class="float-donate-icon">🧧</div>
-            <div class="float-donate-text" data-lang-key="donate.floatTitle">Buy God a Tea</div>
-        </div>
-
-        <!-- More features section -->
-        <section class="more-features-section">
-            <div class="container">
-                <h3 class="features-title">More Fortune Fun</h3>
-                <div class="features-grid">
-                    <!-- Luck Test -->
-                    <div class="feature-card" id="test-card">
-                        <div class="card-icon">🎯</div>
-                        <h3 data-lang-key="test.title">Prosperity Test</h3>
-                        <p data-lang-key="test.desc">3 quick questions to test your luck today</p>
-                        <button class="btn btn-secondary" id="start-test-btn">
-                            <span data-lang-key="test.start">Start Test</span>
-                        </button>
-                    </div>
-
-                    <!-- Wallpapers -->
-                    <div class="feature-card" id="wallpaper-card">
-                        <div class="card-icon">🖼️</div>
-                        <h3 data-lang-key="wallpaper.title">Fortune Wallpapers</h3>
-                        <p data-lang-key="wallpaper.desc">Download HD Lucky God wallpapers</p>
-                        <button class="btn btn-secondary" id="browse-wallpapers-btn">
-                            <span data-lang-key="wallpaper.browse">Browse Wallpapers</span>
-                        </button>
-                    </div>
-
-                    <!-- Share -->
-                    <div class="feature-card" id="share-card">
-                        <div class="card-icon">📤</div>
-                        <h3 data-lang-key="share.title">Share Luck</h3>
-                        <p data-lang-key="share.desc">Share to friends and get extra luck</p>
-                        <button class="btn btn-secondary" id="share-btn">
-                            <span data-lang-key="share.share">Share Luck</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Donation Section -->
-        <section class="donation-section">
-            <div class="container">
-                <div class="donation-content">
-                    <div class="donation-god">🧧</div>
-                    <h3 data-lang-key="donate.title">If you received good luck today...</h3>
-                    <p data-lang-key="donate.desc">Would you like to buy the Lucky God a cup of tea? Every support keeps this service free for everyone.</p>
-                    <div class="donation-options">
-                        <div class="donation-option" data-amount="1.99">
-                            <div class="amount">$1.99</div>
-                            <div class="label" data-lang-key="donate.cup">One Cup</div>
+                        
+                        <div class="result-actions">
+                            <button id="draw-again-btn" class="action-btn secondary">
+                                <span>🔄 Draw Again</span>
+                            </button>
+                            <button id="share-fortune-btn" class="action-btn">
+                                <span>📤 Share Blessing</span>
+                            </button>
+                            <button id="donate-btn" class="action-btn primary">
+                                <span>🧧 Thank the God</span>
+                            </button>
                         </div>
-                        <div class="donation-option" data-amount="7.77">
-                            <div class="amount">$7.77</div>
-                            <div class="label" data-lang-key="donate.twoCups">Two Cups</div>
-                        </div>
-                        <div class="donation-option popular" data-amount="6.66">
-                            <div class="popular-badge" data-lang-key="donate.popular">Popular</div>
-                            <div class="amount">$6.66</div>
-                            <div class="label" data-lang-key="donate.teapot">Full Teapot</div>
-                        </div>
-                        <div class="donation-option" data-amount="8.88">
-                            <div class="amount">$8.88</div>
-                            <div class="label" data-lang-key="donate.bigTea">Big Feast</div>
-                        </div>
-                    </div>
-                    <div class="payment-buttons">
-                        <!-- PayPal Button -->
-                        <div id="paypal-button-container" class="payment-button"></div>
-                        <!-- Stripe Button -->
-                        <button id="stripe-button" class="btn btn-donate stripe-btn">
-                            <span data-lang-key="donate.payWithCard">Pay with Card (Stripe)</span>
-                        </button>
-                    </div>
-                    <p class="donation-note" data-lang-key="donate.note">No pressure at all. All main features are completely free.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Unlocked Content (after donation) -->
-        <section id="unlocked-section" class="unlocked-section hidden">
-            <div class="container">
-                <div class="unlocked-content">
-                    <h3 data-lang-key="unlocked.title">🎉 Thank You! Your Exclusive Content Unlocked</h3>
-                    <div class="unlocked-grid">
-                        <div class="unlocked-item">
-                            <h4 data-lang-key="unlocked.exclusive"> Exclusive Wallpaper</h4>
-                            <button class="btn btn-secondary" id="download-exclusive">Download</button>
-                        </div>
-                        <div class="unlocked-item">
-                            <h4 data-lang-key="unlocked.talisman">Electronic Lucky Talisman</h4>
-                            <button class="btn btn-secondary" id="download-talisman">Download</button>
-                        </div>
-                        <div class="unlocked-item">
-                            <h4 data-lang-key="unlocked.report">Annual Fortune Report</h4>
-                            <button class="btn btn-secondary" id="view-report">View</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Share Section -->
-        <section class="share-section">
-            <div class="container">
-                <div class="share-content">
-                    <h3 data-lang-key="share.shareTitle">Share Your Good Fortune</h3>
-                    <p data-lang-key="share.shareDesc">Share to TikTok or Facebook and get an <strong>extra free fortune draw</strong>!</p>
-                    <div class="share-buttons">
-                        <button class="btn btn-share tiktok-btn" id="share-tiktok">
-                            <span>📱 TikTok</span>
-                        </button>
-                        <button class="btn btn-share facebook-btn" id="share-facebook">
-                            <span>📘 Facebook</span>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -207,85 +146,26 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-links">
-                        <a href="pages/privacy.html" data-lang-key="footer.privacy">Privacy Policy</a>
-                        <a href="pages/terms.html" data-lang-key="footer.terms">Terms of Service</a>
-                        <a href="pages/disclaimer.html" data-lang-key="footer.disclaimer">Disclaimer</a>
-                    </div>
-                    <p class="copyright">© <span id="year"></span> Lucky God. All rights reserved.</p>
-                    <p class="disclaimer-text" data-lang-key="footer.disclaimerText">This website is for cultural entertainment purposes only. No forced consumption. All donations are voluntary.</p>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="pages/privacy.html">Privacy Policy</a>
+                    <a href="pages/terms.html">Terms of Service</a>
+                    <a href="pages/disclaimer.html">Disclaimer</a>
                 </div>
+                <p class="copyright">© 2025 Lucky God. All rights reserved.</p>
+                <p class="disclaimer-text">This website is for cultural entertainment purposes only. All donations are voluntary.</p>
             </div>
         </footer>
-    </div>
-
-    <!-- Modals -->
-    <!-- Test Modal -->
-    <div id="test-modal" class="modal hidden">
-        <div class="modal-content modal-large">
-            <span class="close-btn">&times;</span>
-            <h2 data-lang-key="test.luckTest">Prosperity Luck Test</h2>
-            <div id="test-container">
-                <!-- Questions loaded by JS -->
-            </div>
-            <div id="test-result" class="test-result hidden">
-                <h3 id="test-result-title"></h3>
-                <p id="test-result-text"></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Wallpapers Modal -->
-    <div id="wallpaper-modal" class="modal hidden">
-        <div class="modal-content modal-large">
-            <span class="close-btn">&times;</span>
-            <h2 data-lang-key="wallpaper.title">Fortune Wallpapers</h2>
-            <div class="wallpaper-grid" id="wallpaper-grid">
-                <!-- Wallpapers loaded by JS -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Google AdSense Bottom -->
-    <div id="google-ad-bottom" class="google-ad">
-        <!-- AdSense code will be inserted here -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-             data-ad-slot="XXXXXXXXXX"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
     </div>
 
     <!-- Toast Notification -->
     <div id="toast" class="toast hidden"></div>
 
     <!-- Scripts -->
-    <script src="js/translations.js"></script>
     <script src="js/fortune.js"></script>
-    <script src="js/test.js"></script>
-    <script src="js/wallpapers.js"></script>
     <script src="js/app.js"></script>
 
-    <!-- PayPal SDK - Supports Venmo QR pay -->
+    <!-- PayPal SDK -->
     <script src="https://www.paypal.com/sdk/js?client-id=ARuZPjuEDH5kjOYF_IPpK2MadyD_baQPfzmRpT9J_5jhz6i2Lyir2bn66I3uBsxZ0AjpkQJ31HQ2LxX0&currency=USD&enable-funding=venmo"></script>
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-    </script>
-
-    <!-- Stripe -->
-    <script src="https://js.stripe.com/v3/"></script>
 </body>
 </html>
