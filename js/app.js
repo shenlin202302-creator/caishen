@@ -11,6 +11,9 @@ let currentStep = 'preloader';
 let userName = '';
 let selectedAmount = 11;
 let currentTalisman = null;
+let friendName = '';
+let friendMessage = '';
+let isFriendOffering = false;
 
 // ============================================
 // Preloader - Eight Talismans Awakening
@@ -171,8 +174,34 @@ function drawRandomTalisman() {
     
     document.getElementById('talisman-number').textContent = `FU #${currentTalisman.number}`;
     document.getElementById('talisman-name').textContent = `"${currentTalisman.name}"`;
-    document.getElementById('meaning-text').textContent = currentTalisman.meaning;
+    
+    // Build full meaning with friend attribution if needed
+    let fullMeaning = currentTalisman.meaning;
+    
+    if (isFriendOffering && friendName) {
+        fullMeaning += `\n\n<div class="friend-attribution">
+            <p><em>This blessing was requested by <strong>${escapeHtml(userName)}</strong> for <strong>${escapeHtml(friendName)}</strong>.</em></p>`;
+        
+        if (friendMessage) {
+            fullMeaning += `<p class="friend-personal-message">"${escapeHtml(friendMessage)}"</p>`;
+        }
+        
+        fullMeaning += `<p><em>May the energy find them and bring great fortune. Thank you for your offering.</em></p>
+            </div>`;
+    } else if (isFriendOffering) {
+        // Friend name missing but still friend offering
+        fullMeaning += `\n\n<p><em>This blessing was requested with gratitude by a friend. May the energy find its target.</em></p>`;
+    }
+    
+    document.getElementById('meaning-text').innerHTML = fullMeaning;
     document.getElementById('fu-symbol').textContent = currentTalisman.symbol;
+}
+
+// Simple HTML escape for safety
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
 }
 
 // ============================================
@@ -228,22 +257,66 @@ function copyToClipboard(text) {
 // PayPal Integration
 // ============================================
 
+// Read friend offering information
+function readFriendInfo() {
+    const friendInput = document.getElementById('friend-name');
+    const messageInput = document.getElementById('friend-message');
+    
+    if (friendInput && friendInput.value.trim()) {
+        friendName = friendInput.value.trim();
+        isFriendOffering = true;
+        selectedAmount = 1; // $1 fixed price for friend incense
+    } else {
+        friendName = '';
+        isFriendOffering = false;
+    }
+    
+    if (messageInput && messageInput.value.trim()) {
+        friendMessage = messageInput.value.trim();
+    } else {
+        friendMessage = '';
+    }
+}
+
+// After friend offering payment, go to draw the friend's talisman
+function goToDrawFromDonation() {
+    document.getElementById('donation-section').classList.add('hidden');
+    document.getElementById('talisman-draw-section').classList.remove('hidden');
+    currentStep = 'draw';
+}
+
 function initPayPal() {
     if (typeof paypal !== 'undefined') {
         paypal.Buttons({
             createOrder: function(data, actions) {
+                // Read friend info before creating order
+                readFriendInfo();
+                
+                let description = `Offering to Cai Shen - ${userName || 'Guest'}`;
+                
+                if (isFriendOffering && friendName) {
+                    description = `Incense for ${friendName} - requested by ${userName || 'Guest'}`;
+                }
+                
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
                             value: selectedAmount.toFixed(2)
                         },
-                        description: `Offering to Cai Shen - ${userName || 'Guest'}`
+                        description: description
                     }]
                 });
             },
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
                     showToast(`🙏 Thank you for your offering, ${details.payer.name.givenName}! Great fortune is coming! 🧧`);
+                    
+                    // If this is an offering for a friend, go draw their talisman
+                    if (isFriendOffering) {
+                        setTimeout(() => {
+                            goToDrawFromDonation();
+                        }, 1500);
+                    }
                 });
             },
             onError: function(err) {
@@ -274,3 +347,54 @@ function showToast(message) {
         toast.classList.add('hidden');
     }, 3000);
 }
+
+// ============================================
+// Offering Amount Selection
+// ============================================
+
+document.addEventListener('click', function(e) {
+    // Handle offering option clicks
+    if (e.target.closest('.offering-option')) {
+        const option = e.target.closest('.offering-option');
+        const amount = option.dataset.amount;
+        
+        // Remove previous selection
+        document.querySelectorAll('.offering-option').forEach(opt => {
+            opt.classList.remove('selected');
+        });
+        
+        // Select this option
+        option.classList.add('selected');
+        
+        if (amount === 'custom') {
+            // For custom amount, show prompt
+            const custom = prompt('Enter your custom offering amount (USD):', '');
+            if (custom && !isNaN(parseFloat(custom)) && parseFloat(custom) > 0) {
+                selectedAmount = parseFloat(custom);
+                showToast(`Custom offering selected: $${selectedAmount.toFixed(2)}`);
+            }
+        } else {
+            selectedAmount = parseFloat(amount);
+            showToast(`Offering selected: $${selectedAmount.toFixed(2)}`);
+        }
+        
+        // If friend name is filled, it overrides to $1
+        const friendInput = document.getElementById('friend-name');
+        if (friendInput && friendInput.value.trim()) {
+            selectedAmount = 1;
+            showToast('Incense for a friend: $1 fixed price');
+        }
+    }
+});
+
+// Update amount when friend name is entered
+document.addEventListener('input', function(e) {
+    if (e.target.id === 'friend-name') {
+        if (e.target.value.trim()) {
+            selectedAmount = 1;
+            document.querySelectorAll('.offering-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+        }
+    }
+});
