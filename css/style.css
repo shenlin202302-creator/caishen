@@ -1258,6 +1258,191 @@ section.hidden {
 }
 
 /* ============================================
+   Share Modal
+   ============================================ */
+
+.share-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+}
+
+.share-modal.hidden {
+    display: none !important;
+}
+
+.share-modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.share-modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    background: var(--color-bg);
+    border: 3px solid var(--color-gold);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+}
+
+.share-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: rgba(212, 175, 55, 0.1);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.share-modal-header h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    color: var(--color-gold);
+    margin: 0;
+}
+
+.close-btn {
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    color: var(--color-text-dim);
+    font-size: 1.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    line-height: 1;
+    padding: 0;
+}
+
+.close-btn:hover {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--color-gold);
+}
+
+.share-modal-body {
+    padding: 1.5rem;
+}
+
+.share-modal-body p {
+    font-size: 0.95rem;
+    color: var(--color-text-dim);
+    margin-bottom: 1rem;
+}
+
+.share-url-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#share-url-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    font-family: 'Cormorant Garamond', serif;
+    outline: none;
+}
+
+.copy-btn {
+    padding: 0.75rem 1.25rem;
+    background: var(--color-gold);
+    border: none;
+    border-radius: 8px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    color: var(--color-bg);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.copy-btn:hover {
+    background: var(--color-gold-dark);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+}
+
+.share-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.share-btn.twitter {
+    background: #1DA1F2;
+}
+
+.share-btn.facebook {
+    background: #1877F2;
+}
+
+.share-btn.whatsapp {
+    background: #25D366;
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.share-note {
+    text-align: center;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.native-share-btn {
+    width: 100%;
+    padding: 0.85rem;
+    background: transparent;
+    border: 2px dashed var(--color-gold);
+    border-radius: 8px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    color: var(--color-gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.native-share-btn:hover {
+    background: rgba(212, 175, 55, 0.1);
+}
+
+/* ============================================
    Responsive Design
    ============================================ */
 

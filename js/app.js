@@ -214,24 +214,72 @@ function shareTalisman() {
         return;
     }
     
+    // Open custom share modal
+    openShareModal();
+}
+
+// ============================================
+// Share Modal
+// ============================================
+
+function openShareModal() {
+    const shareText = `🧧 My Fu Talisman from The Digital Temple of Cai Shen 🧧\n\nFU #${currentTalisman.number} — "${currentTalisman.name}"\n\n${currentTalisman.meaning}\n\nDraw your own talisman at:`;
+    const shareUrl = window.location.href;
+    const fullShareText = shareText + '\n' + shareUrl;
+    
+    // Set URL in input
+    document.getElementById('share-url-input').value = shareUrl;
+    
+    // Build social share links
+    const encodedText = encodeURIComponent(fullShareText);
+    const encodedUrl = encodeURIComponent(shareUrl);
+    
+    document.getElementById('share-twitter').href = 
+        `https://twitter.com/intent/tweet?text=${encodedText}`;
+    document.getElementById('share-facebook').href = 
+        `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+    document.getElementById('share-whatsapp').href = 
+        `https://wa.me/?text=${encodedText}`;
+    
+    // Show modal
+    document.getElementById('share-modal').classList.remove('hidden');
+}
+
+function closeShareModal() {
+    document.getElementById('share-modal').classList.add('hidden');
+}
+
+// Copy share URL to clipboard
+function copyShareUrl() {
+    const input = document.getElementById('share-url-input');
+    input.select();
+    navigator.clipboard.writeText(input.value).then(() => {
+        showToast('✨ Link copied! Paste it to share ✨');
+    }).catch(() => {
+        showToast('Unable to copy. Please copy manually.');
+    });
+}
+
+// Open native share from modal
+function openNativeShare() {
+    if (!navigator.share) {
+        showToast('Native share not supported on this browser.');
+        return;
+    }
+    
     const shareText = `🧧 My Fu Talisman from The Digital Temple of Cai Shen 🧧\n\nFU #${currentTalisman.number} — "${currentTalisman.name}"\n\n${currentTalisman.meaning}\n\nDraw your own talisman at:`;
     const shareUrl = window.location.href;
     
-    if (navigator.share) {
-        navigator.share({
-            title: 'My Cai Shen Fu Talisman',
-            text: shareText,
-            url: shareUrl
-        }).then(() => {
-            showToast('✨ Shared! Blessings multiplied! ✨');
-        }).catch((err) => {
-            // User canceled share, fallback to copy
-            copyToClipboard(shareText + '\n' + shareUrl);
-        });
-    } else {
-        // WebShare API not available, copy to clipboard
-        copyToClipboard(shareText + '\n' + shareUrl);
-    }
+    navigator.share({
+        title: 'My Cai Shen Fu Talisman',
+        text: shareText,
+        url: shareUrl
+    }).then(() => {
+        showToast('✨ Shared! Blessings multiplied! ✨');
+        closeShareModal();
+    }).catch((err) => {
+        // User canceled, do nothing
+    });
 }
 
 function goToDonation() {
@@ -396,5 +444,26 @@ document.addEventListener('input', function(e) {
                 opt.classList.remove('selected');
             });
         }
+    }
+});
+
+// ============================================
+// Share Modal Event Listeners
+// ============================================
+
+document.addEventListener('click', function(e) {
+    // Close modal when clicking backdrop
+    if (e.target.id === 'close-share-modal' || e.target.classList.contains('share-modal-backdrop')) {
+        closeShareModal();
+    }
+    
+    // Copy share URL button
+    if (e.target.id === 'copy-share-url') {
+        copyShareUrl();
+    }
+    
+    // Native share button
+    if (e.target.id === 'native-share') {
+        openNativeShare();
     }
 });

@@ -335,6 +335,37 @@
     <!-- Toast Notification -->
     <div id="toast" class="toast hidden"></div>
 
+    <!-- Share Modal -->
+    <div id="share-modal" class="share-modal hidden">
+        <div class="share-modal-backdrop"></div>
+        <div class="share-modal-content">
+            <div class="share-modal-header">
+                <h3>Share Your Fu Talisman</h3>
+                <button id="close-share-modal" class="close-btn">&times;</button>
+            </div>
+            <div class="share-modal-body">
+                <p>Share this link to let your friend draw their own talisman:</p>
+                <div class="share-url-container">
+                    <input type="text" id="share-url-input" readonly>
+                    <button id="copy-share-url" class="copy-btn">📋 Copy</button>
+                </div>
+                <div class="share-buttons">
+                    <a id="share-twitter" href="#" target="_blank" class="share-btn twitter">
+                        <span>𝕏 Twitter</span>
+                    </a>
+                    <a id="share-facebook" href="#" target="_blank" class="share-btn facebook">
+                        <span>Facebook</span>
+                    </a>
+                    <a id="share-whatsapp" href="#" target="_blank" class="share-btn whatsapp">
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
+                <p class="share-note">Or use the native share menu on your device:</p>
+                <button id="native-share" class="native-share-btn">Open Native Share</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="js/fortune.js"></script>
     <script src="js/app.js"></script>
