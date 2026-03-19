@@ -238,8 +238,8 @@ Each talisman is drawn just for you.`;
     const shareUrl = window.location.href;
     const fullShareText = shareText;
     
-    // Set URL in input
-    document.getElementById('share-url-input').value = shareUrl;
+    // Set full share text in input (for copying)
+    document.getElementById('share-url-input').value = fullShareText;
     
     // Build social share links - share the full text with call to action
     const encodedText = encodeURIComponent(fullShareText);
