@@ -399,3 +399,866 @@ section.hidden {
 .start-btn:hover .btn-arrow {
     transform: translateX(5px);
 }
+
+/* ============================================
+   Ritual Section - Bagua Compass
+   ============================================ */
+
+.ritual-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.bagua-compass {
+    width: 90vmin;
+    height: 90vmin;
+    max-width: 800px;
+    max-height: 800px;
+    position: relative;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50%;
+}
+
+.trigram {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    transition: all 0.5s ease;
+    opacity: 0.3;
+}
+
+.trigram.activated {
+    opacity: 1;
+    background: rgba(212, 175, 55, 0.15);
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+}
+
+.trigram[data-trigram="qian"] { top: 5%; left: 50%; transform: translateX(-50%); }
+.trigram[data-trigram="kun"] { bottom: 5%; left: 50%; transform: translateX(-50%); }
+.trigram[data-trigram="zhen"] { top: 50%; left: 5%; transform: translateY(-50%); }
+.trigram[data-trigram="xun"] { top: 30%; left: 15%; }
+.trigram[data-trigram="kan"] { top: 50%; right: 5%; transform: translateY(-50%); }
+.trigram[data-trigram="li"] { bottom: 30%; right: 15%; }
+.trigram[data-trigram="gen"] { top: 30%; right: 15%; }
+.trigram[data-trigram="dui"] { bottom: 30%; left: 15%; }
+
+.trigram-symbol {
+    font-size: 2.5rem;
+    color: var(--color-gold);
+}
+
+.trigram-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--color-gold);
+}
+
+.trigram-meaning {
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+    text-align: center;
+}
+
+.compass-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    padding: 2rem;
+    background: rgba(10, 10, 15, 0.8);
+    border: 2px solid var(--color-gold);
+    border-radius: 20px;
+    text-align: center;
+}
+
+.input-label {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.name-input {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    color: var(--color-text);
+    font-size: 1.1rem;
+    font-family: 'Cormorant Garamond', serif;
+    text-align: center;
+    margin-bottom: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.name-input:focus {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.activate-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.activate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+}
+
+.activate-btn .btn-icon {
+    font-size: 1.2rem;
+}
+
+.activate-btn .btn-text {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-bg);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* ============================================
+   Blessings Section
+   ============================================ */
+
+.blessings-section {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+}
+
+.blessings-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.blessing {
+    background: rgba(26, 15, 15, 0.8);
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.blessing.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.blessing-icon {
+    display: inline-block;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.blessing-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    color: var(--color-gold);
+    margin-bottom: 0.5rem;
+}
+
+.blessing-text {
+    font-size: 1.05rem;
+    color: var(--color-text);
+    line-height: 1.7;
+}
+
+.blessings-complete {
+    text-align: center;
+    padding: 3rem 2rem;
+    opacity: 0;
+    animation: fadeIn 1s ease 12s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.complete-text {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    margin-bottom: 2rem;
+}
+
+.draw-talisman-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--color-red) 0%, var(--color-red-dark) 100%);
+    border: 2px solid var(--color-gold);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.draw-talisman-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+}
+
+.draw-talisman-btn .btn-icon {
+    font-size: 1.2rem;
+}
+
+.draw-talisman-btn .btn-text {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-gold-light);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* ============================================
+   Talisman Draw Section
+   ============================================ */
+
+.talisman-draw-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.draw-container {
+    text-align: center;
+}
+
+.bamboo-cylinder {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    margin: 0 auto 2rem;
+}
+
+.cylinder-body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #8B4513 0%, #5D2906 100%);
+    border: 3px solid #3E1F06;
+    border-radius: 20px 20px 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cylinder-pattern {
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5rem;
+}
+
+.cylinder-opening {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 30px;
+    background: #2C1805;
+    border-radius: 0 0 10px 10px;
+}
+
+.draw-sticks {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.stick {
+    position: absolute;
+    width: 8px;
+    height: 250px;
+    background: linear-gradient(90deg, #D2B48C 0%, #F5DEB3 50%, #D2B48C 100%);
+    border-radius: 4px;
+    bottom: 0;
+    transition: transform 1s ease;
+}
+
+.stick-1 { left: 40px; transform: rotate(-5deg); --rotate-start: -7deg; --rotate-end: -3deg; }
+.stick-2 { left: 65px; transform: rotate(-2deg); --rotate-start: -4deg; --rotate-end: 0deg; }
+.stick-3 { left: 90px; transform: rotate(0deg); --rotate-start: -2deg; --rotate-end: 2deg; }
+.stick-4 { left: 115px; transform: rotate(2deg); --rotate-start: 0deg; --rotate-end: 4deg; }
+.stick-5 { 
+    left: 140px; 
+    transform: rotate(5deg); 
+    --rotate-start: 3deg; --rotate-end: 7deg;
+    transition: transform 1.5s ease-out;
+}
+
+.bamboo-cylinder.shaking .stick-1 {
+    animation: shake-stick 0.1s infinite alternate;
+}
+.bamboo-cylinder.shaking .stick-2 {
+    animation: shake-stick 0.1s infinite alternate 0.02s;
+}
+.bamboo-cylinder.shaking .stick-3 {
+    animation: shake-stick 0.1s infinite alternate 0.04s;
+}
+.bamboo-cylinder.shaking .stick-4 {
+    animation: shake-stick 0.1s infinite alternate 0.06s;
+}
+.bamboo-cylinder.shaking .stick-5 {
+    animation: shake-stick 0.1s infinite alternate 0.08s;
+}
+
+@keyframes shake-stick {
+    from { transform: translateX(-2px) rotate(var(--rotate-start)); }
+    to { transform: translateX(2px) rotate(var(--rotate-end)); }
+}
+
+.stick-5.fallen {
+    transform: translate(80px, 120px) rotate(30deg) !important;
+}
+
+.shake-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--color-red) 0%, var(--color-red-dark) 100%);
+    border: 2px solid var(--color-gold);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.shake-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+}
+
+.shake-btn .btn-text {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-gold-light);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* ============================================
+   Talisman Result Section
+   ============================================ */
+
+.talisman-result-section {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-container {
+    max-width: 700px;
+    text-align: center;
+}
+
+.talisman-card {
+    background: linear-gradient(135deg, rgba(139, 0, 0, 0.8) 0%, rgba(100, 0, 0, 0.9) 100%);
+    border: 3px solid var(--color-gold);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.talisman-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    animation: card-glow 3s infinite ease-in-out;
+}
+
+@keyframes card-glow {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+.talisman-border {
+    position: relative;
+    z-index: 1;
+}
+
+.talisman-inner {
+    text-align: center;
+}
+
+.fu-symbol {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 5rem;
+    color: var(--color-gold);
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+    margin-bottom: 1rem;
+}
+
+.talisman-number {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--color-gold-light);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+}
+
+.talisman-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.talisman-meaning {
+    background: rgba(10, 10, 15, 0.5);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.meaning-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    font-style: italic;
+}
+
+.carry-text {
+    font-size: 0.95rem;
+    color: var(--color-text-dim);
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+.result-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: 2px solid var(--color-gold);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+    color: var(--color-gold);
+}
+
+.action-btn:hover {
+    background: var(--color-gold);
+    color: var(--color-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+}
+
+.action-btn.primary {
+    background: linear-gradient(135deg, var(--color-red) 0%, var(--color-red-dark) 100%);
+    border-color: var(--color-gold);
+    color: var(--color-gold-light);
+}
+
+.action-btn.primary:hover {
+    background: linear-gradient(135deg, var(--color-red-dark) 0%, var(--color-red) 100%);
+    box-shadow: 0 8px 30px rgba(201, 31, 55, 0.5);
+}
+
+/* ============================================
+   Donation Section
+   ============================================ */
+
+.donation-section {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donation-container {
+    max-width: 700px;
+    text-align: center;
+}
+
+.incense-burner {
+    position: relative;
+    width: 200px;
+    height: 100px;
+    margin: 0 auto 3rem;
+}
+
+.burner-body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #808080 0%, #505050 100%);
+    border: 3px solid #303030;
+    border-radius: 50% 50% 20% 20%;
+    position: relative;
+    overflow: visible;
+}
+
+.incense-stick {
+    position: absolute;
+    bottom: 80px;
+    width: 4px;
+    height: 80px;
+    background: linear-gradient(90deg, #8B4513 0%, #A0522D 50%, #8B4513 100%);
+    border-radius: 2px;
+}
+
+.incense-stick.stick-1 { left: 60px; transform: rotate(-3deg); }
+.incense-stick.stick-2 { left: 98px; transform: rotate(0deg); }
+.incense-stick.stick-3 { left: 136px; transform: rotate(3deg); }
+
+.smoke {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    right: 0;
+    height: 100px;
+}
+
+.smoke-particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: rgba(150, 150, 150, 0.3);
+    border-radius: 50%;
+    animation: smoke-rise 3s infinite ease-out;
+}
+
+.smoke-particle:nth-child(1) { left: 60px; animation-delay: 0s; }
+.smoke-particle:nth-child(2) { left: 98px; animation-delay: 0.5s; }
+.smoke-particle:nth-child(3) { left: 136px; animation-delay: 1s; }
+
+@keyframes smoke-rise {
+    0% { 
+        opacity: 0; 
+        transform: translateY(0) scale(0.5); 
+    }
+    20% { 
+        opacity: 0.5; 
+        transform: translateY(-20px) scale(1); 
+    }
+    100% { 
+        opacity: 0; 
+        transform: translateY(-80px) scale(2); 
+    }
+}
+
+.offering-text {
+    margin-bottom: 2rem;
+}
+
+.offering-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    margin-bottom: 0.5rem;
+}
+
+.offering-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-dim);
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.offering-description {
+    font-size: 1rem;
+    color: var(--color-text-dim);
+    line-height: 1.6;
+}
+
+.offering-box {
+    background: var(--color-red);
+    border: 3px solid var(--color-gold);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.box-decoration {
+    font-size: 1rem;
+    color: var(--color-gold);
+    letter-spacing: 0.5rem;
+    opacity: 0.5;
+    margin-bottom: 1rem;
+}
+
+.offering-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.offering-option {
+    padding: 1rem;
+    background: rgba(212, 175, 55, 0.05);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.offering-option:hover,
+.offering-option.selected {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--color-gold);
+    transform: translateY(-2px);
+}
+
+.offering-option.popular {
+    border-color: var(--color-gold);
+}
+
+.popular-tag {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-gold);
+    color: var(--color-bg);
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+}
+
+.option-amount {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    margin-bottom: 0.25rem;
+}
+
+.option-label {
+    font-size: 0.9rem;
+    color: var(--color-text-dim);
+}
+
+.friend-offering {
+    padding: 1rem;
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px dashed rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+}
+
+.friend-text {
+    font-size: 0.95rem;
+    color: var(--color-text-dim);
+}
+
+/* ============================================
+   Footer & Fu Explanation
+   ============================================ */
+
+.footer {
+    padding: 3rem 2rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    background: rgba(10, 10, 15, 0.8);
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.fu-explanation {
+    margin-bottom: 2rem;
+    text-align: left;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+}
+
+.explanation-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.explanation-text {
+    font-size: 1rem;
+    color: var(--color-text-dim);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    font-size: 0.9rem;
+    color: var(--color-text-dim);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--color-gold);
+}
+
+.copyright {
+    font-size: 0.85rem;
+    color: var(--color-text-dim);
+    margin-bottom: 0.5rem;
+}
+
+.disclaimer-text {
+    font-size: 0.8rem;
+    color: rgba(160, 160, 160, 0.6);
+}
+
+/* ============================================
+   Toast Notification
+   ============================================ */
+
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 10, 15, 0.95);
+    border: 2px solid var(--color-gold);
+    border-radius: 50px;
+    padding: 1rem 2rem;
+    font-size: 0.95rem;
+    color: var(--color-gold-light);
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+
+.toast.hidden {
+    transform: translateX(-50%) translateY(100px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+        letter-spacing: 0.15em;
+    }
+    
+    .bagua-compass {
+        width: 95vmin;
+        height: 95vmin;
+    }
+    
+    .compass-center {
+        width: 65%;
+        padding: 1.5rem;
+    }
+    
+    .trigram-symbol {
+        font-size: 1.5rem;
+    }
+    
+    .trigram-meaning {
+        display: none;
+    }
+    
+    .talisman-card {
+        padding: 2rem 1rem;
+    }
+    
+    .fu-symbol {
+        font-size: 4rem;
+    }
+    
+    .offering-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .result-actions {
+        flex-direction: column;
+    }
+    
+    .action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .compass-center {
+        width: 80%;
+        padding: 1rem;
+    }
+    
+    .hero-title {
+        font-size: 1.6rem;
+        letter-spacing: 0.1em;
+    }
+    
+    .input-label {
+        font-size: 0.9rem;
+    }
+}
