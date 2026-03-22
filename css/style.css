@@ -1,167 +1,4 @@
-/* ============================================
-   Talisman Result Section
-   ============================================ */
-
-.talisman-result-section {
-    min-height: 100vh;
-    padding: 4rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.result-container {
-    max-width: 700px;
-    text-align: center;
-}
-
-.talisman-card {
-    background: linear-gradient(135deg, rgba(139, 0, 0, 0.8) 0%, rgba(100, 0, 0, 0.9) 100%);
-    border: 3px solid var(--color-gold);
-    border-radius: 20px;
-    padding: 3rem 2rem;
-    margin-bottom: 2rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.talisman-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-    animation: card-glow 3s infinite ease-in-out;
-}
-
-@keyframes card-glow {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.1); }
-}
-
-.talisman-border {
-    position: relative;
-    z-index: 1;
-}
-
-.talisman-inner {
-    text-align: center;
-}
-
-.fu-symbol {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 5rem;
-    color: var(--color-gold);
-    text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
-    margin-bottom: 1rem;
-}
-
-.talisman-number {
-    font-family: 'Cinzel', serif;
-    font-size: 1rem;
-    color: var(--color-gold-light);
-    letter-spacing: 0.2em;
-    margin-bottom: 0.5rem;
-}
-
-.talisman-name {
-    font-family: 'Cinzel', serif;
-    font-size: 1.5rem;
-    color: var(--color-gold);
-    margin-bottom: 1.5rem;
-    font-style: italic;
-}
-
-.talisman-meaning {
-    background: rgba(10, 10, 15, 0.5);
-    border-radius: 12px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-}
-
-.meaning-text {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: var(--color-text);
-    font-style: italic;
-}
-
-.carry-text {
-    font-size: 0.95rem;
-    color: var(--color-text-dim);
-    margin-top: 1rem;
-    font-style: italic;
-}
-
-.result-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.action-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1.5rem;
-    font-family: 'Cinzel', serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    border: 2px solid var(--color-gold);
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background: transparent;
-    color: var(--color-gold);
-}
-
-.action-btn:hover {
-    background: var(--color-gold);
-    color: var(--color-bg);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
-}
-
-.action-btn.primary {
-    background: linear-gradient(135deg, var(--color-red) 0%, var(--color-red-dark) 100%);
-    border-color: var(--color-gold);
-    color: var(--color-gold-light);
-}
-
-.action-btn.primary:hover {
-    background: linear-gradient(135deg, var(--color-red-dark) 0%, var(--color-red) 100%);
-    box-shadow: 0 8px 30px rgba(201, 31, 55, 0.5);
-}
-
-/* ============================================
- 1. 打赏页面整体布局 (The Offering Chamber)
- ============================================ */
-
-.donation-section {
- min-height: 100vh;
- padding: 4rem 1.5rem;
- display: flex;
- flex-direction: column;
- align-items: center;
- background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
-}
-
-.donation-container {
- width: 100%;
- max-width: 600px;
- text-align: center;
-}
-
-/* --- 香坛动画 (The Incense Burner) --- */
-.incense-burner {
- position: relative;
- width: 160px;
- height: 80px;
+px; height: 80px;
  margin: 0 auto 4rem;
 }
 
@@ -380,7 +217,7 @@
 
 /* ============================================
    Footer & Fu Explanation
-   ============================================ */
+ ============================================ */
 
 .footer {
     padding: 3rem 2rem;
@@ -449,7 +286,7 @@
 
 /* ============================================
    Toast Notification
-   ============================================ */
+ ============================================ */
 
 .toast {
     position: fixed;
@@ -474,7 +311,7 @@
 
 /* ============================================
    Friend Attribution
-   ============================================ */
+ ============================================ */
 
 .friend-attribution {
     margin-top: 2rem;
@@ -498,7 +335,7 @@
 
 /* ============================================
    Share Modal
-   ============================================ */
+ ============================================ */
 
 .share-modal {
     position: fixed;
@@ -683,7 +520,7 @@
 
 /* ============================================
    Responsive Design
-   ============================================ */
+ ============================================ */
 
 @media (max-width: 768px) {
     .hero-title {
@@ -729,7 +566,7 @@
 
 /* ============================================
    Social Proof Marquee (新增)
-   ============================================ */
+ ============================================ */
 
 .social-proof-marquee {
     background: rgba(0, 0, 0, 0.4);
@@ -768,7 +605,7 @@
 
 /* ============================================
    Expiry Countdown (新增)
-   ============================================ */
+ ============================================ */
 
 .expiry-countdown {
     text-align: center;
@@ -789,7 +626,7 @@
 
 /* ============================================
    Download Button (新增)
-   ============================================ */
+ ============================================ */
 
 .download-btn-container {
     margin-top: 2rem;
