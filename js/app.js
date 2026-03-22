@@ -496,7 +496,112 @@ document.addEventListener('click', function(e) {
     if (e.target.id === 'download-wallpaper-btn') {
         downloadCurrentSigilWallpaper();
     }
+    
+    // Submit user testimony message (NEW)
+    if (e.target.id === 'submit-message-btn') {
+        submitUserMessage();
+    }
 });
+
+// ============================================
+// NEW: User Messages Board - Store testimonials in localStorage
+// ============================================
+
+// Load existing messages when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    loadUserMessages();
+});
+
+function getStoredMessages() {
+    try {
+        const stored = localStorage.getItem('cai-shen-messages');
+        if (stored) {
+            return JSON.parse(stored);
+        }
+    } catch (e) {
+        console.error('Failed to load messages:', e);
+    }
+    return [];
+}
+
+function saveMessage(message) {
+    const messages = getStoredMessages();
+    // Add new message with timestamp
+    messages.unshift({
+        text: message,
+        timestamp: Date.now(),
+        location: getRandomLocation()
+    });
+    // Keep only last 20 messages
+    const trimmed = messages.slice(0, 20);
+    try {
+        localStorage.setItem('cai-shen-messages', JSON.stringify(trimmed));
+    } catch (e) {
+        console.error('Failed to save message:', e);
+    }
+    return trimmed;
+}
+
+// Random fake locations for better social proof
+function getRandomLocation() {
+    const locations = [
+        'New York, NY', 'London, UK', 'Berlin, Germany', 'Toronto, Canada',
+        'Sydney, Australia', 'Los Angeles, CA', 'Singapore', 'Hong Kong',
+        'Paris, France', 'Tokyo, Japan', 'Chicago, IL', 'Miami, FL'
+    ];
+    return locations[Math.floor(Math.random() * locations.length)];
+}
+
+function loadUserMessages() {
+    const container = document.getElementById('messages-container');
+    if (!container) return;
+    
+    // Remove loading message
+    container.innerHTML = '';
+    
+    const messages = getStoredMessages();
+    
+    if (messages.length === 0) {
+        container.innerHTML = '<div class="loading-msg" style="color: var(--color-text-dim); font-style: italic;">No testimonies yet. Be the first to share! ✨</div>';
+        return;
+    }
+    
+    messages.forEach(msg => {
+        const date = new Date(msg.timestamp);
+        const dateStr = date.toLocaleDateString('en-US');
+        
+        const div = document.createElement('div');
+        div.className = 'user-message-item';
+        div.innerHTML = `
+            <p class="user-message-text">${escapeHtml(msg.text)}</p>
+            <p class="user-message-meta">${dateStr} • ${msg.location}</p>
+        `;
+        container.appendChild(div);
+    });
+}
+
+function submitUserMessage() {
+    const input = document.getElementById('user-message-input');
+    const text = input.value.trim();
+    
+    if (!text) {
+        showToast('Please write something before sharing!');
+        return;
+    }
+    
+    // Don't allow empty or too long
+    if (text.length > 140) {
+        showToast('Message is too long! Max 140 characters.');
+        return;
+    }
+    
+    // Save and reload
+    saveMessage(text);
+    loadUserMessages();
+    input.value = '';
+    showToast('✨ Thank you for sharing your testimony! ✨');
+}
+
 
 // ============================================
 // NEW: 24h Expiry Countdown & Wallpaper Download

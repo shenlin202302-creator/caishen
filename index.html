@@ -321,6 +321,24 @@
                         <input type="text" id="friend-message" class="friend-message-input" placeholder="Add a short blessing (optional)" maxlength="100">
                     </div>
                 </div>
+                <!-- 用户留言板 (新增) -->
+                <div class="user-messages" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px dashed rgba(212, 175, 55, 0.3);">
+                    <h4 style="font-family: 'Cinzel', serif; color: var(--color-gold); margin-bottom: 1rem;">Recent Messages from the Temple</h4>
+                    <div id="messages-container" style="max-height: 200px; overflow-y: auto; text-align: left;">
+                        <!-- Messages will be loaded here -->
+                        <div class="loading-msg" style="color: var(--color-text-dim); font-style: italic;">Loading recent testimonies...</div>
+                    </div>
+                    <div class="leave-message" style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+                        <input type="text" id="user-message-input" placeholder="Leave your testimony (optional after offering)" maxlength="140" 
+                            style="flex: 1; padding: 0.75rem; background: rgba(255,255,255,0.05); border: 2px solid rgba(212, 175, 55, 0.3); border-radius: 8px; color: var(--color-text); font-family: 'Cormorant Garamond', serif;">
+                        <button id="submit-message-btn" style="padding: 0.75rem 1rem; background: var(--color-gold); color: var(--color-bg); border: none; border-radius: 8px; font-family: 'Cinzel', serif; font-weight: 600; cursor: pointer;">
+                            Share
+                        </button>
+                    </div>
+                    <p style="font-size: 0.75rem; color: var(--color-text-dim); margin-top: 0.5rem; font-style: italic;">
+                        After leaving an offering, you can share your manifestation story to inspire others. ✨
+                    </p>
+                </div>
             </div>
         </section>
 

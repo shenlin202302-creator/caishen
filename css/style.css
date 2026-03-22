@@ -1612,6 +1612,51 @@ section.hidden {
     font-style: italic;
 }
 
+/* ============================================
+   User Messages Board (新增)
+   ============================================ */
+
+.user-messages .loading-msg {
+    color: var(--color-text-dim);
+    font-style: italic;
+    padding: 1rem;
+    text-align: center;
+}
+
+.user-message-item {
+    background: rgba(212, 175, 55, 0.05);
+    border-left: 3px solid var(--color-gold);
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+}
+
+.user-message-text {
+    color: var(--color-text);
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 0.25rem;
+}
+
+.user-message-meta {
+    color: var(--color-text-dim);
+    font-size: 0.75rem;
+}
+
+#messages-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+#messages-container::-webkit-scrollbar-track {
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 3px;
+}
+
+#messages-container::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.3);
+    border-radius: 3px;
+}
+
 @media (max-width: 480px) {
     .compass-center {
         width: 80%;
