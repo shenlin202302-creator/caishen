@@ -294,18 +294,18 @@
                     <div id="paypal-button-container"></div>
                 </div>
                 <div class="offering-options">
-                    <button class="offering-option" data-amount="0.99">
-                        <span class="option-amount">$0.99</span>
-                        <span class="option-label">One Stick</span>
-                    </button>
                     <button class="offering-option" data-amount="4.44">
                         <span class="option-amount">$4.44</span>
-                        <span class="option-label">Three Sticks</span>
+                        <span class="option-label">The Angelic Connection</span>
                     </button>
-                    <button class="offering-option popular" data-amount="7.77">
+                    <button class="offering-option" data-amount="8.88">
+                        <span class="option-amount">$8.88</span>
+                        <span class="option-label">The Infinite Abundance</span>
+                    </button>
+                    <button class="offering-option popular" data-amount="11.11">
                         <span class="popular-tag">Most Popular</span>
-                        <span class="option-amount">$7.77</span>
-                        <span class="option-label">Full Offering</span>
+                        <span class="option-amount">$11.11</span>
+                        <span class="option-label">The Universal Portal</span>
                     </button>
                     <button class="offering-option custom" data-amount="custom">
                         <span class="option-amount">Custom</span>
@@ -338,6 +338,154 @@
                     <p style="font-size: 0.75rem; color: var(--color-text-dim); margin-top: 0.5rem; font-style: italic;">
                         After leaving an offering, you can share your manifestation story to inspire others. ✨
                     </p>
+                </div>
+
+                <!-- ============================================
+                     The Gratitude Altar (UPGRADED)
+                     Energy Exchange & Gratitude Wall
+                 ============================================ -->
+                <div class="gratitude-altar" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(212, 175, 55, 0.2);">
+                    <div class="text-center mb-10">
+                        <h2 style="font-family: 'Cinzel', serif; color: var(--color-gold); margin-bottom: 1rem; letter-spacing: 0.3em; text-transform: uppercase;">
+                            The Gratitude Altar
+                        </h2>
+                        <div style="height: 1px; width: 6rem; background: rgba(212, 175, 55, 0.5); margin: 1rem auto 0;"></div>
+                    </div>
+
+                    <!-- Input Area -->
+                    <div class="altar-input mb-12">
+                        <div class="relative group">
+                            <textarea 
+                                id="gratitude-input"
+                                placeholder="Whisper your gratitude or intention to the Universe..."
+                                maxlength="140"
+                                style="width: 100%; background: rgba(0, 0, 0, 0.5); border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 1rem; padding: 1.5rem; font-size: 0.875rem; color: var(--color-gold-light);
+                                    placeholder-color: var(--color-text-dim); font-family: 'Cormorant Garamond', serif; outline: none; focus:border-color: rgba(212, 175, 55, 0.4); transition: all; min-height: 100px;"
+                                ></textarea>
+                            <button id="submit-gratitude-btn" style="
+                                position: absolute;
+                                bottom: 1rem;
+                                right: 1rem;
+                                padding: 0.5rem 1.5rem;
+                                background: rgba(212, 175, 55, 0.2);
+                                :hover {background: rgba(212, 175, 55, 0.4);};
+                                color: var(--color-gold);
+                                font-size: 0.625rem;
+                                text-transform: uppercase;
+                                letter-spacing: 0.2em;
+                                border-radius: 9999px;
+                                border: 1px solid rgba(212, 175, 55, 0.3);
+                                transition: all;
+                                cursor: pointer;
+                            ">
+                                Seal My Intention
+                            </button>
+                        </div>
+                        <p style="text-align: center; font-size: 0.625rem; color: var(--color-text-dim); margin-top: 0.75rem; font-style: italic;">
+                            "Your words anchor your vibration in the physical realm."
+                        </p>
+                    </div>
+
+                    <!-- Scrolling Testimonials Area -->
+                    <div class="relative h-[320px] overflow-hidden">
+                        <!-- Gradient fade top & bottom -->
+                        <div class="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-black to-transparent z-10"></div>
+                        <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-black to-transparent z-10"></div>
+
+                        <!-- Animated scrolling testimonials -->
+                        <div class="animate-slow-scroll flex flex-col gap-4">
+                            <!-- Pre-populated compliant testimonials -->
+                            <div class="gratitude-item p-5 bg-black/30 border border-amber-900/10 rounded-2xl hover:border-amber-500/20 transition-colors">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-amber-600 text-[10px] font-mono tracking-tighter uppercase">Elena from Madrid</span>
+                                    <span class="text-[9px] text-amber-900 border border-amber-900/30 px-2 py-0.5 rounded-full uppercase">#Alignment</span>
+                                </div>
+                                <p class="text-zinc-400 text-xs italic leading-relaxed font-light">
+                                    "Since setting this sigil, I've felt a profound clarity in my career path. The energy is undeniable."
+                                </p>
+                            </div>
+
+                            <div class="gratitude-item p-5 bg-black/30 border border-amber-900/10 rounded-2xl hover:border-amber-500/20 transition-colors">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-amber-600 text-[10px] font-mono tracking-tighter uppercase">Marcus from NYC</span>
+                                    <span class="text-[9px] text-amber-900 border border-amber-900/30 px-2 py-0.5 rounded-full uppercase">#Mindset</span>
+                                </div>
+                                <p class="text-zinc-400 text-xs italic leading-relaxed font-light">
+                                    "A beautiful daily reminder to stay focused on abundance. My morning routine feels complete now."
+                                </p>
+                            </div>
+
+                            <div class="gratitude-item p-5 bg-black/30 border border-amber-900/10 rounded-2xl hover:border-amber-500/20 transition-colors">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-amber-600 text-[10px] font-mono tracking-tighter uppercase">S. from Singapore</span>
+                                    <span class="text-[9px] text-amber-900 border border-amber-900/30 px-2 py-0.5 rounded-full uppercase">#Gratitude</span>
+                                </div>
+                                <p class="text-zinc-400 text-xs italic leading-relaxed font-light">
+                                    "The activation ritual is so grounding. It helped me release so much financial anxiety."
+                                </p>
+                            </div>
+
+                            <div class="gratitude-item p-5 bg-black/30 border border-amber-900/10 rounded-2xl hover:border-amber-500/20 transition-colors">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-amber-600 text-[10px] font-mono tracking-tighter uppercase">Chloe from London</span>
+                                    <span class="text-[9px] text-amber-900 border border-amber-900/30 px-2 py-0.5 rounded-full uppercase">#Focus</span>
+                                </div>
+                                <p class="text-zinc-400 text-xs italic leading-relaxed font-light">
+                                    "I've started noticing small synchronicities everywhere. This tool is a powerful anchor."
+                                </p>
+                            </div>
+
+                            <div class="gratitude-item p-5 bg-black/30 border border-amber-900/10 rounded-2xl hover:border-amber-500/20 transition-colors">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-amber-600 text-[10px] font-mono tracking-tighter uppercase">David from Austin</span>
+                                    <span class="text-[9px] text-amber-900 border border-amber-900/30 px-2 py-0.5 rounded-full uppercase">#HighVibe</span>
+                                </div>
+                                <p class="text-zinc-400 text-xs italic leading-relaxed font-light">
+                                    "Tipped as a gesture of appreciation for this wisdom. High-vibe energy only!"
+                                </p>
+                            </div>
+
+                            <!-- Duplicate for infinite scroll -->
+                            <div class="gratitude-item p-5 bg-black/30 border border-amber-900/10 rounded-2xl hover:border-amber-500/20 transition-colors">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-amber-600 text-[10px] font-mono tracking-tighter uppercase">Elena from Madrid</span>
+                                    <span class="text-[9px] text-amber-900 border border-amber-900/30 px-2 py-0.5 rounded-full uppercase">#Alignment</span>
+                                </div>
+                                <p class="text-zinc-400 text-xs italic leading-relaxed font-light">
+                                    "Since setting this sigil, I've felt a profound clarity in my career path. The energy is undeniable."
+                                </p>
+                            </div>
+
+                            <div class="gratitude-item p-5 bg-black/30 border border-amber-900/10 rounded-2xl hover:border-amber-500/20 transition-colors">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-amber-600 text-[10px] font-mono tracking-tighter uppercase">Marcus from NYC</span>
+                                    <span class="text-[9px] text-amber-900 border border-amber-900/30 px-2 py-0.5 rounded-full uppercase">#Mindset</span>
+                                </div>
+                                <p class="text-zinc-400 text-xs italic leading-relaxed font-light">
+                                    "A beautiful daily reminder to stay focused on abundance. My morning routine feels complete now."
+                                </p>
+                            </div>
+
+                            <div class="gratitude-item p-5 bg-black/30 border border-amber-900/10 rounded-2xl hover:border-amber-500/20 transition-colors">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-amber-600 text-[10px] font-mono tracking-tighter uppercase">S. from Singapore</span>
+                                    <span class="text-[9px] text-amber-900 border border-amber-900/30 px-2 py-0.5 rounded-full uppercase">#Gratitude</span>
+                                </div>
+                                <p class="text-zinc-400 text-xs italic leading-relaxed font-light">
+                                    "The activation ritual is so grounding. It helped me release so much financial anxiety."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Compliance Disclaimer -->
+                    <div class="mt-12 text-center opacity-30">
+                        <p style="font-size: 9px; color: var(--color-text-dim); text-transform: uppercase; letter-spacing: 0.2em; line-height: 2;">
+                            Disclaimer: This is a spiritual/intuitive tools platform. We do not guarantee financial outcomes.
+                            <br />
+                            Experience is personal and depends on individual intention.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>

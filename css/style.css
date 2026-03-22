@@ -1613,7 +1613,35 @@ section.hidden {
 }
 
 /* ============================================
-   User Messages Board (新增)
+   The Gratitude Altar (UPGRADED)
+   ============================================ */
+
+@keyframes slow-scroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.animate-slow-scroll {
+  animation: slow-scroll 45s linear infinite;
+}
+
+.animate-slow-scroll:hover {
+  animation-play-state: paused; /* mouse hover pauses for reading */
+}
+
+.gratitude-item {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  border-radius: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.gratitude-item:hover {
+  border-color: rgba(212, 175, 55, 0.2);
+}
+
+/* ============================================
+   User Messages Board (legacy kept for reference)
    ============================================ */
 
 .user-messages .loading-msg {

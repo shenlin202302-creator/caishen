@@ -504,12 +504,81 @@ document.addEventListener('click', function(e) {
 });
 
 // ============================================
-// NEW: User Messages Board - Store testimonials in localStorage
+// The Gratitude Altar - Submit Intention
+// ============================================
+
+document.addEventListener('click', function(e) {
+    if (e.target.id === 'submit-gratitude-btn') {
+        submitGratitude();
+    }
+});
+
+function submitGratitude() {
+    const textarea = document.getElementById('gratitude-input');
+    const text = textarea.value.trim();
+    
+    if (!text) {
+        showToast('Please whisper your intention before sealing!');
+        return;
+    }
+    
+    if (text.length > 140) {
+        showToast('Intention is too long! Max 140 characters.');
+        return;
+    }
+    
+    // Store in localStorage
+    try {
+        const existing = getGratitudeMessages();
+        existing.unshift({
+            text: text,
+            timestamp: Date.now(),
+            location: getRandomLocation()
+        });
+        // Keep last 20
+        const trimmed = existing.slice(0, 20);
+        localStorage.setItem('cai-shen-gratitude', JSON.stringify(trimmed));
+        textarea.value = '';
+        showToast('✨ Your intention is sealed in the altar ✨');
+    } catch (e) {
+        console.error('Failed to save:', e);
+        showToast('Failed to seal intention. Please try again.');
+    }
+}
+
+function getGratitudeMessages() {
+    try {
+        const stored = localStorage.getItem('cai-shen-gratitude');
+        if (stored) {
+            return JSON.parse(stored);
+        }
+    } catch (e) {
+        console.error('Failed to load gratitude:', e);
+    }
+    return [];
+}
+
+function getRandomLocation() {
+    const firstInitial = [
+        'A.', 'B.', 'C.', 'D.', 'E.', 'J.', 'K.', 'L.', 'M.', 
+        'N.', 'P.', 'R.', 'S.', 'T.', 'W.'
+    ];
+    const cities = [
+        'Madrid', 'NYC', 'London', 'Berlin', 'Singapore', 'Tokyo', 
+        'Paris', 'Austin', 'Toronto', 'Sydney', 'Los Angeles', 'Chicago'
+    ];
+    const first = firstInitial[Math.floor(Math.random() * firstInitial.length)];
+    const city = cities[Math.floor(Math.random() * cities.length)];
+    return `${first} from ${city}`;
+}
+
+// ============================================
+// Legacy User Messages Board - kept for reference
 // ============================================
 
 // Load existing messages when page loads
 document.addEventListener('DOMContentLoaded', function() {
-    loadUserMessages();
+    // Already handled by static pre-populated scroll
 });
 
 function getStoredMessages() {
@@ -540,16 +609,6 @@ function saveMessage(message) {
         console.error('Failed to save message:', e);
     }
     return trimmed;
-}
-
-// Random fake locations for better social proof
-function getRandomLocation() {
-    const locations = [
-        'New York, NY', 'London, UK', 'Berlin, Germany', 'Toronto, Canada',
-        'Sydney, Australia', 'Los Angeles, CA', 'Singapore', 'Hong Kong',
-        'Paris, France', 'Tokyo, Japan', 'Chicago, IL', 'Miami, FL'
-    ];
-    return locations[Math.floor(Math.random() * locations.length)];
 }
 
 function loadUserMessages() {
