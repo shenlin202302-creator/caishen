@@ -930,6 +930,30 @@ section.hidden {
   text-align: center;
 }
 
+.offering-text {
+  margin-bottom: 2rem;
+}
+
+.offering-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.3rem;
+  color: var(--color-gold);
+  margin-bottom: 0.5rem;
+}
+
+.offering-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.offering-description {
+  font-size: 1rem;
+  color: var(--color-text-dim);
+  line-height: 1.7;
+}
+
 /* --- 香坛动画 (The Incense Burner) --- */
 .incense-burner {
   position: relative;
@@ -1033,6 +1057,39 @@ section.hidden {
   padding: 0.2rem 0.6rem;
   border-radius: 20px;
   white-space: nowrap;
+}
+
+/* --- 给朋友上香 --- */
+.friend-offering {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.friend-text {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.friend-name-input,
+.friend-message-input {
+  width: 100%;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  border-radius: 8px;
+  color: var(--color-text);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.friend-name-input:focus,
+.friend-message-input:focus {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
 }
 
 /* ============================================
