@@ -513,9 +513,15 @@ document.addEventListener('click', function(e) {
     }
 });
 
+document.addEventListener('keypress', function(e) {
+    if (e.target.id === 'gratitude-input' && e.key === 'Enter') {
+        submitGratitude();
+    }
+});
+
 function submitGratitude() {
-    const textarea = document.getElementById('gratitude-input');
-    const text = textarea.value.trim();
+    const input = document.getElementById('gratitude-input');
+    const text = input.value.trim();
     
     if (!text) {
         showToast('Please whisper your intention before sealing!');
@@ -538,7 +544,7 @@ function submitGratitude() {
         // Keep last 20
         const trimmed = existing.slice(0, 20);
         localStorage.setItem('cai-shen-gratitude', JSON.stringify(trimmed));
-        textarea.value = '';
+        input.value = '';
         showToast('✨ Your intention is sealed in the altar ✨');
     } catch (e) {
         console.error('Failed to save:', e);

@@ -1,778 +1,4 @@
 /* ============================================
-   The Digital Temple of Cai Shen
-   Taoist Talisman Theme Styles
-   ============================================ */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --color-bg: #0a0a0f;
-    --color-bg-light: #12121a;
-    --color-primary: #1a1a2e;
-    --color-gold: #D4AF37;
-    --color-gold-light: #F9E076;
-    --color-gold-dark: #B8941F;
-    --color-text: #E8E8E8;
-    --color-text-dim: #A0A0A0;
-    --color-red: #C41E3A;
-    --color-red-dark: #8B0000;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
-    background: var(--color-bg);
-    color: var(--color-text);
-    line-height: 1.6;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-.hidden {
-    display: none !important;
-}
-
-section.hidden {
-    display: none !important;
-}
-
-/* ============================================
-   Preloader - Eight Talismans Awakening
-   ============================================ */
-
-.preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: var(--color-bg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    overflow: hidden;
-}
-
-.preloader-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
-}
-
-.floating-talismans {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.talisman {
-    position: absolute;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 2rem;
-    color: rgba(212, 175, 55, 0.3);
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-    animation: talisman-pulse 3s infinite ease-in-out;
-}
-
-.talisman[data-direction="east"] { top: 50%; left: 10%; transform: translate(-50%, -50%); animation-delay: 0s; }
-.talisman[data-direction="southeast"] { top: 20%; left: 20%; animation-delay: 0.3s; }
-.talisman[data-direction="south"] { top: 10%; left: 50%; transform: translateX(-50%); animation-delay: 0.6s; }
-.talisman[data-direction="southwest"] { top: 20%; right: 20%; animation-delay: 0.9s; }
-.talisman[data-direction="west"] { top: 50%; right: 10%; transform: translate(50%, -50%); animation-delay: 1.2s; }
-.talisman[data-direction="northwest"] { bottom: 20%; right: 20%; animation-delay: 1.5s; }
-.talisman[data-direction="north"] { bottom: 10%; left: 50%; transform: translateX(-50%); animation-delay: 1.8s; }
-.talisman[data-direction="northeast"] { bottom: 20%; left: 20%; animation-delay: 2.1s; }
-
-@keyframes talisman-pulse {
-    0%, 100% { opacity: 0.2; transform: scale(0.95); }
-    50% { opacity: 0.5; transform: scale(1.05); }
-}
-
-.preloader-text {
-    text-align: center;
-    z-index: 10;
-}
-
-.awakening-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    color: var(--color-gold);
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-    animation: text-fade 2s ease-in-out;
-}
-
-.direction-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    color: var(--color-text-dim);
-    font-style: italic;
-    animation: text-fade 2s ease-in-out 0.5s both;
-}
-
-@keyframes text-fade {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.bagua-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
-    z-index: 5;
-}
-
-.bagua-svg {
-    width: 100%;
-    height: 100%;
-    animation: bagua-rotate 3s linear;
-}
-
-@keyframes bagua-rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(1080deg); }
-}
-
-/* ============================================
-   Main Content & Header
-   ============================================ */
-
-.main-content {
-    position: relative;
-}
-
-.header {
-    padding: 1.5rem 2rem;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-}
-
-.header-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.logo-icon {
-    font-size: 1.5rem;
-    color: var(--color-gold);
-}
-
-.logo-text {
-    font-family: 'Cinzel', serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--color-gold);
-    letter-spacing: 0.2em;
-}
-
-/* ============================================
-   Hero Section
-   ============================================ */
-
-.hero-section {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    padding: 6rem 2rem;
-}
-
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(ellipse at 20% 80%, rgba(88, 28, 135, 0.4) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(139, 69, 19, 0.3) 0%, transparent 50%),
-        radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-    pointer-events: none;
-}
-
-.energy-flows {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-}
-
-.flow {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    opacity: 0.3;
-    transition: opacity 0.3s ease;
-}
-
-.flow:hover {
-    opacity: 0.8;
-}
-
-.flow-label {
-    font-family: 'Cinzel', serif;
-    font-size: 0.7rem;
-    color: var(--color-gold);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    white-space: nowrap;
-}
-
-.flow[data-direction="east"] { top: 50%; left: 0; transform: translateY(-50%); }
-.flow[data-direction="southeast"] { top: 70%; left: 10%; }
-.flow[data-direction="south"] { top: auto; bottom: 0; left: 50%; transform: translateX(-50%); }
-.flow[data-direction="southwest"] { top: 70%; right: 10%; }
-.flow[data-direction="west"] { top: 50%; right: 0; transform: translateY(-50%); }
-.flow[data-direction="northwest"] { top: 20%; right: 10%; }
-.flow[data-direction="north"] { top: 0; left: 50%; transform: translateX(-50%); }
-.flow[data-direction="northeast"] { top: 20%; left: 10%; }
-
-.hero-center {
-    text-align: center;
-    z-index: 10;
-    max-width: 800px;
-}
-
-.god-figure {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 2rem;
-}
-
-.god-aura {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 150px;
-    height: 150px;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: aura-pulse 3s ease-in-out infinite;
-}
-
-@keyframes aura-pulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
-}
-
-.god-icon {
-    font-size: 5rem;
-    display: block;
-    position: relative;
-    z-index: 1;
-    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5));
-}
-
-.floating-fu {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-}
-
-.fu-character {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 3rem;
-    color: var(--color-gold);
-    text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
-    animation: fu-burn 2s ease-in-out infinite;
-}
-
-@keyframes fu-burn {
-    0%, 100% { opacity: 0.8; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.1); }
-}
-
-.hero-title {
-    font-family: 'Cinzel', serif;
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--color-gold);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
-}
-
-.hero-subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    color: var(--color-text-dim);
-    font-style: italic;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.05em;
-}
-
-.hero-description {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    color: var(--color-text-dim);
-    line-height: 1.8;
-    max-width: 600px;
-    margin: 0 auto 2.5rem;
-}
-
-.start-btn {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1.25rem 2.5rem;
-    background: linear-gradient(135deg, var(--color-red) 0%, var(--color-red-dark) 100%);
-    border: 2px solid var(--color-gold);
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    overflow: hidden;
-}
-
-.start-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s ease;
-}
-
-.start-btn:hover::before {
-    left: 100%;
-}
-
-.start-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-}
-
-.btn-fu {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 1.5rem;
-    color: var(--color-gold);
-}
-
-.btn-text {
-    font-family: 'Cinzel', serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--color-gold-light);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-}
-
-.btn-arrow {
-    font-size: 1.2rem;
-    color: var(--color-gold);
-    transition: transform 0.3s ease;
-}
-
-.start-btn:hover .btn-arrow {
-    transform: translateX(5px);
-}
-
-/* ============================================
-   Ritual Section - Bagua Compass
-   ============================================ */
-
-.ritual-section {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    position: relative;
-}
-
-.bagua-compass {
-    width: 90vmin;
-    height: 90vmin;
-    max-width: 800px;
-    max-height: 800px;
-    position: relative;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
-    border: 2px solid rgba(212, 175, 55, 0.3);
-    border-radius: 50%;
-}
-
-.trigram {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-    padding: 0.5rem;
-    transition: all 0.5s ease;
-    opacity: 0.3;
-}
-
-.trigram.activated {
-    opacity: 1;
-    background: rgba(212, 175, 55, 0.15);
-    border-radius: 12px;
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
-}
-
-.trigram[data-trigram="qian"] { top: 5%; left: 50%; transform: translateX(-50%); }
-.trigram[data-trigram="kun"] { bottom: 5%; left: 50%; transform: translateX(-50%); }
-.trigram[data-trigram="zhen"] { top: 50%; left: 5%; transform: translateY(-50%); }
-.trigram[data-trigram="xun"] { top: 30%; left: 15%; }
-.trigram[data-trigram="kan"] { top: 50%; right: 5%; transform: translateY(-50%); }
-.trigram[data-trigram="li"] { bottom: 30%; right: 15%; }
-.trigram[data-trigram="gen"] { top: 30%; right: 15%; }
-.trigram[data-trigram="dui"] { bottom: 30%; left: 15%; }
-
-.trigram-symbol {
-    font-size: 2.5rem;
-    color: var(--color-gold);
-}
-
-.trigram-name {
-    font-family: 'Cinzel', serif;
-    font-size: 1.1rem;
-    color: var(--color-gold);
-}
-
-.trigram-meaning {
-    font-size: 0.8rem;
-    color: var(--color-text-dim);
-    text-align: center;
-}
-
-.compass-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    padding: 2rem;
-    background: rgba(10, 10, 15, 0.8);
-    border: 2px solid var(--color-gold);
-    border-radius: 20px;
-    text-align: center;
-}
-
-.input-label {
-    font-family: 'Cinzel', serif;
-    font-size: 1.1rem;
-    color: var(--color-gold);
-    margin-bottom: 1rem;
-    line-height: 1.5;
-}
-
-.name-input {
-    width: 100%;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(212, 175, 55, 0.3);
-    border-radius: 12px;
-    color: var(--color-text);
-    font-size: 1.1rem;
-    font-family: 'Cormorant Garamond', serif;
-    text-align: center;
-    margin-bottom: 1rem;
-    outline: none;
-    transition: border-color 0.3s ease;
-}
-
-.name-input:focus {
-    border-color: var(--color-gold);
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-}
-
-.activate-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.activate-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-}
-
-.activate-btn .btn-icon {
-    font-size: 1.2rem;
-}
-
-.activate-btn .btn-text {
-    font-family: 'Cinzel', serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--color-bg);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-}
-
-/* ============================================
-   Blessings Section
-   ============================================ */
-
-.blessings-section {
-    min-height: 100vh;
-    padding: 4rem 2rem;
-}
-
-.blessings-container {
-    max-width: 800px;
-    margin: 0 auto;
-    display: grid;
-    gap: 1.5rem;
-}
-
-.blessing {
-    background: rgba(26, 15, 15, 0.8);
-    border: 2px solid rgba(212, 175, 55, 0.2);
-    border-radius: 12px;
-    padding: 1.5rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease;
-}
-
-.blessing.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.blessing-icon {
-    display: inline-block;
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.blessing-title {
-    font-family: 'Cinzel', serif;
-    font-size: 1.3rem;
-    color: var(--color-gold);
-    margin-bottom: 0.5rem;
-}
-
-.blessing-text {
-    font-size: 1.05rem;
-    color: var(--color-text);
-    line-height: 1.7;
-}
-
-.blessings-complete {
-    text-align: center;
-    padding: 3rem 2rem;
-    opacity: 0;
-    animation: fadeIn 1s ease 12s forwards;
-}
-
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
-
-.complete-text {
-    font-family: 'Cinzel', serif;
-    font-size: 1.5rem;
-    color: var(--color-gold);
-    margin-bottom: 2rem;
-}
-
-.draw-talisman-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    background: linear-gradient(135deg, var(--color-red) 0%, var(--color-red-dark) 100%);
-    border: 2px solid var(--color-gold);
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.draw-talisman-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-}
-
-.draw-talisman-btn .btn-icon {
-    font-size: 1.2rem;
-}
-
-.draw-talisman-btn .btn-text {
-    font-family: 'Cinzel', serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--color-gold-light);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-}
-
-/* ============================================
-   Talisman Draw Section
-   ============================================ */
-
-.talisman-draw-section {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-}
-
-.draw-container {
-    text-align: center;
-}
-
-.bamboo-cylinder {
-    position: relative;
-    width: 200px;
-    height: 300px;
-    margin: 0 auto 2rem;
-}
-
-.cylinder-body {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #8B4513 0%, #5D2906 100%);
-    border: 3px solid #3E1F06;
-    border-radius: 20px 20px 10px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.cylinder-pattern {
-    font-size: 1.5rem;
-    color: rgba(0, 0, 0, 0.3);
-    letter-spacing: 0.5rem;
-}
-
-.cylinder-opening {
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 180px;
-    height: 30px;
-    background: #2C1805;
-    border-radius: 0 0 10px 10px;
-}
-
-.draw-sticks {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.stick {
-    position: absolute;
-    width: 8px;
-    height: 250px;
-    background: linear-gradient(90deg, #D2B48C 0%, #F5DEB3 50%, #D2B48C 100%);
-    border-radius: 4px;
-    bottom: 0;
-    transition: transform 1s ease;
-}
-
-.stick-1 { left: 40px; transform: rotate(-5deg); --rotate-start: -7deg; --rotate-end: -3deg; }
-.stick-2 { left: 65px; transform: rotate(-2deg); --rotate-start: -4deg; --rotate-end: 0deg; }
-.stick-3 { left: 90px; transform: rotate(0deg); --rotate-start: -2deg; --rotate-end: 2deg; }
-.stick-4 { left: 115px; transform: rotate(2deg); --rotate-start: 0deg; --rotate-end: 4deg; }
-.stick-5 { 
-    left: 140px; 
-    transform: rotate(5deg); 
-    --rotate-start: 3deg; --rotate-end: 7deg;
-    transition: transform 1.5s ease-out;
-}
-
-.bamboo-cylinder.shaking .stick-1 {
-    animation: shake-stick 0.1s infinite alternate;
-}
-.bamboo-cylinder.shaking .stick-2 {
-    animation: shake-stick 0.1s infinite alternate 0.02s;
-}
-.bamboo-cylinder.shaking .stick-3 {
-    animation: shake-stick 0.1s infinite alternate 0.04s;
-}
-.bamboo-cylinder.shaking .stick-4 {
-    animation: shake-stick 0.1s infinite alternate 0.06s;
-}
-.bamboo-cylinder.shaking .stick-5 {
-    animation: shake-stick 0.1s infinite alternate 0.08s;
-}
-
-@keyframes shake-stick {
-    from { transform: translateX(-2px) rotate(var(--rotate-start)); }
-    to { transform: translateX(2px) rotate(var(--rotate-end)); }
-}
-
-.stick-5.fallen {
-    transform: translate(80px, 120px) rotate(30deg) !important;
-}
-
-.shake-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    background: linear-gradient(135deg, var(--color-red) 0%, var(--color-red-dark) 100%);
-    border: 2px solid var(--color-gold);
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.shake-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-}
-
-.shake-btn .btn-text {
-    font-family: 'Cinzel', serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--color-gold-light);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-}
-
-/* ============================================
    Talisman Result Section
    ============================================ */
 
@@ -913,230 +139,243 @@ section.hidden {
 }
 
 /* ============================================
-   Donation Section
-   ============================================ */
+ 1. 打赏页面整体布局 (The Offering Chamber)
+ ============================================ */
 
 .donation-section {
-    min-height: 100vh;
-    padding: 4rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+ min-height: 100vh;
+ padding: 4rem 1.5rem;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
 }
 
 .donation-container {
-    max-width: 700px;
-    text-align: center;
+ width: 100%;
+ max-width: 600px;
+ text-align: center;
 }
 
+/* --- 香坛动画 (The Incense Burner) --- */
 .incense-burner {
-    position: relative;
-    width: 200px;
-    height: 100px;
-    margin: 0 auto 3rem;
+ position: relative;
+ width: 160px;
+ height: 80px;
+ margin: 0 auto 4rem;
 }
 
 .burner-body {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, #808080 0%, #505050 100%);
-    border: 3px solid #303030;
-    border-radius: 50% 50% 20% 20%;
-    position: relative;
-    overflow: visible;
+ width: 100%;
+ height: 100%;
+ background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
+ border: 2px solid rgba(212, 175, 55, 0.3);
+ border-radius: 0 0 40% 40%;
+ position: relative;
+ box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
 .incense-stick {
-    position: absolute;
-    bottom: 80px;
-    width: 4px;
-    height: 80px;
-    background: linear-gradient(90deg, #8B4513 0%, #A0522D 50%, #8B4513 100%);
-    border-radius: 2px;
+ position: absolute;
+ bottom: 60px;
+ width: 3px;
+ height: 70px;
+ background: #8B4513;
+ border-radius: 2px;
 }
+.incense-stick.stick-1 { left: 50px; transform: rotate(-5deg); }
+.incense-stick.stick-2 { left: 80px; transform: rotate(0deg); }
+.incense-stick.stick-3 { left: 110px; transform: rotate(5deg); }
 
-.incense-stick.stick-1 { left: 60px; transform: rotate(-3deg); }
-.incense-stick.stick-2 { left: 98px; transform: rotate(0deg); }
-.incense-stick.stick-3 { left: 136px; transform: rotate(3deg); }
-
-.smoke {
-    position: absolute;
-    top: -100px;
-    left: 0;
-    right: 0;
-    height: 100px;
-}
-
+/* 青烟动画 */
 .smoke-particle {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: rgba(150, 150, 150, 0.3);
-    border-radius: 50%;
-    animation: smoke-rise 3s infinite ease-out;
+ position: absolute;
+ width: 12px;
+ height: 12px;
+ background: rgba(200, 200, 200, 0.2);
+ filter: blur(4px);
+ border-radius: 50%;
+ animation: smoke-rise 4s infinite ease-out;
 }
-
-.smoke-particle:nth-child(1) { left: 60px; animation-delay: 0s; }
-.smoke-particle:nth-child(2) { left: 98px; animation-delay: 0.5s; }
-.smoke-particle:nth-child(3) { left: 136px; animation-delay: 1s; }
-
 @keyframes smoke-rise {
-    0% { 
-        opacity: 0; 
-        transform: translateY(0) scale(0.5); 
-    }
-    20% { 
-        opacity: 0.5; 
-        transform: translateY(-20px) scale(1); 
-    }
-    100% { 
-        opacity: 0; 
-        transform: translateY(-80px) scale(2); 
-    }
+ 0% { opacity: 0; transform: translateY(0) scale(1); }
+ 20% { opacity: 0.4; transform: translateY(-30px) scale(1.5); }
+ 100% { opacity: 0; transform: translateY(-120px) scale(4); }
 }
 
-.offering-text {
-    margin-bottom: 2rem;
-}
-
-.offering-title {
-    font-family: 'Cinzel', serif;
-    font-size: 1.5rem;
-    color: var(--color-gold);
-    margin-bottom: 0.5rem;
-}
-
-.offering-subtitle {
-    font-size: 1.1rem;
-    color: var(--color-text-dim);
-    margin-bottom: 1rem;
-    font-style: italic;
-}
-
-.offering-description {
-    font-size: 1rem;
-    color: var(--color-text-dim);
-    line-height: 1.6;
-}
-
-.offering-box {
-    background: var(--color-red);
-    border: 3px solid var(--color-gold);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.box-decoration {
-    font-size: 1rem;
-    color: var(--color-gold);
-    letter-spacing: 0.5rem;
-    opacity: 0.5;
-    margin-bottom: 1rem;
-}
-
+/* --- 价格选项 (The Angelic Numbers) --- */
 .offering-options {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+ display: grid;
+ grid-template-columns: repeat(3, 1fr); /* 三列横向排布 */
+ gap: 1rem;
+ margin: 2.5rem 0;
 }
 
 .offering-option {
-    padding: 1rem;
-    background: rgba(212, 175, 55, 0.05);
-    border: 2px solid rgba(212, 175, 55, 0.3);
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
+ padding: 1.5rem 0.5rem;
+ background: rgba(212, 175, 55, 0.03);
+ border: 1px solid rgba(212, 175, 55, 0.2);
+ border-radius: 1rem;
+ cursor: pointer;
+ transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+ position: relative;
 }
 
-.offering-option:hover,
-.offering-option.selected {
-    background: rgba(212, 175, 55, 0.15);
-    border-color: var(--color-gold);
-    transform: translateY(-2px);
-}
-
-.offering-option.popular {
-    border-color: var(--color-gold);
-}
-
-.popular-tag {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--color-gold);
-    color: var(--color-bg);
-    font-size: 0.6rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 0.25rem 0.75rem;
-    border-radius: 50px;
+.offering-option:hover, .offering-option.selected {
+ background: rgba(212, 175, 55, 0.1);
+ border-color: rgba(212, 175, 55, 0.6);
+ transform: translateY(-5px);
+ box-shadow: 0 10px 20px rgba(0,0,0,0.4);
 }
 
 .option-amount {
-    font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--color-gold);
-    margin-bottom: 0.25rem;
+ display: block;
+ font-family: 'Cinzel', serif;
+ font-size: 1.6rem;
+ font-weight: 700;
+ color: #fde68a;
+ margin-bottom: 0.25rem;
 }
 
 .option-label {
-    font-size: 0.9rem;
-    color: var(--color-text-dim);
+ font-size: 0.7rem;
+ color: #71717a;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
 }
 
-.friend-offering {
-    padding: 1rem;
-    background: rgba(212, 175, 55, 0.05);
-    border: 1px dashed rgba(212, 175, 55, 0.3);
-    border-radius: 12px;
+/* 特殊标记：最受欢迎 */
+.offering-option.popular {
+ border-color: rgba(212, 175, 55, 0.5);
+}
+.popular-tag {
+ position: absolute;
+ top: -10px;
+ left: 50%;
+ transform: translateX(-50%);
+ background: #d4af37;
+ color: #000;
+ font-size: 0.6rem;
+ font-weight: 800;
+ padding: 0.2rem 0.6rem;
+ border-radius: 20px;
+ white-space: nowrap;
 }
 
-.friend-offering-header {
-    margin-bottom: 1rem;
+/* ============================================
+ 2. 感恩祭坛 (The Gratitude Altar - Bottom)
+ ============================================ */
+
+.gratitude-altar-viewport {
+ position: relative;
+ height: 380px; /* 增加了一点高度确保视觉舒适 */
+ overflow: hidden;
+ margin-top: 4rem;
+ border-top: 1px solid rgba(212, 175, 55, 0.1);
+ /* 核心边缘虚化遮罩 */
+ -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+ mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
 }
 
-.friend-text {
-    font-size: 0.95rem;
-    color: var(--color-text-dim);
-    margin: 0;
+@keyframes slow-scroll {
+ 0% { transform: translateY(0); }
+ 100% { transform: translateY(-50%); }
 }
 
-.friend-input-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+.animate-slow-scroll {
+ display: flex;
+ flex-direction: column;
+ gap: 1.2rem;
+ padding: 2rem 0;
+ animation: slow-scroll 45s linear infinite;
 }
 
-.friend-name-input,
-.friend-message-input {
-    padding: 0.75rem 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(212, 175, 55, 0.3);
-    border-radius: 8px;
-    color: var(--color-text);
-    font-size: 0.95rem;
-    font-family: 'Cormorant Garamond', serif;
-    outline: none;
-    transition: border-color 0.3s ease;
+.animate-slow-scroll:hover {
+ animation-play-state: paused;
 }
 
-.friend-name-input:focus,
-.friend-message-input:focus {
-    border-color: var(--color-gold);
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+/* 留言卡片：增强了磨砂玻璃感 */
+.gratitude-item {
+ background: rgba(15, 15, 15, 0.5);
+ border: 1px solid rgba(212, 175, 55, 0.12);
+ border-radius: 1.25rem;
+ padding: 1.5rem;
+ backdrop-filter: blur(8px);
+ transition: all 0.3s ease;
 }
 
-.friend-name-input::placeholder,
-.friend-message-input::placeholder {
-    color: var(--color-text-dim);
-    opacity: 0.7;
+.gratitude-item:hover {
+ border-color: rgba(212, 175, 55, 0.4);
+ background: rgba(25, 25, 25, 0.7);
+ box-shadow: 0 12px 24px rgba(0,0,0,0.6);
+}
+
+.user-meta {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 0.75rem;
+}
+
+.user-name {
+ color: #fde68a;
+ font-size: 0.75rem;
+ font-weight: 600;
+ letter-spacing: 0.05em;
+}
+
+.tag {
+ font-size: 0.6rem;
+ color: rgba(212, 175, 55, 0.6);
+ border: 1px solid rgba(212, 175, 55, 0.2);
+ padding: 0.1rem 0.5rem;
+ border-radius: 1rem;
+}
+
+.content {
+ color: #d1d1d6;
+ font-size: 0.85rem;
+ line-height: 1.6;
+ font-style: italic;
+ font-weight: 300;
+}
+
+/* --- 输入意图区域 (Seal Intention) --- */
+.altar-input-wrapper {
+ margin-top: 2rem;
+ width: 100%;
+}
+
+.altar-input {
+ width: 100%;
+ background: rgba(255, 255, 255, 0.03);
+ border: 1px solid rgba(212, 175, 55, 0.15);
+ border-radius: 3rem;
+ padding: 0.9rem 1.5rem;
+ color: #fde68a;
+ font-size: 0.85rem;
+ text-align: center;
+ transition: all 0.3s ease;
+}
+
+.altar-input:focus {
+ outline: none;
+ background: rgba(255, 255, 255, 0.06);
+ border-color: rgba(212, 175, 55, 0.5);
+ box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+/* --- 响应式处理 --- */
+@media (max-width: 480px) {
+ .offering-options {
+ grid-template-columns: 1fr; /* 手机端改为垂直排列，点击更方便 */
+ }
+ .gratitude-altar-viewport {
+ height: 320px;
+ }
+ .option-amount {
+ font-size: 1.4rem;
+ }
 }
 
 /* ============================================
@@ -1478,10 +717,6 @@ section.hidden {
         font-size: 4rem;
     }
     
-    .offering-options {
-        grid-template-columns: 1fr;
-    }
-    
     .result-actions {
         flex-direction: column;
     }
@@ -1610,150 +845,4 @@ section.hidden {
     font-size: 0.75rem;
     color: var(--color-text-dim);
     font-style: italic;
-}
-
-/* ============================================
-   The Gratitude Altar (UPGRADED & POLISHED)
-   ============================================ */
-
-/* 1. 核心容器：必须限制高度并隐藏溢出，否则看不到滚动效果 */
-.gratitude-altar-viewport {
-  position: relative;
-  height: 350px; /* 建议高度，可根据首页布局调整 */
-  overflow: hidden;
-  margin: 2rem 0;
-  padding: 1rem 0;
-  background: rgba(0, 0, 0, 0.2); /* 低对比柔和背景，区分打赏区与祭坛区 */
-  border-radius: 1rem;
-  /* 关键：增加上下边缘羽化遮罩，营造能量场消散的神秘感 */
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-}
-
-@keyframes slow-scroll {
- 0% { transform: translateY(0); }
- 100% { transform: translateY(-50%); } /* 配合 HTML 中两组重复列表实现无缝 */
-}
-
-.animate-slow-scroll {
- display: flex;
- flex-direction: column;
- gap: 1rem;
- animation: slow-scroll 45s linear infinite;
-}
-
-.animate-slow-scroll:hover {
- animation-play-state: paused; /* 鼠标悬停暂停，方便用户阅读显化案例 */
-}
-
-/* 2. 留言卡片：增强赛博纹理与金色质感 */
-.gratitude-item {
- background: rgba(10, 10, 10, 0.4); /* 加深底色突出文字 */
- border: 1px solid rgba(212, 175, 55, 0.15); /* 稍微调高金色亮度 */
- border-radius: 1.25rem;
- padding: 1.25rem;
- transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
- position: relative;
- backdrop-filter: blur(8px); /* 更强磨砂质感，更有呼吸感 */
-}
-
-.gratitude-item:hover {
- border-color: rgba(212, 175, 55, 0.4);
- background: rgba(20, 20, 20, 0.6);
- transform: translateY(-2px);
- box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.1);
-}
-
-/* 3. 卡片内文字与标签细节优化 */
-.gratitude-item .user-meta {
- display: flex;
- justify-content: space-between;
- font-size: 0.7rem;
- color: rgba(212, 175, 55, 0.8);
- margin-bottom: 0.5rem;
- text-transform: uppercase;
- letter-spacing: 0.05em;
-}
-
-.gratitude-item .tag {
- font-size: 0.6rem;
- padding: 0.1rem 0.5rem;
- border-radius: 2rem;
- border: 1px solid rgba(212, 175, 55, 0.2);
- background: rgba(212, 175, 55, 0.05);
-}
-
-.gratitude-item .content {
- color: #e5e5e5;
- font-size: 0.85rem;
- line-height: 1.6;
- font-style: italic;
-}
-
-/* ============================================
-   User Messages Board (Legacy Refined)
-   ============================================ */
-
-.user-messages .loading-msg {
- color: rgba(212, 175, 55, 0.5);
- font-style: italic;
- padding: 1rem;
- text-align: center;
- font-size: 0.8rem;
-}
-
-.user-message-item {
- background: rgba(212, 175, 55, 0.03);
- border-left: 2px solid rgba(212, 175, 55, 0.5); /* 稍微调细，更显精致 */
- padding: 0.75rem 1rem;
- border-radius: 4px;
- margin-bottom: 0.75rem;
-}
-
-.user-message-text {
- color: #f4f4f5;
- font-size: 0.85rem;
- font-style: italic;
- margin-bottom: 0.25rem;
-}
-
-/* 自定义滚动条美化 */
-#messages-container::-webkit-scrollbar {
- width: 4px;
-}
-
-#messages-container::-webkit-scrollbar-track {
- background: transparent;
-}
-
-#messages-container::-webkit-scrollbar-thumb {
- background: rgba(212, 175, 55, 0.2);
- border-radius: 10px;
-}
-
-/* ============================================
-   Responsive Adjustments
-   ============================================ */
-
-@media (max-width: 480px) {
- .gratitude-altar-viewport {
-   height: 300px; /* 移动端高度略微缩小 */
- }
- 
- .hero-title {
-   font-size: 1.5rem;
-   letter-spacing: 0.05em;
- }
- 
- .gratitude-item {
-   padding: 1rem;
- }
- 
- .compass-center {
-   width: 80%;
-   padding: 1rem;
- }
- .input-label {
-   font-size: 0.9rem;
- }
 }
