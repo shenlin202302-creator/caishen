@@ -911,55 +911,50 @@ section.hidden {
     background: linear-gradient(135deg, var(--color-red-dark) 0%, var(--color-red) 100%);
     box-shadow: 0 8px 30px rgba(201, 31, 55, 0.5);
 }
-
 /* ============================================
  1. 打赏页面整体布局 (The Offering Chamber)
  ============================================ */
 
 .donation-section {
- min-height: 100vh;
- padding: 4rem 1.5rem;
- display: flex;
- flex-direction: column;
- align-items: center;
- background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+  min-height: 100vh;
+  padding: 4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
 }
 
 .donation-container {
- width: 100%;
- max-width: 600px;
- text-align: center;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
 }
 
 /* --- 香坛动画 (The Incense Burner) --- */
 .incense-burner {
- position: relative;
- width: 160px;
- height: 80px;
- margin: 0 auto 4rem;
-}
-
-.burner-body 80px;
- margin: 0 auto 4rem;
+  position: relative;
+  width: 160px;
+  height: 80px;
+  margin: 0 auto 4rem;
 }
 
 .burner-body {
- width: 100%;
- height: 100%;
- background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
- border: 2px solid rgba(212, 175, 55, 0.3);
- border-radius: 0 0 40% 40%;
- position: relative;
- box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 0 0 40% 40%;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
 .incense-stick {
- position: absolute;
- bottom: 60px;
- width: 3px;
- height: 70px;
- background: #8B4513;
- border-radius: 2px;
+  position: absolute;
+  bottom: 60px;
+  width: 3px;
+  height: 70px;
+  background: #8B4513;
+  border-radius: 2px;
 }
 .incense-stick.stick-1 { left: 50px; transform: rotate(-5deg); }
 .incense-stick.stick-2 { left: 80px; transform: rotate(0deg); }
@@ -967,193 +962,221 @@ section.hidden {
 
 /* 青烟动画 */
 .smoke-particle {
- position: absolute;
- width: 12px;
- height: 12px;
- background: rgba(200, 200, 200, 0.2);
- filter: blur(4px);
- border-radius: 50%;
- animation: smoke-rise 4s infinite ease-out;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: rgba(200, 200, 200, 0.2);
+  filter: blur(4px);
+  border-radius: 50%;
+  animation: smoke-rise 4s infinite ease-out;
 }
 @keyframes smoke-rise {
- 0% { opacity: 0; transform: translateY(0) scale(1); }
- 20% { opacity: 0.4; transform: translateY(-30px) scale(1.5); }
- 100% { opacity: 0; transform: translateY(-120px) scale(4); }
+  0% { opacity: 0; transform: translateY(0) scale(1); }
+  20% { opacity: 0.4; transform: translateY(-30px) scale(1.5); }
+  100% { opacity: 0; transform: translateY(-120px) scale(4); }
 }
 
 /* --- 价格选项 (The Angelic Numbers) --- */
 .offering-options {
- display: grid;
- grid-template-columns: repeat(3, 1fr); /* 三列横向排布 */
- gap: 1rem;
- margin: 2.5rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 三列横向排布 */
+  gap: 1rem;
+  margin: 2.5rem 0;
 }
 
 .offering-option {
- padding: 1.5rem 0.5rem;
- background: rgba(212, 175, 55, 0.03);
- border: 1px solid rgba(212, 175, 55, 0.2);
- border-radius: 1rem;
- cursor: pointer;
- transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
- position: relative;
+  padding: 1.5rem 0.5rem;
+  background: rgba(212, 175, 55, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
 }
 
 .offering-option:hover, .offering-option.selected {
- background: rgba(212, 175, 55, 0.1);
- border-color: rgba(212, 175, 55, 0.6);
- transform: translateY(-5px);
- box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  background: rgba(212, 175, 55, 0.1);
+  border-color: rgba(212, 175, 55, 0.6);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
 }
 
 .option-amount {
- display: block;
- font-family: 'Cinzel', serif;
- font-size: 1.6rem;
- font-weight: 700;
- color: #fde68a;
- margin-bottom: 0.25rem;
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fde68a;
+  margin-bottom: 0.25rem;
 }
 
 .option-label {
- font-size: 0.7rem;
- color: #71717a;
- text-transform: uppercase;
- letter-spacing: 0.05em;
+  font-size: 0.7rem;
+  color: #71717a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* 特殊标记：最受欢迎 */
 .offering-option.popular {
- border-color: rgba(212, 175, 55, 0.5);
+  border-color: rgba(212, 175, 55, 0.5);
 }
 .popular-tag {
- position: absolute;
- top: -10px;
- left: 50%;
- transform: translateX(-50%);
- background: #d4af37;
- color: #000;
- font-size: 0.6rem;
- font-weight: 800;
- padding: 0.2rem 0.6rem;
- border-radius: 20px;
- white-space: nowrap;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #d4af37;
+  color: #000;
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  white-space: nowrap;
 }
 
 /* ============================================
  2. 感恩祭坛 (The Gratitude Altar - Bottom)
  ============================================ */
 
-.gratitude-altar-viewport {
- position: relative;
- height: 380px; /* 增加了一点高度确保视觉舒适 */
- overflow: hidden;
- margin-top: 4rem;
- border-top: 1px solid rgba(212, 175, 55, 0.1);
- /* 核心边缘虚化遮罩 */
- -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
- mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+.gratitude-altar {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
 }
 
-@keyframes slow-scroll {
- 0% { transform: translateY(0); }
- 100% { transform: translateY(-50%); }
+.gratitude-altar h2 {
+  font-family: 'Cinzel', serif;
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
 }
 
-.animate-slow-scroll {
- display: flex;
- flex-direction: column;
- gap: 1.2rem;
- padding: 2rem 0;
- animation: slow-scroll 45s linear infinite;
+.text-center {
+  text-align: center;
 }
 
-.animate-slow-scroll:hover {
- animation-play-state: paused;
-}
-
-/* 留言卡片：增强了磨砂玻璃感 */
-.gratitude-item {
- background: rgba(15, 15, 15, 0.5);
- border: 1px solid rgba(212, 175, 55, 0.12);
- border-radius: 1.25rem;
- padding: 1.5rem;
- backdrop-filter: blur(8px);
- transition: all 0.3s ease;
-}
-
-.gratitude-item:hover {
- border-color: rgba(212, 175, 55, 0.4);
- background: rgba(25, 25, 25, 0.7);
- box-shadow: 0 12px 24px rgba(0,0,0,0.6);
-}
-
-.user-meta {
- display: flex;
- justify-content: space-between;
- align-items: center;
- margin-bottom: 0.75rem;
-}
-
-.user-name {
- color: #fde68a;
- font-size: 0.75rem;
- font-weight: 600;
- letter-spacing: 0.05em;
-}
-
-.tag {
- font-size: 0.6rem;
- color: rgba(212, 175, 55, 0.6);
- border: 1px solid rgba(212, 175, 55, 0.2);
- padding: 0.1rem 0.5rem;
- border-radius: 1rem;
-}
-
-.content {
- color: #d1d1d6;
- font-size: 0.85rem;
- line-height: 1.6;
- font-style: italic;
- font-weight: 300;
+.mb-10 {
+  margin-bottom: 2.5rem;
 }
 
 /* --- 输入意图区域 (Seal Intention) --- */
 .altar-input-wrapper {
- margin-top: 2rem;
- width: 100%;
+  margin-top: 2rem;
+  width: 100%;
 }
 
 .altar-input {
- width: 100%;
- background: rgba(255, 255, 255, 0.03);
- border: 1px solid rgba(212, 175, 55, 0.15);
- border-radius: 3rem;
- padding: 0.9rem 1.5rem;
- color: #fde68a;
- font-size: 0.85rem;
- text-align: center;
- transition: all 0.3s ease;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 3rem;
+  padding: 0.9rem 1.5rem;
+  color: #fde68a;
+  font-size: 0.85rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .altar-input:focus {
- outline: none;
- background: rgba(255, 255, 255, 0.06);
- border-color: rgba(212, 175, 55, 0.5);
- box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+  outline: none;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.gratitude-altar-viewport {
+  position: relative;
+  height: 380px;
+  overflow: hidden;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  /* 核心边缘虚化遮罩 */
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+@keyframes slow-scroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.animate-slow-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 2rem 0;
+  animation: slow-scroll 45s linear infinite;
+}
+
+.animate-slow-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* 留言卡片：增强了磨砂玻璃感 */
+.gratitude-item {
+  background: rgba(15, 15, 15, 0.5);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.gratitude-item:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+  background: rgba(25, 25, 25, 0.7);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.6);
+}
+
+.user-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.user-name {
+  color: #fde68a;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.tag {
+  font-size: 0.6rem;
+  color: rgba(212, 175, 55, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 0.1rem 0.5rem;
+  border-radius: 1rem;
+}
+
+.content {
+  color: #d1d1d6;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.mt-12 {
+  margin-top: 3rem;
 }
 
 /* --- 响应式处理 --- */
 @media (max-width: 480px) {
- .offering-options {
- grid-template-columns: 1fr; /* 手机端改为垂直排列，点击更方便 */
- }
- .gratitude-altar-viewport {
- height: 320px;
- }
- .option-amount {
- font-size: 1.4rem;
- }
+  .offering-options {
+    grid-template-columns: 1fr; /* 手机端改为垂直排列，点击更方便 */
+  }
+  .gratitude-altar-viewport {
+    height: 320px;
+  }
+  .option-amount {
+    font-size: 1.4rem;
+  }
 }
 
 /* ============================================
@@ -1248,30 +1271,6 @@ section.hidden {
     transform: translateX(-50%) translateY(100px);
     opacity: 0;
     pointer-events: none;
-}
-
-/* ============================================
-   Friend Attribution
-   ============================================ */
-
-.friend-attribution {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(212, 175, 55, 0.3);
-}
-
-.friend-attribution p {
-    margin-bottom: 0.75rem;
-}
-
-.friend-personal-message {
-    background: rgba(212, 175, 55, 0.1);
-    border-left: 3px solid var(--color-gold);
-    padding: 0.75rem 1rem;
-    border-radius: 4px;
-    font-style: italic;
-    margin: 1rem 0;
-    color: var(--color-text);
 }
 
 /* ============================================
@@ -1458,90 +1457,43 @@ section.hidden {
 .native-share-btn:hover {
     background: rgba(212, 175, 55, 0.1);
 }
-
-/* ============================================
-   Responsive Design
-   ============================================ */
-
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 2rem;
-        letter-spacing: 0.15em;
-    }
-    
-    .bagua-compass {
-        width: 95vmin;
-        height: 95vmin;
-    }
-    
-    .compass-center {
-        width: 65%;
-        padding: 1.5rem;
-    }
-    
-    .trigram-symbol {
-        font-size: 1.5rem;
-    }
-    
-    .trigram-meaning {
-        display: none;
-    }
-    
-    .talisman-card {
-        padding: 2rem 1rem;
-    }
-    
-    .fu-symbol {
-        font-size: 4rem;
-    }
-    
-    .result-actions {
-        flex-direction: column;
-    }
-    
-    .action-btn {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
 /* ============================================
    Social Proof Marquee (新增)
    ============================================ */
 
 .social-proof-marquee {
-    background: rgba(0, 0, 0, 0.4);
-    padding: 0.5rem 0;
-    overflow: hidden;
-    border-top: 1px solid rgba(212, 175, 55, 0.2);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.5rem 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .marquee-content {
-    display: inline-block;
-    white-space: nowrap;
-    animation: marquee 30s linear infinite;
-    padding-left: 100%;
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+  padding-left: 100%;
 }
 
 @keyframes marquee {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
+  from {
+      transform: translateX(0);
+  }
+  to {
+      transform: translateX(-50%);
+  }
 }
 
 .marquee-text {
-    color: rgba(212, 175, 55, 0.8);
-    font-size: 0.85rem;
-    font-style: italic;
-    font-family: 'Cormorant Garamond', serif;
+  color: rgba(212, 175, 55, 0.8);
+  font-size: 0.85rem;
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .marquee-text span {
-    margin: 0 1rem;
+  margin: 0 1rem;
 }
 
 /* ============================================
@@ -1549,20 +1501,20 @@ section.hidden {
    ============================================ */
 
 .expiry-countdown {
-    text-align: center;
-    margin-bottom: 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .expiry-label {
-    color: #f87171;
-    font-size: 0.8rem;
-    font-family: monospace;
-    animation: pulse 2s infinite;
+  color: #f87171;
+  font-size: 0.8rem;
+  font-family: monospace;
+  animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
 /* ============================================
@@ -1570,57 +1522,127 @@ section.hidden {
    ============================================ */
 
 .download-btn-container {
-    margin-top: 2rem;
-    text-align: center;
+  margin-top: 2rem;
+  text-align: center;
 }
 
 .download-wallpaper-btn {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
-    border: 2px solid var(--color-gold);
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    overflow: hidden;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
+  border: 2px solid var(--color-gold);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .download-wallpaper-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left 0.5s ease;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
 }
 
 .download-wallpaper-btn:hover::before {
-    left: 100%;
+  left: 100%;
 }
 
 .download-wallpaper-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
 }
 
 .download-wallpaper-btn span {
-    font-family: 'Cinzel', serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--color-bg);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-bg);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .download-hint {
-    text-align: center;
-    margin-top: 0.5rem;
-    font-size: 0.75rem;
-    color: var(--color-text-dim);
-    font-style: italic;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+  font-style: italic;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hero-title {
+      font-size: 2rem;
+      letter-spacing: 0.15em;
+  }
+  
+  .bagua-compass {
+      width: 95vmin;
+      height: 95vmin;
+  }
+  
+  .compass-center {
+      width: 65%;
+      padding: 1.5rem;
+  }
+  
+  .trigram-symbol {
+      font-size: 1.5rem;
+  }
+  
+  .trigram-meaning {
+      display: none;
+  }
+  
+  .talisman-card {
+      padding: 2rem 1rem;
+  }
+  
+  .fu-symbol {
+      font-size: 4rem;
+  }
+  
+  .result-actions {
+      flex-direction: column;
+  }
+  
+  .action-btn {
+      width: 100%;
+      justify-content: center;
+  }
+}
+
+/* ============================================
+   Friend Attribution
+   ============================================ */
+
+.friend-attribution {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.friend-attribution p {
+  margin-bottom: 0.75rem;
+}
+
+.friend-personal-message {
+  background: rgba(212, 175, 55, 0.1);
+  border-left: 3px solid var(--color-gold);
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  font-style: italic;
+  margin: 1rem 0;
+  color: var(--color-text);
 }
