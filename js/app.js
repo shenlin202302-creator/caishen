@@ -477,4 +477,118 @@ document.addEventListener('click', function(e) {
     if (e.target.id === 'native-share') {
         openNativeShare();
     }
+    
+    // Download wallpaper button (NEW)
+    if (e.target.id === 'download-wallpaper-btn') {
+        downloadCurrentSigilWallpaper();
+    }
 });
+
+// ============================================
+// NEW: 24h Expiry Countdown & Wallpaper Download
+// ============================================
+
+// Start 24-hour countdown when result page loads
+let countdownInterval;
+
+function startCountdown() {
+    // Clear any existing interval
+    if (countdownInterval) {
+        clearInterval(countdownInterval);
+    }
+    
+    // Calculate expiry time (24 hours from now)
+    const expiryTime = Date.now() + 24 * 60 * 60 * 1000;
+    const displayEl = document.getElementById('countdown-display');
+    
+    countdownInterval = setInterval(() => {
+        const now = Date.now();
+        const diff = expiryTime - now;
+        
+        if (diff <= 0) {
+            displayEl.textContent = '00:00:00';
+            clearInterval(countdownInterval);
+            return;
+        }
+        
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        displayEl.textContent = 
+            `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }, 1000);
+    
+    // If we have a stored sigil image URL, show download button
+    if (currentSigilImageUrl) {
+        document.getElementById('download-wallpaper-btn').style.display = 'inline-flex';
+    }
+}
+
+// Current sigil image URL (for download)
+let currentSigilImageUrl = null;
+
+// Set the current sigil image (you can set this when generating the image)
+function setCurrentSigilImage(imageUrl) {
+    currentSigilImageUrl = imageUrl;
+    if (document.getElementById('download-wallpaper-btn')) {
+        document.getElementById('download-wallpaper-btn').style.display = 
+            imageUrl ? 'inline-flex' : 'none';
+    }
+}
+
+// Download the current sigil as high-res wallpaper
+async function downloadCurrentSigilWallpaper() {
+    if (!currentSigilImageUrl) {
+        showToast('No sigil image generated yet.');
+        return;
+    }
+    
+    try {
+        // Fetch the image as blob
+        const response = await fetch(currentSigilImageUrl);
+        const blob = await response.blob();
+        
+        // Create object URL
+        const blobUrl = window.URL.createObjectURL(blob);
+        
+        // Create download link
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.download = `My-Cosmic-Sigil-${currentTalisman ? currentTalisman.number : 'Custom'}.png`;
+        
+        // Trigger download
+        document.body.appendChild(link);
+        link.click();
+        
+        // Cleanup
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(blobUrl);
+        
+        showToast('✨ Wallpaper downloaded! Set it as your lock screen to activate ✨');
+    } catch (error) {
+        console.error('Download failed:', error);
+        showToast('Oops! The energy flow was interrupted. Please try again.');
+    }
+}
+
+// Start countdown when result page is shown
+const originalDrawRandomTalisman = drawRandomTalisman;
+drawRandomTalisman = function() {
+    // Call original function
+    originalDrawRandomTalisman();
+    
+    // Start countdown for the new sigil
+    setTimeout(() => {
+        startCountdown();
+    }, 100);
+    
+    // If you're generating the image somewhere else, call setCurrentSigilImage()
+    // For static pre-generated sigils, we can use a random one from your CDN
+    // This example uses a random pre-generated image
+    const randomSigilNum = Math.floor(Math.random() * 50) + 1;
+    // Replace with your CDN URL pattern
+    const imageUrl = `https://your-cdn.yourdomain.com/sigils/sigil-${randomSigilNum}.png`;
+    setCurrentSigilImage(imageUrl);
+};
+
