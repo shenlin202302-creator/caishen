@@ -1037,7 +1037,7 @@ section.hidden {
 
 .offering-options {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     margin-bottom: 1.5rem;
 }
@@ -1622,6 +1622,9 @@ section.hidden {
   height: 350px; /* 建议高度，可根据首页布局调整 */
   overflow: hidden;
   margin: 2rem 0;
+  padding: 1rem 0;
+  background: rgba(0, 0, 0, 0.2); /* 低对比柔和背景，区分打赏区与祭坛区 */
+  border-radius: 1rem;
   /* 关键：增加上下边缘羽化遮罩，营造能量场消散的神秘感 */
   -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
   mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
@@ -1651,7 +1654,7 @@ section.hidden {
  padding: 1.25rem;
  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
  position: relative;
- backdrop-filter: blur(4px); /* 背景模糊，增加高级感 */
+ backdrop-filter: blur(8px); /* 更强磨砂质感，更有呼吸感 */
 }
 
 .gratitude-item:hover {
