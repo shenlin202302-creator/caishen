@@ -195,6 +195,20 @@ function drawRandomTalisman() {
     
     document.getElementById('meaning-text').innerHTML = fullMeaning;
     document.getElementById('fu-symbol').textContent = currentTalisman.symbol;
+    
+    // FIX: Set the sigil image URL for download and show download button
+    // If you have pre-generated sigil images (recommended), use:
+    const randomSigilNum = currentTalisman.number;
+    // Replace this URL prefix with your actual CDN
+    const sigilImageUrl = `https://your-cdn.yourdomain.com/sigils/sigil-${randomSigilNum}.png`;
+    setCurrentSigilImage(sigilImageUrl);
+    
+    // If you want "pay after reading, download after pay":
+    // - If NOT paid: keep button hidden, show when payment completes
+    // - If FREE preview + paid download: uncomment below to show download button that prompts payment
+    // document.getElementById('download-wallpaper-btn').style.display = 'inline-flex';
+    // If you want FREE download (for conversion): show button immediately
+    document.getElementById('download-wallpaper-btn').style.display = 'inline-flex';
 }
 
 // Simple HTML escape for safety
