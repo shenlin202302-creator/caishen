@@ -1122,6 +1122,8 @@ section.hidden {
 .altar-input-wrapper {
   margin-top: 2rem;
   width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
 .altar-input {
@@ -1135,6 +1137,7 @@ section.hidden {
   text-align: center;
   transition: all 0.3s ease;
   font-family: 'Cormorant Garamond', serif;
+  box-sizing: border-box;
 }
 
 .altar-input:focus {
