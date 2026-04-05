@@ -513,12 +513,16 @@ section.hidden {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 1rem 2rem;
+    padding: 0.85rem 0.8rem;
     background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-dark) 100%);
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-sizing: border-box;
+    overflow: hidden;
+    width: 100%;
+    justify-content: center;
 }
 
 .activate-btn:hover {
@@ -527,16 +531,19 @@ section.hidden {
 }
 
 .activate-btn .btn-icon {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    flex-shrink: 0;
 }
 
 .activate-btn .btn-text {
     font-family: 'Cinzel', serif;
-    font-size: 0.9rem;
+    font-size: 0.65rem;
     font-weight: 600;
     color: var(--color-bg);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
+    word-break: break-word;
+    line-height: 1.2;
 }
 
 /* ============================================
@@ -1654,7 +1661,16 @@ section.hidden {
   
   .compass-center {
       width: 65%;
-      padding: 1.5rem;
+      padding: 1.5rem 1rem;
+  }
+  
+  .activate-btn {
+      padding: 0.75rem 0.5rem;
+  }
+  
+  .activate-btn .btn-text {
+      font-size: 0.58rem;
+      letter-spacing: 0.06em;
   }
   
   .trigram-symbol {
